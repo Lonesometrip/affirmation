@@ -1,0 +1,2358 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trading Affirmations App</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --accent: #e74c3c;
+            --light: #ecf0f1;
+            --dark: #2c3e50;
+            --success: #2ecc71;
+            --warning: #f39c12;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f5f7fa;
+            color: #333;
+            overflow-x: hidden;
+        }
+        
+        .navbar {
+            background-color: var(--primary);
+            color: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .ticker-container {
+            background-color: #1d2630;
+            color: white;
+            overflow: hidden;
+            white-space: nowrap;
+            padding: 8px 0;
+            position: relative;
+        }
+        
+        .ticker-content {
+            display: inline-block;
+            animation: ticker 30s linear infinite;
+        }
+        
+        @keyframes ticker {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
+        }
+        
+        .ticker-item {
+            display: inline-block;
+            padding: 0 20px;
+        }
+        
+        .ticker-item.up {
+            color: #2ecc71;
+        }
+        
+        .ticker-item.down {
+            color: #e74c3c;
+        }
+        
+        .section {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            margin-bottom: 20px;
+            padding: 20px;
+        }
+        
+        .section-title {
+            color: var(--primary);
+            border-bottom: 2px solid var(--secondary);
+            padding-bottom: 8px;
+            margin-bottom: 16px;
+            font-weight: 600;
+        }
+        
+        .btn-primary {
+            background-color: var(--secondary);
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .btn-primary:hover {
+            background-color: #2980b9;
+            transform: translateY(-2px);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .btn-danger {
+            background-color: var(--accent);
+            color: white;
+        }
+        
+        .btn-danger:hover {
+            background-color: #c0392b;
+        }
+        
+        .card {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            margin-bottom: 16px;
+            transition: all 0.3s;
+        }
+        
+        .card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .tab-container {
+            display: flex;
+            border-bottom: 1px solid #ddd;
+            margin-bottom: 16px;
+        }
+        
+        .tab {
+            padding: 10px 16px;
+            cursor: pointer;
+            border-bottom: 3px solid transparent;
+            transition: all 0.3s;
+        }
+        
+        .tab.active {
+            border-bottom: 3px solid var(--secondary);
+            color: var(--secondary);
+            font-weight: bold;
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        .badge {
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        
+        .badge-success {
+            background-color: var(--success);
+            color: white;
+        }
+        
+        .badge-warning {
+            background-color: var(--warning);
+            color: white;
+        }
+        
+        .badge-danger {
+            background-color: var(--accent);
+            color: white;
+        }
+        
+        .form-group {
+            margin-bottom: 16px;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 8px 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            transition: border 0.3s;
+        }
+        
+        .form-control:focus {
+            border-color: var(--secondary);
+            outline: none;
+            box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
+        }
+        
+        .select-control {
+            width: 100%;
+            padding: 8px 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            background-color: white;
+        }
+        
+        .session-card {
+            background: linear-gradient(145deg, #2c3e50, #34495e);
+            color: white;
+            border-radius: 8px;
+            padding: 16px;
+            margin-bottom: 16px;
+        }
+        
+        .session-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .session-time {
+            font-size: 14px;
+            opacity: 0.8;
+        }
+        
+        .session-status {
+            display: inline-block;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-top: 8px;
+        }
+        
+        .widget {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            margin-bottom: 16px;
+            padding: 16px;
+        }
+        
+        .widget-title {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: var(--primary);
+        }
+        
+        .event-item {
+            padding: 8px 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .event-time {
+            font-size: 12px;
+            color: #777;
+        }
+        
+        .event-name {
+            font-weight: 500;
+        }
+        
+        .event-impact {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            display: inline-block;
+            margin-right: 4px;
+        }
+        
+        .event-impact.high {
+            background-color: var(--accent);
+        }
+        
+        .event-impact.medium {
+            background-color: var(--warning);
+        }
+        
+        .event-impact.low {
+            background-color: var(--success);
+        }
+        
+        .market-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .market-name {
+            font-weight: 500;
+        }
+        
+        .market-value.up {
+            color: var(--success);
+        }
+        
+        .market-value.down {
+            color: var(--accent);
+        }
+        
+        .intermarket-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+        }
+        
+        .correlation-matrix {
+            background: white;
+            border-radius: 8px;
+            padding: 16px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        
+        .matrix-title {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: var(--primary);
+        }
+        
+        .matrix-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        .matrix-table th, .matrix-table td {
+            padding: 8px;
+            text-align: center;
+            border: 1px solid #eee;
+        }
+        
+        .matrix-table th {
+            background-color: #f5f7fa;
+            font-weight: 600;
+        }
+        
+        .correlation-positive {
+            background-color: rgba(46, 204, 113, 0.2);
+        }
+        
+        .correlation-negative {
+            background-color: rgba(231, 76, 60, 0.2);
+        }
+        
+        .correlation-neutral {
+            background-color: rgba(241, 196, 15, 0.1);
+        }
+        
+        .affirmation-card {
+            background: linear-gradient(145deg, #3498db, #2980b9);
+            color: white;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 16px;
+        }
+        
+        .affirmation-text {
+            font-size: 18px;
+            line-height: 1.6;
+            font-style: italic;
+            margin-bottom: 16px;
+        }
+        
+        .affirmation-category {
+            font-size: 14px;
+            opacity: 0.8;
+            text-align: right;
+        }
+        
+        .trade-item {
+            background: white;
+            border-radius: 8px;
+            padding: 16px;
+            margin-bottom: 16px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            position: relative;
+        }
+        
+        .trade-symbol {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+        
+        .trade-details {
+            margin-bottom: 8px;
+            font-size: 14px;
+            color: #666;
+        }
+        
+        .trade-pnl {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            font-weight: 600;
+        }
+        
+        .trade-pnl.profit {
+            color: var(--success);
+        }
+        
+        .trade-pnl.loss {
+            color: var(--accent);
+        }
+        
+        .trade-actions {
+            display: flex;
+            justify-content: flex-end;
+            gap: 8px;
+            margin-top: 8px;
+        }
+        
+        .chat-popup {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 350px;
+            background: white;
+            border-radius: 8px 8px 0 0;
+            box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+            z-index: 1000;
+            transition: all 0.3s;
+        }
+        
+        .chat-header {
+            background: var(--primary);
+            color: white;
+            padding: 10px 16px;
+            border-radius: 8px 8px 0 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+        }
+        
+        .chat-body {
+            padding: 16px;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+        
+        .chat-message {
+            margin-bottom: 16px;
+        }
+        
+        .chat-message.user {
+            text-align: right;
+        }
+        
+        .chat-message.user .message-content {
+            background-color: var(--secondary);
+            color: white;
+            border-radius: 18px 18px 0 18px;
+            padding: 8px 16px;
+            display: inline-block;
+            max-width: 80%;
+        }
+        
+        .chat-message.ai .message-content {
+            background-color: #f1f1f1;
+            color: #333;
+            border-radius: 18px 18px 18px 0;
+            padding: 8px 16px;
+            display: inline-block;
+            max-width: 80%;
+        }
+        
+        .chat-footer {
+            padding: 10px 16px;
+            border-top: 1px solid #eee;
+            display: flex;
+            gap: 8px;
+        }
+        
+        .chat-input {
+            flex: 1;
+            padding: 8px 12px;
+            border: 1px solid #ddd;
+            border-radius: 20px;
+            outline: none;
+        }
+        
+        .minimized {
+            height: 46px;
+            overflow: hidden;
+        }
+        
+        .gemini-badge {
+            background: linear-gradient(135deg, #1a73e8, #8e24aa);
+            color: white;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 12px;
+            margin-left: 8px;
+        }
+        
+        .api-key-container {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .api-key-input {
+            background-color: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 14px;
+            width: 160px;
+        }
+        
+        .api-key-input::placeholder {
+            color: rgba(255, 255, 255, 0.6);
+        }
+        
+        .api-status {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background-color: #e74c3c;
+            margin-right: 4px;
+        }
+        
+        .api-status.connected {
+            background-color: #2ecc71;
+        }
+        
+        .loading-spinner {
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            border-top: 3px solid #ffffff;
+            border-radius: 50%;
+            width: 16px;
+            height: 16px;
+            animation: spin 1s linear infinite;
+            margin-left: 5px;
+            display: none;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .intermarket-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .chat-popup {
+                width: 100%;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                border-radius: 0;
+            }
+            
+            .chat-header {
+                border-radius: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header and Navigation -->
+    <nav class="navbar p-4">
+        <div class="container mx-auto flex justify-between items-center">
+            <a href="#" class="text-xl font-bold">Trading Affirmations App</a>
+            <div class="api-key-container">
+                <div class="flex items-center">
+                    <span class="api-status" id="apiStatus"></span>
+                    <span class="text-sm mr-2">API Status</span>
+                </div>
+                <input type="password" id="geminiApiKey" class="api-key-input" placeholder="Gemini API Key" onchange="saveApiKey()">
+                <button onclick="connectApi()" class="btn-primary text-sm py-1">
+                    <span id="connectText">Verbinden</span>
+                    <div class="loading-spinner" id="apiSpinner"></div>
+                </button>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- TradingView Ticker -->
+    <div class="ticker-container">
+        <div class="ticker-content">
+            <div class="ticker-item up">NASDAQ:AAPL <span>186.32</span> <i class="fas fa-caret-up"></i> 1.2%</div>
+            <div class="ticker-item down">NASDAQ:NVDA <span>432.65</span> <i class="fas fa-caret-down"></i> 0.8%</div>
+            <div class="ticker-item up">NASDAQ:ASML <span>689.43</span> <i class="fas fa-caret-up"></i> 2.1%</div>
+            <div class="ticker-item up">BINANCE:BNBUSDT <span>573.21</span> <i class="fas fa-caret-up"></i> 3.4%</div>
+            <div class="ticker-item down">NASDAQ:INTC <span>34.87</span> <i class="fas fa-caret-down"></i> 1.5%</div>
+            <div class="ticker-item up">CAPITALCOM:BTCUSD <span>43256.78</span> <i class="fas fa-caret-up"></i> 2.3%</div>
+            <div class="ticker-item up">PEPPERSTONE:XAUUSD <span>2316.42</span> <i class="fas fa-caret-up"></i> 0.7%</div>
+            <div class="ticker-item down">FX:USDJPY <span>143.85</span> <i class="fas fa-caret-down"></i> 0.3%</div>
+            <div class="ticker-item up">PEPPERSTONE:GER40 <span>18234.6</span> <i class="fas fa-caret-up"></i> 1.1%</div>
+            <div class="ticker-item down">CAPITALCOM:EURUSD <span>1.0845</span> <i class="fas fa-caret-down"></i> 0.2%</div>
+        </div>
+    </div>
+    
+    <!-- Main Content -->
+    <div class="container mx-auto p-4">
+        <!-- Tabs -->
+        <div class="tab-container mb-6">
+            <div class="tab active" data-tab="dashboard">Dashboard</div>
+            <div class="tab" data-tab="sessions">Trading Sessions</div>
+            <div class="tab" data-tab="intermarket">Intermarket Analyse</div>
+            <div class="tab" data-tab="affirmations">Affirmationen</div>
+            <div class="tab" data-tab="opportunities">Trading Opportunities</div>
+            <div class="tab" data-tab="mytrades">Meine Trades</div>
+        </div>
+        
+        <!-- Dashboard Tab Content -->
+        <div class="tab-content active" id="dashboard">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="section">
+                    <h2 class="section-title">Aktuelle Session</h2>
+                    <div class="session-card">
+                        <div class="session-title">Europa Session</div>
+                        <div class="session-time">08:00 - 16:30 CET</div>
+                        <div class="session-status bg-green-500">Aktiv</div>
+                        <div class="mt-4">
+                            <p class="text-sm opacity-80">Hauptmärkte: DAX, FTSE, CAC40</p>
+                            <p class="text-sm opacity-80">13 Events heute</p>
+                        </div>
+                    </div>
+                    <div class="mt-4">
+                        <p class="font-medium mb-2">Nächste Sessions:</p>
+                        <div class="text-sm text-gray-600 mb-1">US Session - Beginnt in 3h 20min</div>
+                        <div class="text-sm text-gray-600">Asien Session - Beginnt in 15h 30min</div>
+                    </div>
+                </div>
+                
+                <div class="section">
+                    <h2 class="section-title">Trader Status</h2>
+                    <div class="form-group">
+                        <label class="block text-gray-700 mb-2">Dein aktueller Status:</label>
+                        <select id="traderStatus" class="select-control" onchange="updateAffirmation()">
+                            <option value="preparing">Vorbereitung auf Trade</option>
+                            <option value="active">Aktiver Trade läuft</option>
+                            <option value="developing">Entwickle Strategie</option>
+                            <option value="break">Pause / Reflexion</option>
+                        </select>
+                    </div>
+                    
+                    <div class="affirmation-card mt-4">
+                        <div class="affirmation-text" id="currentAffirmation">
+                            Ich bin ein disziplinierter und geduldiger Trader, der seinem Handelsplan mit unerschütterlichem Engagement folgt. Ich vertraue auf die Wirksamkeit meiner Strategien und warte geduldig auf Setups mit hoher Wahrscheinlichkeit.
+                        </div>
+                        <div class="affirmation-category" id="affirmationCategory">
+                            Disziplin und Geduld entwickeln
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="section">
+                    <h2 class="section-title">Aktive Trades</h2>
+                    <div id="activeTrades">
+                        <div class="trade-item">
+                            <div class="trade-symbol">NASDAQ:AAPL</div>
+                            <div class="trade-details">Long @ 180.45 • Stop: 175.60 • Target: 190.00</div>
+                            <div class="trade-pnl profit">+3.25%</div>
+                            <div class="text-sm text-gray-500 mt-2">Eröffnet: Heute, 10:15 CET</div>
+                            <div class="trade-actions">
+                                <button class="btn-primary text-xs py-1">Bearbeiten</button>
+                                <button class="btn-danger text-xs py-1" onclick="removeTrade(this)">Entfernen</button>
+                            </div>
+                        </div>
+                        
+                        <div class="trade-item">
+                            <div class="trade-symbol">FX:EURUSD</div>
+                            <div class="trade-details">Short @ 1.0890 • Stop: 1.0925 • Target: 1.0820</div>
+                            <div class="trade-pnl loss">-0.12%</div>
+                            <div class="text-sm text-gray-500 mt-2">Eröffnet: Gestern, 16:45 CET</div>
+                            <div class="trade-actions">
+                                <button class="btn-primary text-xs py-1">Bearbeiten</button>
+                                <button class="btn-danger text-xs py-1" onclick="removeTrade(this)">Entfernen</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-4 text-center">
+                        <button class="btn-primary" onclick="showAddTradeModal()">+ Neuen Trade hinzufügen</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="section mt-6">
+                <h2 class="section-title">Intermarket-Übersicht (Murphy's Analyse)</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="correlation-matrix">
+                        <div class="matrix-title">Aktuelle Korrelationen</div>
+                        <table class="matrix-table">
+                            <thead>
+                                <tr>
+                                    <th></th>
+                                    <th>Aktien</th>
+                                    <th>Anleihen</th>
+                                    <th>Rohstoffe</th>
+                                    <th>Dollar</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th>Aktien</th>
+                                    <td>—</td>
+                                    <td class="correlation-positive">+0.68</td>
+                                    <td class="correlation-negative">-0.42</td>
+                                    <td class="correlation-neutral">+0.12</td>
+                                </tr>
+                                <tr>
+                                    <th>Anleihen</th>
+                                    <td class="correlation-positive">+0.68</td>
+                                    <td>—</td>
+                                    <td class="correlation-negative">-0.71</td>
+                                    <td class="correlation-negative">-0.53</td>
+                                </tr>
+                                <tr>
+                                    <th>Rohstoffe</th>
+                                    <td class="correlation-negative">-0.42</td>
+                                    <td class="correlation-negative">-0.71</td>
+                                    <td>—</td>
+                                    <td class="correlation-negative">-0.65</td>
+                                </tr>
+                                <tr>
+                                    <th>Dollar</th>
+                                    <td class="correlation-neutral">+0.12</td>
+                                    <td class="correlation-negative">-0.53</td>
+                                    <td class="correlation-negative">-0.65</td>
+                                    <td>—</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <div>
+                        <div class="widget">
+                            <div class="widget-title">Marktrotation nach Murphy</div>
+                            <div class="text-sm mb-4">
+                                Aktuelle Zyklusposition: <span class="font-semibold">Späte Expansion / Frühe Inflation</span>
+                            </div>
+                            <ul class="text-sm">
+                                <li class="mb-2"><span class="text-green-600 font-semibold">Führende Sektoren:</span> Energie, Materialien, Industrie</li>
+                                <li class="mb-2"><span class="text-yellow-600 font-semibold">Neutrale Sektoren:</span> Finanzen, Gesundheit, Versorger</li>
+                                <li class="mb-2"><span class="text-red-600 font-semibold">Schwächere Sektoren:</span> Technologie, Konsumgüter, Immobilien</li>
+                            </ul>
+                            <div class="mt-4 text-sm text-gray-600">
+                                <p class="mb-2"><i class="fas fa-info-circle mr-1"></i> Die steigende Korrelation zwischen Aktien und Anleihen deutet auf einen möglichen Übergang in die Inflationsphase hin.</p>
+                                <p><i class="fas fa-exclamation-triangle mr-1 text-yellow-600"></i> Die negative Korrelation zwischen Rohstoffen und Dollar hat sich verstärkt.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Sessions Tab Content -->
+        <div class="tab-content" id="sessions">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Asia Session -->
+                <div class="section">
+                    <h2 class="section-title">Asien Session</h2>
+                    <div class="session-card" style="background: linear-gradient(145deg, #e74c3c, #c0392b);">
+                        <div class="session-title">Asien Märkte</div>
+                        <div class="session-time">00:00 - 09:00 CET</div>
+                        <div class="session-status bg-gray-500">Geschlossen</div>
+                        <div class="mt-4">
+                            <p class="text-sm opacity-80">Nächste Session beginnt in 15h 30min</p>
+                        </div>
+                    </div>
+                    
+                    <div class="widget mt-4">
+                        <div class="widget-title">Session-Zeiten</div>
+                        <table class="w-full text-sm">
+                            <tr>
+                                <td>Tokyo (JST):</td>
+                                <td class="font-medium">09:00 - 18:00</td>
+                            </tr>
+                            <tr>
+                                <td>Shanghai (CST):</td>
+                                <td class="font-medium">09:30 - 15:00</td>
+                            </tr>
+                            <tr>
+                                <td>Sydney (AEST):</td>
+                                <td class="font-medium">10:00 - 16:00</td>
+                            </tr>
+                            <tr>
+                                <td>Singapore (SGT):</td>
+                                <td class="font-medium">09:00 - 17:00</td>
+                            </tr>
+                        </table>
+                    </div>
+                    
+                    <div class="widget mt-4">
+                        <div class="widget-title">Wirtschaftskalender</div>
+                        <div class="event-item">
+                            <div class="flex justify-between">
+                                <div>
+                                    <span class="event-impact high"></span>
+                                    <span class="event-name">BoJ Zinsentscheid</span>
+                                </div>
+                                <div class="event-time">00:30 CET</div>
+                            </div>
+                            <div class="text-sm text-gray-600 mt-1">
+                                Prognose: Unverändert | Vorher: -0.10%
+                            </div>
+                        </div>
+                        <div class="event-item">
+                            <div class="flex justify-between">
+                                <div>
+                                    <span class="event-impact medium"></span>
+                                    <span class="event-name">China PMI</span>
+                                </div>
+                                <div class="event-time">03:45 CET</div>
+                            </div>
+                            <div class="text-sm text-gray-600 mt-1">
+                                Prognose: 50.5 | Vorher: 50.2
+                            </div>
+                        </div>
+                        <div class="event-item">
+                            <div class="flex justify-between">
+                                <div>
+                                    <span class="event-impact low"></span>
+                                    <span class="event-name">Australien Einzelhandelsumsätze</span>
+                                </div>
+                                <div class="event-time">02:30 CET</div>
+                            </div>
+                            <div class="text-sm text-gray-600 mt-1">
+                                Prognose: 0.3% | Vorher: 0.2%
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="widget mt-4">
+                        <div class="widget-title">Marktbewegungen</div>
+                        <div class="market-item">
+                            <div class="market-name">Nikkei 225</div>
+                            <div class="market-value up">+1.2%</div>
+                        </div>
+                        <div class="market-item">
+                            <div class="market-name">Shanghai Composite</div>
+                            <div class="market-value down">-0.5%</div>
+                        </div>
+                        <div class="market-item">
+                            <div class="market-name">Hang Seng</div>
+                            <div class="market-value up">+0.8%</div>
+                        </div>
+                        <div class="market-item">
+                            <div class="market-name">ASX 200</div>
+                            <div class="market-value up">+0.3%</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Europe Session -->
+                <div class="section">
+                    <h2 class="section-title">Europa Session</h2>
+                    <div class="session-card" style="background: linear-gradient(145deg, #3498db, #2980b9);">
+                        <div class="session-title">Europa Märkte</div>
+                        <div class="session-time">08:00 - 16:30 CET</div>
+                        <div class="session-status bg-green-500">Aktiv</div>
+                        <div class="mt-4">
+                            <p class="text-sm opacity-80">Aktive Session läuft noch 3h 15min</p>
+                        </div>
+                    </div>
+                    
+                    <div class="widget mt-4">
+                        <div class="widget-title">Session-Zeiten</div>
+                        <table class="w-full text-sm">
+                            <tr>
+                                <td>London (GMT):</td>
+                                <td class="font-medium">08:00 - 16:30</td>
+                            </tr>
+                            <tr>
+                                <td>Frankfurt (CET):</td>
+                                <td class="font-medium">09:00 - 17:30</td>
+                            </tr>
+                            <tr>
+                                <td>Paris (CET):</td>
+                                <td class="font-medium">09:00 - 17:30</td>
+                            </tr>
+                            <tr>
+                                <td>Zürich (CET):</td>
+                                <td class="font-medium">09:00 - 17:30</td>
+                            </tr>
+                        </table>
+                    </div>
+                    
+                    <div class="widget mt-4">
+                        <div class="widget-title">Wirtschaftskalender</div>
+                        <div class="event-item">
+                            <div class="flex justify-between">
+                                <div>
+                                    <span class="event-impact high"></span>
+                                    <span class="event-name">DE Verbraucherpreisindex</span>
+                                </div>
+                                <div class="event-time">14:00 CET</div>
+                            </div>
+                            <div class="text-sm text-gray-600 mt-1">
+                                Prognose: 2.3% | Vorher: 2.2%
+                            </div>
+                        </div>
+                        <div class="event-item">
+                            <div class="flex justify-between">
+                                <div>
+                                    <span class="event-impact medium"></span>
+                                    <span class="event-name">UK BIP</span>
+                                </div>
+                                <div class="event-time">10:30 CET</div>
+                            </div>
+                            <div class="text-sm text-gray-600 mt-1">
+                                Prognose: 0.4% | Vorher: 0.3%
+                            </div>
+                        </div>
+                        <div class="event-item">
+                            <div class="flex justify-between">
+                                <div>
+                                    <span class="event-impact high"></span>
+                                    <span class="event-name">EZB Zinsentscheid</span>
+                                </div>
+                                <div class="event-time">13:45 CET</div>
+                            </div>
+                            <div class="text-sm text-gray-600 mt-1">
+                                Prognose: Unverändert | Vorher: 4.50%
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="widget mt-4">
+                        <div class="widget-title">Marktbewegungen</div>
+                        <div class="market-item">
+                            <div class="market-name">DAX</div>
+                            <div class="market-value up">+0.9%</div>
+                        </div>
+                        <div class="market-item">
+                            <div class="market-name">FTSE 100</div>
+                            <div class="market-value up">+0.3%</div>
+                        </div>
+                        <div class="market-item">
+                            <div class="market-name">CAC 40</div>
+                            <div class="market-value down">-0.1%</div>
+                        </div>
+                        <div class="market-item">
+                            <div class="market-name">EURO STOXX 50</div>
+                            <div class="market-value up">+0.6%</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- US Session -->
+                <div class="section">
+                    <h2 class="section-title">USA Session</h2>
+                    <div class="session-card" style="background: linear-gradient(145deg, #2ecc71, #27ae60);">
+                        <div class="session-title">US Märkte</div>
+                        <div class="session-time">14:30 - 21:00 CET</div>
+                        <div class="session-status bg-yellow-500">Beginnt bald</div>
+                        <div class="mt-4">
+                            <p class="text-sm opacity-80">Session beginnt in 3h 20min</p>
+                        </div>
+                    </div>
+                    
+                    <div class="widget mt-4">
+                        <div class="widget-title">Session-Zeiten</div>
+                        <table class="w-full text-sm">
+                            <tr>
+                                <td>New York (EDT):</td>
+                                <td class="font-medium">09:30 - 16:00</td>
+                            </tr>
+                            <tr>
+                                <td>Chicago (CDT):</td>
+                                <td class="font-medium">08:30 - 15:00</td>
+                            </tr>
+                            <tr>
+                                <td>Futures (Globex):</td>
+                                <td class="font-medium">18:00 - 17:00</td>
+                            </tr>
+                            <tr>
+                                <td>After-Hours:</td>
+                                <td class="font-medium">16:00 - 20:00</td>
+                            </tr>
+                        </table>
+                    </div>
+                    
+                    <div class="widget mt-4">
+                        <div class="widget-title">Wirtschaftskalender</div>
+                        <div class="event-item">
+                            <div class="flex justify-between">
+                                <div>
+                                    <span class="event-impact high"></span>
+                                    <span class="event-name">US Non-Farm Payrolls</span>
+                                </div>
+                                <div class="event-time">14:30 CET</div>
+                            </div>
+                            <div class="text-sm text-gray-600 mt-1">
+                                Prognose: 180K | Vorher: 175K
+                            </div>
+                        </div>
+                        <div class="event-item">
+                            <div class="flex justify-between">
+                                <div>
+                                    <span class="event-impact high"></span>
+                                    <span class="event-name">US Arbeitslosenquote</span>
+                                </div>
+                                <div class="event-time">14:30 CET</div>
+                            </div>
+                            <div class="text-sm text-gray-600 mt-1">
+                                Prognose: 3.8% | Vorher: 3.9%
+                            </div>
+                        </div>
+                        <div class="event-item">
+                            <div class="flex justify-between">
+                                <div>
+                                    <span class="event-impact medium"></span>
+                                    <span class="event-name">US ISM Dienstleistungen</span>
+                                </div>
+                                <div class="event-time">16:00 CET</div>
+                            </div>
+                            <div class="text-sm text-gray-600 mt-1">
+                                Prognose: 52.0 | Vorher: 51.4
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="widget mt-4">
+                        <div class="widget-title">Marktbewegungen</div>
+                        <div class="market-item">
+                            <div class="market-name">S&P 500 (Futures)</div>
+                            <div class="market-value up">+0.5%</div>
+                        </div>
+                        <div class="market-item">
+                            <div class="market-name">NASDAQ (Futures)</div>
+                            <div class="market-value up">+0.7%</div>
+                        </div>
+                        <div class="market-item">
+                            <div class="market-name">Dow Jones (Futures)</div>
+                            <div class="market-value up">+0.3%</div>
+                        </div>
+                        <div class="market-item">
+                            <div class="market-name">VIX</div>
+                            <div class="market-value down">-4.2%</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Intermarket Analysis Tab -->
+        <div class="tab-content" id="intermarket">
+            <div class="section">
+                <h2 class="section-title">Murphy's Intermarket-Analyse</h2>
+                <div class="mb-6">
+                    <p class="text-gray-700 mb-4">Die Intermarket-Analyse nach Joseph Murphy basiert auf den Beziehungen zwischen den vier Hauptmärkten: Aktien, Anleihen, Rohstoffe und Währungen. Diese Beziehungen helfen Tradern, größere Markttrends zu verstehen und zu antizipieren.</p>
+                    
+                    <div class="bg-blue-50 p-4 rounded-lg border border-blue-200">
+                        <h3 class="font-semibold text-blue-800 mb-2">Aktueller Wirtschaftszyklus:</h3>
+                        <div class="flex items-center">
+                            <div class="w-full bg-gray-200 rounded-full h-4">
+                                <div class="bg-blue-600 h-4 rounded-full" style="width: 65%"></div>
+                            </div>
+                            <span class="ml-2 text-sm font-medium">65%</span>
+                        </div>
+                        <div class="flex justify-between text-xs text-gray-600 mt-1">
+                            <span>Erholung</span>
+                            <span>Expansion</span>
+                            <span>Inflation</span>
+                            <span>Abschwächung</span>
+                        </div>
+                        <p class="text-sm text-blue-700 mt-3"><i class="fas fa-info-circle mr-1"></i> Wir befinden uns in der späten Expansion mit Anzeichen eines Übergangs zur Inflationsphase.</p>
+                    </div>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="correlation-matrix">
+                        <div class="matrix-title">Intermarket-Beziehungen</div>
+                        <table class="matrix-table">
+                            <thead>
+                                <tr>
+                                    <th></th>
+                                    <th>Aktien</th>
+                                    <th>Anleihen</th>
+                                    <th>Rohstoffe</th>
+                                    <th>Dollar</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th>Aktien</th>
+                                    <td>—</td>
+                                    <td class="correlation-positive">+0.68</td>
+                                    <td class="correlation-negative">-0.42</td>
+                                    <td class="correlation-neutral">+0.12</td>
+                                </tr>
+                                <tr>
+                                    <th>Anleihen</th>
+                                    <td class="correlation-positive">+0.68</td>
+                                    <td>—</td>
+                                    <td class="correlation-negative">-0.71</td>
+                                    <td class="correlation-negative">-0.53</td>
+                                </tr>
+                                <tr>
+                                    <th>Rohstoffe</th>
+                                    <td class="correlation-negative">-0.42</td>
+                                    <td class="correlation-negative">-0.71</td>
+                                    <td>—</td>
+                                    <td class="correlation-negative">-0.65</td>
+                                </tr>
+                                <tr>
+                                    <th>Dollar</th>
+                                    <td class="correlation-neutral">+0.12</td>
+                                    <td class="correlation-negative">-0.53</td>
+                                    <td class="correlation-negative">-0.65</td>
+                                    <td>—</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div class="text-sm text-gray-600 mt-3">
+                            <p class="mb-1"><span class="text-green-600 font-medium">Positive Korrelation</span>: Märkte bewegen sich tendenziell in dieselbe Richtung</p>
+                            <p class="mb-1"><span class="text-red-600 font-medium">Negative Korrelation</span>: Märkte bewegen sich tendenziell in entgegengesetzte Richtungen</p>
+                            <p><span class="text-yellow-600 font-medium">Neutrale Korrelation</span>: Keine starke Beziehung zwischen den Märkten</p>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <div class="widget">
+                            <div class="widget-title">Aktuelle Marktdynamik</div>
+                            <ul class="text-sm space-y-3">
+                                <li>
+                                    <span class="font-medium">Anleihen ↔ Aktien:</span>
+                                    <div class="text-gray-700">Anleiherenditen fallen, Aktienmarkt steigt. Diese positive Korrelation ist typisch für die Expansionsphase.</div>
+                                </li>
+                                <li>
+                                    <span class="font-medium">Anleihen ↔ Rohstoffe:</span>
+                                    <div class="text-gray-700">Anleihepreise fallen, Rohstoffpreise steigen. Diese negative Korrelation deutet auf steigende Inflationserwartungen hin.</div>
+                                </li>
+                                <li>
+                                    <span class="font-medium">Rohstoffe ↔ Dollar:</span>
+                                    <div class="text-gray-700">Der US-Dollar schwächt sich ab, während Rohstoffpreise steigen. Diese inverse Beziehung ist besonders für Goldtrader relevant.</div>
+                                </li>
+                                <li>
+                                    <span class="font-medium">Dollar ↔ Aktien:</span>
+                                    <div class="text-gray-700">Aktuell eine schwache Korrelation, was typisch für die Übergangsphase zwischen Expansion und Inflation ist.</div>
+                                </li>
+                            </ul>
+                        </div>
+                        
+                        <div class="widget mt-4">
+                            <div class="widget-title">Wichtige Divergenzen</div>
+                            <div class="p-3 bg-yellow-50 rounded-lg border border-yellow-200 mb-3">
+                                <div class="font-medium text-yellow-800">Rohstoffe vs. Anleiherenditen</div>
+                                <div class="text-sm text-gray-700 mt-1">Rohstoffpreise steigen stärker als Anleiherenditen, was auf verstärkte Inflationsrisiken hindeuten könnte.</div>
+                            </div>
+                            <div class="p-3 bg-red-50 rounded-lg border border-red-200">
+                                <div class="font-medium text-red-800">Aktien vs. Wirtschaftsdaten</div>
+                                <div class="text-sm text-gray-700 mt-1">Aktienindizes steigen trotz gemischter Wirtschaftsdaten, was auf eine mögliche Überbewertung hindeuten könnte.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mt-6">
+                    <h3 class="font-semibold text-lg mb-3">Symbole für Intermarket-Analyse</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+                        <div class="form-group">
+                            <label class="block text-gray-700 mb-2 text-sm">Aktienindex auswählen:</label>
+                            <select id="stockIndex" class="select-control">
+                                <option value="PEPPERSTONE:US500">S&P 500</option>
+                                <option value="PEPPERSTONE:NAS100">NASDAQ 100</option>
+                                <option value="PEPPERSTONE:US30">Dow Jones</option>
+                                <option value="PEPPERSTONE:GER40">DAX</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="block text-gray-700 mb-2 text-sm">Anleihe auswählen:</label>
+                            <select id="bondIndex" class="select-control">
+                                <option value="TVC:TNX">US 10Y Rendite</option>
+                                <option value="CBOT:ZB1!">US T-Bond Futures</option>
+                                <option value="TVC:DE10Y">DE 10Y Rendite</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="block text-gray-700 mb-2 text-sm">Rohstoff auswählen:</label>
+                            <select id="commodityIndex" class="select-control">
+                                <option value="PEPPERSTONE:XAUUSD">Gold</option>
+                                <option value="PEPPERSTONE:SPOTCRUDE">Rohöl</option>
+                                <option value="COMEX:SI1!">Silber</option>
+                                <option value="NYMEX:NG1!">Erdgas</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="block text-gray-700 mb-2 text-sm">Währung auswählen:</label>
+                            <select id="currencyIndex" class="select-control">
+                                <option value="PEPPERSTONE:USDX">US Dollar Index</option>
+                                <option value="PEPPERSTONE:EURUSD">EUR/USD</option>
+                                <option value="FX:USDJPY">USD/JPY</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-4 text-center">
+                        <button class="btn-primary" onclick="updateIntermarketAnalysis()">Intermarket-Analyse aktualisieren</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Affirmations Tab -->
+        <div class="tab-content" id="affirmations">
+            <div class="section">
+                <h2 class="section-title">Trading-Affirmationen</h2>
+                
+                <div class="mb-6">
+                    <div class="form-group">
+                        <label class="block text-gray-700 mb-2">Dein aktueller Trader-Status:</label>
+                        <select id="affirmationTraderStatus" class="select-control" onchange="updateAffirmationTab()">
+                            <option value="preparing">Vorbereitung auf Trade</option>
+                            <option value="active">Aktiver Trade läuft</option>
+                            <option value="developing">Entwickle Strategie</option>
+                            <option value="break">Pause / Reflexion</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group mt-4">
+                        <label class="block text-gray-700 mb-2">Affirmations-Kategorie:</label>
+                        <select id="affirmationCategory" class="select-control" onchange="updateAffirmationTab()">
+                            <option value="discipline">Disziplin und Geduld entwickeln</option>
+                            <option value="abundance">Überflussdenken fördern</option>
+                            <option value="selection">Handelsauswahl verbessern</option>
+                            <option value="burnout">Burnout und Erschöpfung überwinden</option>
+                            <option value="bias">Bestätigungsfehler überwinden</option>
+                            <option value="paralysis">Entscheidungslähmung überwinden</option>
+                            <option value="fomo">FOMO überwinden</option>
+                            <option value="losses">Verluste schnell akzeptieren</option>
+                            <option value="emotional">Emotionale Bindung an Trades lösen</option>
+                            <option value="overtrading">Überhandel widerstehen</option>
+                            <option value="patience">Geduld bei langsamen Märkten bewahren</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="affirmation-card" id="detailedAffirmation">
+                    <div class="affirmation-text">
+                        Ich bin ein disziplinierter und geduldiger Trader, der seinem Handelsplan mit unerschütterlichem Engagement folgt. Ich vertraue auf die Wirksamkeit meiner Strategien und warte geduldig auf Setups mit hoher Wahrscheinlichkeit. Ich habe die Selbstkontrolle, mich an meine etablierten Regeln zu halten und impulsive Handlungen zu vermeiden.
+                    </div>
+                    <div class="affirmation-category">
+                        Disziplin und Geduld entwickeln
+                    </div>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
+                    <div class="widget">
+                        <div class="widget-title">Affirmations-Timer</div>
+                        <div class="text-center py-4">
+                            <div class="text-4xl font-bold" id="affirmationTimer">05:00</div>
+                            <div class="flex justify-center gap-3 mt-4">
+                                <button class="btn-primary" id="startTimerBtn" onclick="startAffirmationTimer()">Start</button>
+                                <button class="btn-primary" id="pauseTimerBtn" onclick="pauseAffirmationTimer()" disabled>Pause</button>
+                                <button class="btn-primary" id="resetTimerBtn" onclick="resetAffirmationTimer()">Reset</button>
+                            </div>
+                            <div class="mt-4 text-sm text-gray-600">
+                                Für optimale Ergebnisse, wiederhole die Affirmation während des Timers laut oder in Gedanken.
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="widget">
+                        <div class="widget-title">Meine gespeicherten Affirmationen</div>
+                        <div id="savedAffirmations">
+                            <div class="event-item">
+                                <div class="font-medium">Disziplin beim Warten auf Setups</div>
+                                <div class="text-sm text-gray-600">Kategorie: Disziplin und Geduld</div>
+                            </div>
+                            <div class="event-item">
+                                <div class="font-medium">Überwindung von FOMO bei volatilen Märkten</div>
+                                <div class="text-sm text-gray-600">Kategorie: FOMO überwinden</div>
+                            </div>
+                            <div class="event-item">
+                                <div class="font-medium">Emotionsloses Trading nach Verlusten</div>
+                                <div class="text-sm text-gray-600">Kategorie: Verluste akzeptieren</div>
+                            </div>
+                        </div>
+                        <div class="mt-4 text-center">
+                            <button class="btn-primary" onclick="saveCurrentAffirmation()">Aktuelle Affirmation speichern</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mt-6">
+                    <h3 class="font-semibold text-lg mb-3">Affirmations-Journal</h3>
+                    <div class="form-group">
+                        <label class="block text-gray-700 mb-2">Deine Gedanken zur heutigen Affirmation:</label>
+                        <textarea class="form-control h-32" placeholder="Notiere, wie die Affirmation dein Trading heute beeinflusst hat..."></textarea>
+                    </div>
+                    <div class="mt-3 text-center">
+                        <button class="btn-primary">Im Journal speichern</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Trading Opportunities Tab -->
+        <div class="tab-content" id="opportunities">
+            <div class="section">
+                <h2 class="section-title">Trading Opportunities mit Gemini AI</h2>
+                
+                <div class="mb-6 p-4 bg-gradient-to-r from-blue-50 to-purple-50 rounded-lg border border-blue-100">
+                    <div class="flex items-center mb-3">
+                        <h3 class="font-semibold text-blue-800">Gemini AI Trading Analysis</h3>
+                        <span class="gemini-badge ml-2">Powered by Google</span>
+                    </div>
+                    <p class="text-gray-700 text-sm mb-4">Gemini analysiert aktuelle Marktdaten, Nachrichten und technische Indikatoren, um Trading-Opportunitäten zu identifizieren. Die Analyse kombiniert KI-Erkenntnisse mit Intermarket-Beziehungen.</p>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <div class="form-group">
+                            <label class="block text-gray-700 mb-2">Symbol auswählen:</label>
+                            <select id="opportunitySymbol" class="select-control">
+                                <option value="">-- Symbol wählen --</option>
+                                <option value="NASDAQ:AAPL">NASDAQ:AAPL - Apple</option>
+                                <option value="NASDAQ:NVDA">NASDAQ:NVDA - NVIDIA</option>
+                                <option value="NASDAQ:ASML">NASDAQ:ASML - ASML Holding</option>
+                                <option value="BINANCE:BNBUSDT">BINANCE:BNBUSDT - Binance Coin</option>
+                                <option value="NASDAQ:INTC">NASDAQ:INTC - Intel</option>
+                                <option value="CAPITALCOM:BTCUSD">CAPITALCOM:BTCUSD - Bitcoin</option>
+                                <option value="AMEX:GLD">AMEX:GLD - Gold ETF</option>
+                                <option value="PEPPERSTONE:EURUSD">PEPPERSTONE:EURUSD - EUR/USD</option>
+                                <option value="PEPPERSTONE:US500">PEPPERSTONE:US500 - S&P 500</option>
+                                <option value="FX:USDJPY">FX:USDJPY - USD/JPY</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="block text-gray-700 mb-2">Zeitrahmen:</label>
+                            <select id="opportunityTimeframe" class="select-control">
+                                <option value="shortTerm">Kurzfristig (Intraday - 1-3 Tage)</option>
+                                <option value="mediumTerm">Mittelfristig (Swing - 1-2 Wochen)</option>
+                                <option value="longTerm">Langfristig (Position - 1+ Monate)</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="block text-gray-700 mb-2">Analysestil:</label>
+                            <select id="opportunityStyle" class="select-control">
+                                <option value="technical">Technische Analyse</option>
+                                <option value="fundamental">Fundamentale Analyse</option>
+                                <option value="sentiment">Sentiment-Analyse</option>
+                                <option value="combined">Kombiniert (empfohlen)</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="block text-gray-700 mb-2">Zusätzliche Anweisungen (optional):</label>
+                            <textarea id="opportunityInstructions" class="form-control h-24" placeholder="Z.B.: Fokus auf Unterstützungs-/Widerstandsniveaus, bestimmte Nachrichten berücksichtigen, etc."></textarea>
+                        </div>
+                        
+                        <div class="mt-4">
+                            <button class="btn-primary w-full py-3" onclick="generateOpportunity()">
+                                <span id="analyzeText">Trading Opportunity analysieren</span>
+                                <div class="loading-spinner" id="opportunitySpinner"></div>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white p-4 rounded-lg border border-gray-200" id="opportunityResults">
+                        <div class="text-center py-10 text-gray-500">
+                            <i class="fas fa-chart-line text-4xl mb-3 text-gray-300"></i>
+                            <p>Wähle ein Symbol und klicke auf "Analysieren", um eine KI-gestützte Trading-Opportunity zu erhalten.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mt-6 p-4 bg-gray-50 rounded-lg">
+                    <h3 class="font-semibold mb-3">Gespeicherte Opportunitäten</h3>
+                    <div id="savedOpportunities">
+                        <div class="p-3 bg-white rounded-lg shadow-sm mb-3">
+                            <div class="flex justify-between items-start">
+                                <div>
+                                    <div class="font-medium">NASDAQ:AAPL - Unterstützungstest</div>
+                                    <div class="text-sm text-gray-600">Kurzfristig · Technische Analyse</div>
+                                </div>
+                                <div class="badge badge-success">Long</div>
+                            </div>
+                            <div class="text-sm mt-2">
+                                Apple testet wichtige Unterstützung bei $180. Technische Indikatoren deuten auf überkaufte Bedingungen hin, mit potenziellem Aufschwung.
+                            </div>
+                        </div>
+                        
+                        <div class="p-3 bg-white rounded-lg shadow-sm">
+                            <div class="flex justify-between items-start">
+                                <div>
+                                    <div class="font-medium">PEPPERSTONE:EURUSD - EZB vs Fed Divergenz</div>
+                                    <div class="text-sm text-gray-600">Mittelfristig · Fundamental</div>
+                                </div>
+                                <div class="badge badge-danger">Short</div>
+                            </div>
+                            <div class="text-sm mt-2">
+                                EUR/USD könnte unter Druck geraten aufgrund zunehmender Diskrepanz zwischen EZB und Fed Politik. Nächstes Unterstützungsniveau bei 1.0780.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- My Trades Tab -->
+        <div class="tab-content" id="mytrades">
+            <div class="section">
+                <h2 class="section-title">Meine Trades</h2>
+                
+                <div class="mb-6">
+                    <div class="bg-white p-4 rounded-lg border border-gray-200">
+                        <h3 class="font-semibold mb-3">Neuen Trade hinzufügen</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                            <div class="form-group">
+                                <label class="block text-gray-700 mb-2 text-sm">Symbol:</label>
+                                <select id="newTradeSymbol" class="select-control">
+                                    <option value="">-- Symbol wählen --</option>
+                                    <option value="NASDAQ:AAPL">NASDAQ:AAPL - Apple</option>
+                                    <option value="NASDAQ:NVDA">NASDAQ:NVDA - NVIDIA</option>
+                                    <option value="NASDAQ:ASML">NASDAQ:ASML - ASML Holding</option>
+                                    <option value="BINANCE:BNBUSDT">BINANCE:BNBUSDT - Binance Coin</option>
+                                    <option value="NASDAQ:INTC">NASDAQ:INTC - Intel</option>
+                                    <option value="CAPITALCOM:BTCUSD">CAPITALCOM:BTCUSD - Bitcoin</option>
+                                    <option value="AMEX:GLD">AMEX:GLD - Gold ETF</option>
+                                    <option value="PEPPERSTONE:EURUSD">PEPPERSTONE:EURUSD - EUR/USD</option>
+                                    <option value="PEPPERSTONE:US500">PEPPERSTONE:US500 - S&P 500</option>
+                                    <option value="FX:USDJPY">FX:USDJPY - USD/JPY</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="block text-gray-700 mb-2 text-sm">Richtung:</label>
+                                <select id="newTradeDirection" class="select-control">
+                                    <option value="long">Long</option>
+                                    <option value="short">Short</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="block text-gray-700 mb-2 text-sm">Einstiegspreis:</label>
+                                <input type="number" step="0.0001" id="newTradeEntry" class="form-control" placeholder="z.B. 180.45">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="block text-gray-700 mb-2 text-sm">Stop-Loss:</label>
+                                <input type="number" step="0.0001" id="newTradeStop" class="form-control" placeholder="z.B. 175.60">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="block text-gray-700 mb-2 text-sm">Take-Profit:</label>
+                                <input type="number" step="0.0001" id="newTradeTarget" class="form-control" placeholder="z.B. 190.00">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="block text-gray-700 mb-2 text-sm">Position:</label>
+                                <input type="text" id="newTradePosition" class="form-control" placeholder="z.B. 10 Anteile oder 0.5 Lots">
+                            </div>
+                        </div>
+                        
+                        <div class="form-group mt-2">
+                            <label class="block text-gray-700 mb-2 text-sm">Notizen:</label>
+                            <textarea id="newTradeNotes" class="form-control h-20" placeholder="Trade-Begründung, Strategie, Beobachtungen..."></textarea>
+                        </div>
+                        
+                        <div class="mt-4 text-center">
+                            <button class="btn-primary" onclick="addNewTrade()">Trade hinzufügen</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mt-6">
+                    <div class="flex justify-between items-center mb-4">
+                        <h3 class="font-semibold">Aktive Trades</h3>
+                        <div class="flex gap-2">
+                            <select id="tradeSortOption" class="select-control text-sm py-1" onchange="sortTrades()">
+                                <option value="newest">Neueste zuerst</option>
+                                <option value="oldest">Älteste zuerst</option>
+                                <option value="profit">Höchster Gewinn</option>
+                                <option value="loss">Höchster Verlust</option>
+                            </select>
+                            <button class="btn-primary text-sm py-1" onclick="refreshTrades()">
+                                <i class="fas fa-sync-alt mr-1"></i> Aktualisieren
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div id="tradesList">
+                        <div class="trade-item">
+                            <div class="trade-symbol">NASDAQ:AAPL</div>
+                            <div class="trade-details">Long @ 180.45 • Stop: 175.60 • Target: 190.00</div>
+                            <div class="trade-pnl profit">+3.25%</div>
+                            <div class="text-sm text-gray-500 mt-2">Eröffnet: Heute, 10:15 CET</div>
+                            <div class="mt-3 text-sm">
+                                <div class="font-medium">Notizen:</div>
+                                <p class="text-gray-600">Unterstützungsbereich getestet, MACD zeigt bullisches Crossover. Steigende Volumenmuster bestätigen den Trend.</p>
+                            </div>
+                            <div class="trade-actions">
+                                <button class="btn-primary text-xs py-1">Bearbeiten</button>
+                                <button class="btn-danger text-xs py-1" onclick="removeTrade(this)">Entfernen</button>
+                            </div>
+                        </div>
+                        
+                        <div class="trade-item">
+                            <div class="trade-symbol">FX:EURUSD</div>
+                            <div class="trade-details">Short @ 1.0890 • Stop: 1.0925 • Target: 1.0820</div>
+                            <div class="trade-pnl loss">-0.12%</div>
+                            <div class="text-sm text-gray-500 mt-2">Eröffnet: Gestern, 16:45 CET</div>
+                            <div class="mt-3 text-sm">
+                                <div class="font-medium">Notizen:</div>
+                                <p class="text-gray-600">Widerstandszone erreicht, RSI im überkauften Bereich. Divergenz zum US Dollar Index, was auf Schwäche hindeutet.</p>
+                            </div>
+                            <div class="trade-actions">
+                                <button class="btn-primary text-xs py-1">Bearbeiten</button>
+                                <button class="btn-danger text-xs py-1" onclick="removeTrade(this)">Entfernen</button>
+                            </div>
+                        </div>
+                        
+                        <div class="trade-item">
+                            <div class="trade-symbol">CAPITALCOM:BTCUSD</div>
+                            <div class="trade-details">Long @ 40250.00 • Stop: 39000.00 • Target: 45000.00</div>
+                            <div class="trade-pnl profit">+7.47%</div>
+                            <div class="text-sm text-gray-500 mt-2">Eröffnet: 12.05.2023, 09:30 CET</div>
+                            <div class="mt-3 text-sm">
+                                <div class="font-medium">Notizen:</div>
+                                <p class="text-gray-600">Ausbruch über wichtiges Fibonacci-Retracement. On-Chain-Metriken deuten auf Akkumulation hin. Reduzierte Verkaufsaktivität der Miner.</p>
+                            </div>
+                            <div class="trade-actions">
+                                <button class="btn-primary text-xs py-1">Bearbeiten</button>
+                                <button class="btn-danger text-xs py-1" onclick="removeTrade(this)">Entfernen</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mt-6">
+                    <h3 class="font-semibold mb-3">Trade-Statistiken</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+                        <div class="p-4 bg-white rounded-lg shadow-sm text-center">
+                            <div class="text-gray-700 text-sm mb-1">Offene Trades</div>
+                            <div class="text-2xl font-bold">3</div>
+                        </div>
+                        <div class="p-4 bg-white rounded-lg shadow-sm text-center">
+                            <div class="text-gray-700 text-sm mb-1">Win Rate</div>
+                            <div class="text-2xl font-bold text-green-600">67%</div>
+                        </div>
+                        <div class="p-4 bg-white rounded-lg shadow-sm text-center">
+                            <div class="text-gray-700 text-sm mb-1">Durchschn. Gewinn</div>
+                            <div class="text-2xl font-bold text-green-600">5.36%</div>
+                        </div>
+                        <div class="p-4 bg-white rounded-lg shadow-sm text-center">
+                            <div class="text-gray-700 text-sm mb-1">Durchschn. Verlust</div>
+                            <div class="text-2xl font-bold text-red-600">-0.12%</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Gemini Chat Popup -->
+    <div class="chat-popup minimized" id="chatPopup">
+        <div class="chat-header" onclick="toggleChat()">
+            <div class="flex items-center">
+                <i class="fas fa-robot mr-2"></i>
+                <span>Gemini Trading Assistant</span>
+                <span class="gemini-badge">AI</span>
+            </div>
+            <i class="fas fa-chevron-up" id="chatChevron"></i>
+        </div>
+        <div class="chat-body" id="chatBody">
+            <div class="chat-message ai">
+                <div class="message-content">
+                    Hallo! Ich bin dein Gemini Trading Assistant. Wie kann ich dir heute bei deinen Trading-Aktivitäten helfen?
+                </div>
+            </div>
+        </div>
+        <div class="chat-footer">
+            <input type="text" id="chatInput" class="chat-input" placeholder="Frage stellen..." onkeypress="handleChatKeyPress(event)">
+            <button class="btn-primary" onclick="sendChatMessage()">
+                <i class="fas fa-paper-plane"></i>
+            </button>
+        </div>
+    </div>
+    
+    <script>
+        // Global variables
+        let apiKey = '';
+        let apiConnected = false;
+        let affirmationTimerInterval;
+        let affirmationTimeLeft = 300; // 5 minutes in seconds
+        let affirmationTimerRunning = false;
+        
+        // Initialize the app
+        document.addEventListener('DOMContentLoaded', function() {
+            initTabs();
+            updateDateTime();
+            updateTicker();
+            checkStoredApiKey();
+            
+            // Set interval updates
+            setInterval(updateDateTime, 1000);
+            setInterval(updateTicker, 10000);
+            setInterval(updateActiveTrades, 5000);
+            
+            // Initialize tooltips, if needed
+            // initTooltips();
+        });
+        
+        // Tab navigation
+        function initTabs() {
+            const tabs = document.querySelectorAll('.tab');
+            
+            tabs.forEach(tab => {
+                tab.addEventListener('click', function() {
+                    // Remove active class from all tabs and contents
+                    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+                    document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+                    
+                    // Add active class to clicked tab
+                    this.classList.add('active');
+                    
+                    // Show corresponding content
+                    const tabId = this.getAttribute('data-tab');
+                    document.getElementById(tabId).classList.add('active');
+                });
+            });
+        }
+        
+        // API key functions
+        function saveApiKey() {
+            const keyInput = document.getElementById('geminiApiKey');
+            if (keyInput.value.trim()) {
+                apiKey = keyInput.value.trim();
+                localStorage.setItem('geminiApiKey', apiKey);
+                // Visual confirmation that key was saved
+                keyInput.style.borderColor = '#2ecc71';
+                setTimeout(() => {
+                    keyInput.style.borderColor = '';
+                }, 2000);
+            }
+        }
+        
+        function checkStoredApiKey() {
+            const storedKey = localStorage.getItem('geminiApiKey');
+            if (storedKey) {
+                apiKey = storedKey;
+                document.getElementById('geminiApiKey').value = storedKey;
+                // Optional: Auto-connect with stored key
+                // connectApi();
+            }
+        }
+        
+        function connectApi() {
+            if (!apiKey) {
+                alert('Bitte gib einen API-Schlüssel ein.');
+                return;
+            }
+            
+            const connectText = document.getElementById('connectText');
+            const apiSpinner = document.getElementById('apiSpinner');
+            const apiStatus = document.getElementById('apiStatus');
+            
+            // Show spinner, change button text
+            connectText.textContent = 'Verbinde...';
+            apiSpinner.style.display = 'inline-block';
+            
+            // Simulate API connection (replace with actual API call in production)
+            setTimeout(() => {
+                // Connection successful
+                apiConnected = true;
+                connectText.textContent = 'Verbunden';
+                apiSpinner.style.display = 'none';
+                apiStatus.classList.add('connected');
+                
+                // Add success class to button
+                const connectButton = document.querySelector('button[onclick="connectApi()"]');
+                connectButton.style.backgroundColor = '#2ecc71';
+                connectButton.disabled = true;
+                
+                // Show a welcome message in chat
+                addChatMessage('ai', 'API-Verbindung hergestellt! Ich bin jetzt bereit, dir mit KI-gestützten Trading-Analysen zu helfen. Frag mich etwas zu Märkten, Trading-Strategien oder deinen aktuellen Trades.');
+            }, 2000);
+        }
+        
+        // Update date and time
+        function updateDateTime() {
+            const now = new Date();
+            
+            // Update trading session status
+            updateSessionStatus(now);
+            
+            // Update any countdown timers
+            updateCountdowns(now);
+        }
+        
+        function updateSessionStatus(now) {
+            const hour = now.getUTCHours();
+            const isWeekend = now.getUTCDay() === 0 || now.getUTCDay() === 6;
+            
+            // This is a simplified version - a real implementation would be more nuanced
+            if (!isWeekend) {
+                // Asia session (roughly 00:00-09:00 CET / 23:00-08:00 UTC)
+                if (hour >= 23 || hour < 8) {
+                    updateSessionElement('asia', 'active');
+                    updateSessionElement('europe', 'upcoming');
+                    updateSessionElement('us', 'closed');
+                }
+                // Europe session (roughly 08:00-16:30 CET / 07:00-15:30 UTC)
+                else if (hour >= 8 && hour < 16) {
+                    updateSessionElement('asia', 'closed');
+                    updateSessionElement('europe', 'active');
+                    updateSessionElement('us', 'upcoming');
+                }
+                // US session (roughly 14:30-21:00 CET / 13:30-20:00 UTC)
+                else if (hour >= 16 && hour < 20) {
+                    updateSessionElement('asia', 'upcoming');
+                    updateSessionElement('europe', 'closed');
+                    updateSessionElement('us', 'active');
+                }
+                // Overlap or non-active period
+                else {
+                    updateSessionElement('asia', 'upcoming');
+                    updateSessionElement('europe', 'closed');
+                    updateSessionElement('us', 'closed');
+                }
+            } else {
+                // Weekend - all markets closed
+                updateSessionElement('asia', 'closed');
+                updateSessionElement('europe', 'closed');
+                updateSessionElement('us', 'closed');
+            }
+        }
+        
+        function updateSessionElement(session, status) {
+            // This is a placeholder - would need to be implemented with actual elements
+            // console.log(`Session ${session} is now ${status}`);
+        }
+        
+        function updateCountdowns(now) {
+            // Update any countdown timers in the UI
+            // This is a placeholder for actual countdown logic
+        }
+        
+        // Ticker update function
+        function updateTicker() {
+            const tickerItems = document.querySelectorAll('.ticker-item');
+            
+            tickerItems.forEach(item => {
+                // Simulate price change (replace with actual API data in production)
+                const randomChange = (Math.random() * 0.2 - 0.1).toFixed(2);
+                const currentValue = parseFloat(item.querySelector('span').textContent);
+                const newValue = (currentValue * (1 + randomChange / 100)).toFixed(2);
+                
+                item.querySelector('span').textContent = newValue;
+                
+                // Update direction indicator
+                if (randomChange > 0) {
+                    item.classList.remove('down');
+                    item.classList.add('up');
+                    item.querySelector('i').className = 'fas fa-caret-up';
+                } else {
+                    item.classList.remove('up');
+                    item.classList.add('down');
+                    item.querySelector('i').className = 'fas fa-caret-down';
+                }
+                
+                // Update percentage
+                const percentEl = item.querySelector('i').nextSibling;
+                percentEl.textContent = ` ${Math.abs(randomChange)}%`;
+            });
+        }
+        
+        // Affirmation functions
+        function updateAffirmation() {
+            const status = document.getElementById('traderStatus').value;
+            let affirmationText = '';
+            let categoryText = '';
+            
+            switch (status) {
+                case 'preparing':
+                    affirmationText = 'Ich bereite mich gründlich vor und analysiere den Markt mit Klarheit und Fokus. Ich warte geduldig auf hochwertige Setups und halte mich an meine Handelsstrategie.';
+                    categoryText = 'Geduld und Vorbereitung';
+                    break;
+                case 'active':
+                    affirmationText = 'Ich bleibe ruhig und diszipliniert während mein Trade läuft. Ich halte mich an meinen Plan und lasse keine Emotionen meine Entscheidungen beeinflussen.';
+                    categoryText = 'Emotionale Kontrolle';
+                    break;
+                case 'developing':
+                    affirmationText = 'Ich entwickle meine Strategie mit Klarheit und Weisheit. Ich ziehe Lehren aus vergangenen Trades und verbessere kontinuierlich meine Fähigkeiten.';
+                    categoryText = 'Strategische Entwicklung';
+                    break;
+                case 'break':
+                    affirmationText = 'Ich nehme mir bewusst Zeit für Erholung und Reflexion. Diese Pause stärkt meine Handelsleistung und schärft meinen Fokus.';
+                    categoryText = 'Erholung und Reflexion';
+                    break;
+            }
+            
+            document.getElementById('currentAffirmation').textContent = affirmationText;
+            document.getElementById('affirmationCategory').textContent = categoryText;
+        }
+        
+        function updateAffirmationTab() {
+            const status = document.getElementById('affirmationTraderStatus').value;
+            const category = document.getElementById('affirmationCategory').value;
+            
+            // Map of affirmations based on status and category
+            const affirmations = {
+                discipline: {
+                    preparing: 'Ich bin ein disziplinierter und geduldiger Trader, der seinem Handelsplan mit unerschütterlichem Engagement folgt. Ich vertraue auf die Wirksamkeit meiner Strategien und warte geduldig auf Setups mit hoher Wahrscheinlichkeit. Ich habe die Selbstkontrolle, mich an meine etablierten Regeln zu halten und impulsive Handlungen zu vermeiden.',
+                    active: 'Während mein Trade aktiv ist, bleibe ich diszipliniert und geduldig. Ich folge meinem Plan und erlaube keiner Emotion, meine Strategie zu untergraben. Ich bin ruhig und kontrolliert, selbst wenn der Markt volatil wird.',
+                    developing: 'Beim Entwickeln meiner Strategie wende ich Disziplin und Geduld an. Ich nehme mir die Zeit, jedes Detail zu durchdenken und teste gründlich, bevor ich handele. Qualität geht vor Schnelligkeit.',
+                    break: 'In dieser Pause pflege ich meine Disziplin und Geduld, indem ich reflektiere und lerne. Ich verstehe, dass Ruhezeiten wesentlich für nachhaltigen Trading-Erfolg sind.'
+                },
+                abundance: {
+                    preparing: 'Ich ziehe reichlich Handelsmöglichkeiten an, die mit meiner Strategie übereinstimmen. Der Markt bietet einen endlosen Strom von Gelegenheiten, und ich bin bereit, sie zu nutzen.',
+                    active: 'Mein aktueller Trade ist eine von vielen Gelegenheiten für Wohlstand. Ich denke in Fülle und weiß, dass unabhängig vom Ausgang dieses Trades weitere profitable Chancen folgen werden.',
+                    developing: 'Ich entwickle meine Strategie mit einer Überfluss-Denkweise. Ich erkenne die unbegrenzten Möglichkeiten des Marktes an und erschaffe einen Ansatz, der diesen Reichtum anzieht.',
+                    break: 'Während dieser Pause ziehe ich neue Erkenntnisse und Möglichkeiten an. Ich nutze diese Zeit, um meine Überfluss-Denkweise zu stärken und mich auf neue Handelschancen vorzubereiten.'
+                }
+                // Additional categories would be added here
+            };
+            
+            // Get the appropriate affirmation or default
+            let affirmationText = 'Ich handle mit Klarheit, Disziplin und Vertrauen.';
+            if (affirmations[category] && affirmations[category][status]) {
+                affirmationText = affirmations[category][status];
+            }
+            
+            // Update the display
+            document.getElementById('detailedAffirmation').querySelector('.affirmation-text').textContent = affirmationText;
+            
+            // Update the category display
+            let categoryDisplayText = '';
+            switch (category) {
+                case 'discipline': categoryDisplayText = 'Disziplin und Geduld entwickeln'; break;
+                case 'abundance': categoryDisplayText = 'Überflussdenken fördern'; break;
+                case 'selection': categoryDisplayText = 'Handelsauswahl verbessern'; break;
+                case 'burnout': categoryDisplayText = 'Burnout und Erschöpfung überwinden'; break;
+                case 'bias': categoryDisplayText = 'Bestätigungsfehler überwinden'; break;
+                case 'paralysis': categoryDisplayText = 'Entscheidungslähmung überwinden'; break;
+                case 'fomo': categoryDisplayText = 'FOMO überwinden'; break;
+                case 'losses': categoryDisplayText = 'Verluste schnell akzeptieren'; break;
+                case 'emotional': categoryDisplayText = 'Emotionale Bindung an Trades lösen'; break;
+                case 'overtrading': categoryDisplayText = 'Überhandel widerstehen'; break;
+                case 'patience': categoryDisplayText = 'Geduld bei langsamen Märkten bewahren'; break;
+                default: categoryDisplayText = 'Allgemeine Trading-Affirmation';
+            }
+            
+            document.getElementById('detailedAffirmation').querySelector('.affirmation-category').textContent = categoryDisplayText;
+        }
+        
+        // Affirmation Timer functions
+        function startAffirmationTimer() {
+            if (affirmationTimerRunning) return;
+            
+            document.getElementById('startTimerBtn').disabled = true;
+            document.getElementById('pauseTimerBtn').disabled = false;
+            
+            affirmationTimerRunning = true;
+            
+            affirmationTimerInterval = setInterval(() => {
+                affirmationTimeLeft--;
+                
+                const minutes = Math.floor(affirmationTimeLeft / 60);
+                const seconds = affirmationTimeLeft % 60;
+                
+                document.getElementById('affirmationTimer').textContent = 
+                    `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+                
+                if (affirmationTimeLeft <= 0) {
+                    clearInterval(affirmationTimerInterval);
+                    affirmationTimerRunning = false;
+                    document.getElementById('startTimerBtn').disabled = false;
+                    document.getElementById('pauseTimerBtn').disabled = true;
+                    document.getElementById('affirmationTimer').textContent = "00:00";
+                    // Play sound or notification
+                    // playTimerEndSound();
+                }
+            }, 1000);
+        }
+        
+        function pauseAffirmationTimer() {
+            clearInterval(affirmationTimerInterval);
+            affirmationTimerRunning = false;
+            document.getElementById('startTimerBtn').disabled = false;
+            document.getElementById('pauseTimerBtn').disabled = true;
+        }
+        
+        function resetAffirmationTimer() {
+            clearInterval(affirmationTimerInterval);
+            affirmationTimerRunning = false;
+            affirmationTimeLeft = 300; // Reset to 5 minutes
+            document.getElementById('affirmationTimer').textContent = "05:00";
+            document.getElementById('startTimerBtn').disabled = false;
+            document.getElementById('pauseTimerBtn').disabled = true;
+        }
+        
+        function saveCurrentAffirmation() {
+            const affirmationText = document.getElementById('detailedAffirmation').querySelector('.affirmation-text').textContent;
+            const categoryText = document.getElementById('detailedAffirmation').querySelector('.affirmation-category').textContent;
+            
+            // Create a shortened version
+            const shortAffirmation = affirmationText.substring(0, 60) + (affirmationText.length > 60 ? '...' : '');
+            
+            // Create new element
+            const newSavedAffirmation = document.createElement('div');
+            newSavedAffirmation.className = 'event-item';
+            newSavedAffirmation.innerHTML = `
+                <div class="font-medium">${shortAffirmation}</div>
+                <div class="text-sm text-gray-600">Kategorie: ${categoryText}</div>
+            `;
+            
+            // Add to saved affirmations
+            const savedAffirmationsContainer = document.getElementById('savedAffirmations');
+            savedAffirmationsContainer.prepend(newSavedAffirmation);
+            
+            // Show success message
+            alert('Affirmation gespeichert!');
+        }
+        
+        // Trading opportunity functions
+        function generateOpportunity() {
+            const symbol = document.getElementById('opportunitySymbol').value;
+            
+            if (!symbol) {
+                alert('Bitte wähle ein Symbol aus.');
+                return;
+            }
+            
+            if (!apiConnected) {
+                alert('Bitte verbinde zuerst die Gemini API.');
+                return;
+            }
+            
+            // Get other parameters
+            const timeframe = document.getElementById('opportunityTimeframe').value;
+            const style = document.getElementById('opportunityStyle').value;
+            const instructions = document.getElementById('opportunityInstructions').value;
+            
+            // Show loading state
+            document.getElementById('analyzeText').textContent = 'Analysiere...';
+            document.getElementById('opportunitySpinner').style.display = 'inline-block';
+            
+            // Simulate API call (replace with actual API call in production)
+            setTimeout(() => {
+                // Reset button
+                document.getElementById('analyzeText').textContent = 'Trading Opportunity analysieren';
+                document.getElementById('opportunitySpinner').style.display = 'none';
+                
+                // Generate result
+                const result = generateOpportunityResult(symbol, timeframe, style, instructions);
+                
+                // Display result
+                document.getElementById('opportunityResults').innerHTML = result;
+            }, 3000);
+        }
+        
+        function generateOpportunityResult(symbol, timeframe, style, instructions) {
+            // This is a simulation - in production this would come from the Gemini API
+            
+            // Extract symbol name
+            const symbolName = symbol.split(':')[1];
+            
+            // Determine direction (random for demo)
+            const isLong = Math.random() > 0.5;
+            
+            // Generate fictional analysis
+            let analysis = '';
+            let technicalInsights = '';
+            let fundamentalInsights = '';
+            let tradeSetup = '';
+            
+            // Technical insights
+            if (style === 'technical' || style === 'combined') {
+                const patterns = ['Double Bottom', 'Bull Flag', 'Cup and Handle', 'Descending Triangle', 'Head and Shoulders'];
+                const indicators = ['RSI', 'MACD', 'Moving Average', 'Bollinger Bands', 'Fibonacci Retracement'];
+                
+                const pattern = patterns[Math.floor(Math.random() * patterns.length)];
+                const indicator1 = indicators[Math.floor(Math.random() * indicators.length)];
+                const indicator2 = indicators[Math.floor(Math.random() * indicators.length)];
+                
+                technicalInsights = `<p class="mb-3"><strong>Technische Analyse:</strong> ${symbolName} zeigt ein ${pattern}-Muster, das auf eine potenzielle ${isLong ? 'Aufwärts' : 'Abwärts'}bewegung hindeutet. Der ${indicator1} ist ${isLong ? 'überverkauft' : 'überkauft'}, während der ${indicator2} ein ${isLong ? 'bullisches' : 'bärisches'} Signal gibt.</p>`;
+            }
+            
+            // Fundamental insights
+            if (style === 'fundamental' || style === 'combined') {
+                fundamentalInsights = `<p class="mb-3"><strong>Fundamentale Analyse:</strong> ${symbolName} ${isLong ? 'profitiert von positiven Branchentrends und zeigt starkes Gewinnwachstum' : 'steht vor Herausforderungen durch Branchendruck und Margenschwäche'}. Bevorstehende Ereignisse könnten ${isLong ? 'positive' : 'negative'} Auswirkungen auf den Kurs haben.</p>`;
+            }
+            
+            // Trade setup
+            const currentPrice = Math.random() * 1000;
+            const stopLoss = isLong ? currentPrice * 0.95 : currentPrice * 1.05;
+            const takeProfit = isLong ? currentPrice * 1.1 : currentPrice * 0.9;
+            
+            tradeSetup = `
+                <div class="p-3 bg-gray-50 rounded-lg mt-4">
+                    <h4 class="font-semibold mb-2">Trade Setup</h4>
+                    <div class="grid grid-cols-2 gap-3 text-sm">
+                        <div>
+                            <div class="text-gray-600">Richtung:</div>
+                            <div class="font-medium">${isLong ? 'Long (Kaufen)' : 'Short (Verkaufen)'}</div>
+                        </div>
+                        <div>
+                            <div class="text-gray-600">Einstieg:</div>
+                            <div class="font-medium">${currentPrice.toFixed(2)}</div>
+                        </div>
+                        <div>
+                            <div class="text-gray-600">Stop-Loss:</div>
+                            <div class="font-medium">${stopLoss.toFixed(2)}</div>
+                        </div>
+                        <div>
+                            <div class="text-gray-600">Take-Profit:</div>
+                            <div class="font-medium">${takeProfit.toFixed(2)}</div>
+                        </div>
+                        <div>
+                            <div class="text-gray-600">Risk/Reward:</div>
+                            <div class="font-medium">1:${isLong ? '2' : '3'}</div>
+                        </div>
+                        <div>
+                            <div class="text-gray-600">Zeitrahmen:</div>
+                            <div class="font-medium">${timeframe === 'shortTerm' ? 'Kurzfristig (1-3 Tage)' : timeframe === 'mediumTerm' ? 'Mittelfristig (1-2 Wochen)' : 'Langfristig (1+ Monate)'}</div>
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            // Build the full analysis
+            analysis = `
+                <div>
+                    <div class="mb-4 flex justify-between items-start">
+                        <div>
+                            <h3 class="font-semibold text-lg">${symbol}</h3>
+                            <div class="text-sm text-gray-600">${new Date().toLocaleString()}</div>
+                        </div>
+                        <div class="badge ${isLong ? 'badge-success' : 'badge-danger'}">${isLong ? 'Long' : 'Short'}</div>
+                    </div>
+                    
+                    ${technicalInsights}
+                    ${fundamentalInsights}
+                    
+                    <p class="mb-4">
+                        <strong>Analyse:</strong> Basierend auf ${style === 'technical' ? 'technischer Analyse' : style === 'fundamental' ? 'fundamentaler Analyse' : 'technischer und fundamentaler Analyse'} 
+                        erscheint ${symbolName} als ${isLong ? 'attraktive Long-Opportunity' : 'potentielle Short-Position'} für den ${timeframe === 'shortTerm' ? 'kurzfristigen' : timeframe === 'mediumTerm' ? 'mittelfristigen' : 'langfristigen'} Handel.
+                    </p>
+                    
+                    ${tradeSetup}
+                    
+                    <div class="mt-6 flex justify-end gap-3">
+                        <button class="btn-primary text-sm" onclick="saveOpportunity()">Speichern</button>
+                        <button class="btn-primary text-sm" onclick="createTradeFromOpportunity()">Trade erstellen</button>
+                    </div>
+                </div>
+            `;
+            
+            return analysis;
+        }
+        
+        function saveOpportunity() {
+            alert('Trading Opportunity gespeichert!');
+        }
+        
+        function createTradeFromOpportunity() {
+            alert('Trade aus dieser Opportunity wird erstellt. Bitte bestätige die Details im "Meine Trades" Bereich.');
+            
+            // Switch to the My Trades tab
+            document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+            document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+            
+            document.querySelector('[data-tab="mytrades"]').classList.add('active');
+            document.getElementById('mytrades').classList.add('active');
+        }
+        
+        // Trade functions
+        function addNewTrade() {
+            const symbol = document.getElementById('newTradeSymbol').value;
+            if (!symbol) {
+                alert('Bitte wähle ein Symbol aus.');
+                return;
+            }
+            
+            const entry = document.getElementById('newTradeEntry').value;
+            if (!entry) {
+                alert('Bitte gib einen Einstiegspreis ein.');
+                return;
+            }
+            
+            const direction = document.getElementById('newTradeDirection').value;
+            const stop = document.getElementById('newTradeStop').value;
+            const target = document.getElementById('newTradeTarget').value;
+            const position = document.getElementById('newTradePosition').value;
+            const notes = document.getElementById('newTradeNotes').value;
+            
+            // Create trade element
+            const tradeElement = document.createElement('div');
+            tradeElement.className = 'trade-item';
+            
+            // Random P&L for demo
+            const pnl = ((Math.random() * 2) - 0.5).toFixed(2);
+            const isProfitable = parseFloat(pnl) > 0;
+            
+            tradeElement.innerHTML = `
+                <div class="trade-symbol">${symbol}</div>
+                <div class="trade-details">${direction === 'long' ? 'Long' : 'Short'} @ ${entry} • Stop: ${stop} • Target: ${target}</div>
+                <div class="trade-pnl ${isProfitable ? 'profit' : 'loss'}">${pnl > 0 ? '+' : ''}${pnl}%</div>
+                <div class="text-sm text-gray-500 mt-2">Eröffnet: ${new Date().toLocaleString()}</div>
+                ${notes ? `
+                <div class="mt-3 text-sm">
+                    <div class="font-medium">Notizen:</div>
+                    <p class="text-gray-600">${notes}</p>
+                </div>
+                ` : ''}
+                <div class="trade-actions">
+                    <button class="btn-primary text-xs py-1">Bearbeiten</button>
+                    <button class="btn-danger text-xs py-1" onclick="removeTrade(this)">Entfernen</button>
+                </div>
+            `;
+            
+            // Add to trades list
+            document.getElementById('tradesList').prepend(tradeElement);
+            
+            // Clear form
+            document.getElementById('newTradeSymbol').value = '';
+            document.getElementById('newTradeEntry').value = '';
+            document.getElementById('newTradeStop').value = '';
+            document.getElementById('newTradeTarget').value = '';
+            document.getElementById('newTradePosition').value = '';
+            document.getElementById('newTradeNotes').value = '';
+            
+            // Update trade count and statistics
+            updateTradeStatistics();
+            
+            // Show notification
+            alert('Trade erfolgreich hinzugefügt!');
+        }
+        
+        function removeTrade(button) {
+            // Find the parent trade item and remove it
+            const tradeItem = button.closest('.trade-item');
+            tradeItem.style.opacity = '0.5';
+            
+            // Simulate a delay before removal
+            setTimeout(() => {
+                tradeItem.remove();
+                // Update statistics
+                updateTradeStatistics();
+                // Show notification
+                alert('Trade entfernt!');
+            }, 500);
+        }
+        
+        function updateTradeStatistics() {
+            // This would calculate real statistics in production
+            // For demo, we'll just update the count
+            const tradeCount = document.querySelectorAll('.trade-item').length;
+            // Update the trade count in the statistics
+            // This assumes there's an element to update
+        }
+        
+        function updateActiveTrades() {
+            // This would update real trade data in production
+            // For demo, we'll randomly update P&L
+            
+            const tradeItems = document.querySelectorAll('.trade-item');
+            
+            tradeItems.forEach(item => {
+                const pnlElement = item.querySelector('.trade-pnl');
+                if (pnlElement) {
+                    // Get current value
+                    const currentValue = parseFloat(pnlElement.textContent.replace('%', '').replace('+', ''));
+                    
+                    // Small random change
+                    const change = (Math.random() * 0.2) - 0.1;
+                    const newValue = (currentValue + change).toFixed(2);
+                    
+                    // Update display
+                    const isProfit = parseFloat(newValue) > 0;
+                    pnlElement.className = `trade-pnl ${isProfit ? 'profit' : 'loss'}`;
+                    pnlElement.textContent = `${isProfit ? '+' : ''}${newValue}%`;
+                }
+            });
+        }
+        
+        function sortTrades() {
+            const sortOption = document.getElementById('tradeSortOption').value;
+            const tradesList = document.getElementById('tradesList');
+            const trades = Array.from(tradesList.querySelectorAll('.trade-item'));
+            
+            // Clear the container
+            tradesList.innerHTML = '';
+            
+            // Sort trades based on option
+            switch (sortOption) {
+                case 'newest':
+                    // Just reverse the current order for demo
+                    trades.reverse();
+                    break;
+                case 'oldest':
+                    // Keep current order for demo
+                    break;
+                case 'profit':
+                    trades.sort((a, b) => {
+                        const aPnl = parseFloat(a.querySelector('.trade-pnl').textContent.replace('%', '').replace('+', ''));
+                        const bPnl = parseFloat(b.querySelector('.trade-pnl').textContent.replace('%', '').replace('+', ''));
+                        return bPnl - aPnl; // Descending
+                    });
+                    break;
+                case 'loss':
+                    trades.sort((a, b) => {
+                        const aPnl = parseFloat(a.querySelector('.trade-pnl').textContent.replace('%', '').replace('+', ''));
+                        const bPnl = parseFloat(b.querySelector('.trade-pnl').textContent.replace('%', '').replace('+', ''));
+                        return aPnl - bPnl; // Ascending
+                    });
+                    break;
+            }
+            
+            // Add sorted trades back to container
+            trades.forEach(trade => tradesList.appendChild(trade));
+        }
+        
+        function refreshTrades() {
+            updateActiveTrades();
+            alert('Trades aktualisiert!');
+        }
+        
+        // Intermarket Analysis
+        function updateIntermarketAnalysis() {
+            const stockIndex = document.getElementById('stockIndex').value;
+            const bondIndex = document.getElementById('bondIndex').value;
+            const commodityIndex = document.getElementById('commodityIndex').value;
+            const currencyIndex = document.getElementById('currencyIndex').value;
+            
+            // In a real app, this would fetch data and update the charts/analysis
+            alert(`Intermarket-Analyse wird aktualisiert mit: ${stockIndex}, ${bondIndex}, ${commodityIndex}, ${currencyIndex}`);
+        }
+        
+        // Chat functions
+        function toggleChat() {
+            const chatPopup = document.getElementById('chatPopup');
+            const chevron = document.getElementById('chatChevron');
+            
+            if (chatPopup.classList.contains('minimized')) {
+                chatPopup.classList.remove('minimized');
+                chevron.className = 'fas fa-chevron-down';
+            } else {
+                chatPopup.classList.add('minimized');
+                chevron.className = 'fas fa-chevron-up';
+            }
+        }
+        
+        function sendChatMessage() {
+            const chatInput = document.getElementById('chatInput');
+            const message = chatInput.value.trim();
+            
+            if (!message) return;
+            
+            // Add user message
+            addChatMessage('user', message);
+            
+            // Clear input
+            chatInput.value = '';
+            
+            // Check API connection
+            if (!apiConnected) {
+                addChatMessage('ai', 'Bitte verbinde zuerst die Gemini API, um mit dem Chat zu interagieren.');
+                return;
+            }
+            
+            // Show typing indicator
+            showTypingIndicator();
+            
+            // Simulate AI response (replace with actual API call in production)
+            setTimeout(() => {
+                // Remove typing indicator
+                removeTypingIndicator();
+                
+                // Generate response
+                const response = generateChatResponse(message);
+                
+                // Add AI message
+                addChatMessage('ai', response);
+                
+                // Scroll to bottom
+                scrollChatToBottom();
+            }, 1500);
+        }
+        
+        function handleChatKeyPress(event) {
+            if (event.key === 'Enter') {
+                sendChatMessage();
+            }
+        }
+        
+        function addChatMessage(sender, text) {
+            const chatBody = document.getElementById('chatBody');
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `chat-message ${sender}`;
+            
+            messageDiv.innerHTML = `
+                <div class="message-content">${text}</div>
+            `;
+            
+            chatBody.appendChild(messageDiv);
+            
+            // Expand chat if minimized
+            if (document.getElementById('chatPopup').classList.contains('minimized')) {
+                toggleChat();
+            }
+            
+            // Scroll to bottom
+            scrollChatToBottom();
+        }
+        
+        function scrollChatToBottom() {
+            const chatBody = document.getElementById('chatBody');
+            chatBody.scrollTop = chatBody.scrollHeight;
+        }
+        
+        function showTypingIndicator() {
+            const chatBody = document.getElementById('chatBody');
+            const typingDiv = document.createElement('div');
+            typingDiv.className = 'chat-message ai';
+            typingDiv.id = 'typingIndicator';
+            
+            typingDiv.innerHTML = `
+                <div class="message-content">
+                    <div class="typing-indicator">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </div>
+            `;
+            
+            chatBody.appendChild(typingDiv);
+            scrollChatToBottom();
+        }
+        
+        function removeTypingIndicator() {
+            const typingIndicator = document.getElementById('typingIndicator');
+            if (typingIndicator) {
+                typingIndicator.remove();
+            }
+        }
+        
+        function generateChatResponse(message) {
+            // This is a simulation - in production this would come from the Gemini API
+            
+            // Simple pattern matching for demo
+            if (message.toLowerCase().includes('hallo') || message.toLowerCase().includes('hi')) {
+                return 'Hallo! Wie kann ich dir bei deinem Trading heute helfen?';
+            } else if (message.toLowerCase().includes('market') || message.toLowerCase().includes('markt')) {
+                return 'Die Märkte zeigen heute gemischte Signale. US-Indizes sind leicht im Plus, während europäische Märkte sich seitwärts bewegen. Gold steigt aufgrund geopolitischer Spannungen.';
+            } else if (message.toLowerCase().includes('affirmation')) {
+                return 'Affirmationen können deine Trading-Psychologie stark verbessern. Ich empfehle dir, täglich 5 Minuten für Affirmationen einzuplanen, besonders vor Handelssessions oder nach Verlusten.';
+            } else if (message.toLowerCase().includes('verlust') || message.toLowerCase().includes('loss')) {
+                return 'Verluste sind ein normaler Teil des Tradings. Das Wichtigste ist, wie du darauf reagierst. Halte dich an dein Risikomanagement und betrachte jeden Verlust als Lernchance.';
+            } else if (message.toLowerCase().includes('strategie') || message.toLowerCase().includes('strategy')) {
+                return 'Eine erfolgreiche Trading-Strategie sollte klare Ein- und Ausstiegskriterien, Risikomanagement und ein positives Erwartungswert haben. Möchtest du Hilfe bei einem bestimmten Aspekt deiner Strategie?';
+            } else {
+                return 'Danke für deine Nachricht. Ich kann dir bei Trading-Analysen, Affirmationen, Marktinformationen und Handelsstrategien helfen. Was interessiert dich am meisten?';
+            }
+        }
+    </script>
+</body>
+</html>
