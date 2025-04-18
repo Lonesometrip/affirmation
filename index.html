@@ -3,824 +3,1818 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Trading Affirmations App</title>
+    <title>Trading Affirmations App - Mit verbesserten Bestätigungsbuttons</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.0.0/css/all.min.css">
     <style>
         body {
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f2f5;
             color: #333;
-            background-color: #f5f7fa;
         }
-        .btn {
-            display: inline-block;
-            padding: 12px 24px;
-            margin: 8px;
-            font-size: 16px;
-            cursor: pointer;
-            text-align: center;
-            text-decoration: none;
-            outline: none;
-            color: #fff;
+        
+        .btn-confirm {
             background-color: #4CAF50;
-            border: none;
-            border-radius: 8px;
-            box-shadow: 0 5px #999;
-            transition: all 0.3s;
-        }
-        .btn:hover {
-            background-color: #45a049;
-            transform: translateY(2px);
-            box-shadow: 0 3px #666;
-        }
-        .btn:active {
-            background-color: #3e8e41;
-            transform: translateY(4px);
-            box-shadow: 0 1px #666;
-        }
-        .input-field {
-            width: 100%;
-            padding: 12px 20px;
-            margin: 8px 0;
-            box-sizing: border-box;
-            border: 2px solid #ccc;
-            border-radius: 4px;
-            font-size: 16px;
-        }
-        .select-field {
-            width: 100%;
-            padding: 12px 20px;
-            margin: 8px 0;
-            box-sizing: border-box;
-            border: 2px solid #ccc;
-            border-radius: 4px;
-            font-size: 16px;
-            background-color: white;
-        }
-        .section {
-            background-color: white;
-            padding: 20px;
-            margin-bottom: 30px;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-        .section-title {
-            font-size: 24px;
-            color: #2c3e50;
-            margin-bottom: 20px;
-            border-bottom: 2px solid #eaeaea;
-            padding-bottom: 10px;
-        }
-        .tab-button {
+            color: white;
             padding: 12px 24px;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
             cursor: pointer;
-            background-color: #ddd;
-            border: none;
-            border-radius: 8px 8px 0 0;
-            font-size: 16px;
-            margin-right: 5px;
         }
-        .tab-button.active {
-            background-color: white;
-            border-bottom: 2px solid white;
+        
+        .btn-confirm:hover {
+            background-color: #3e8e41;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
         }
-        .tab-content {
+        
+        .btn-confirm:active {
+            transform: translateY(1px);
+            box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+        }
+        
+        .section-header {
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .success-feedback {
             display: none;
-            padding: 20px;
-            background-color: white;
-            border-radius: 0 0 8px 8px;
+            padding: 10px;
+            background-color: #dff0d8;
+            color: #3c763d;
+            border-radius: 4px;
+            margin-top: 10px;
         }
-        .tab-content.active {
+        
+        .nav-tab {
+            padding: 12px 20px;
+            cursor: pointer;
+            border-bottom: 3px solid transparent;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-tab.active {
+            border-bottom: 3px solid #3498db;
+            font-weight: bold;
+        }
+        
+        .content-section {
+            display: none;
+            animation: fadeIn 0.5s;
+        }
+        
+        .content-section.active {
             display: block;
         }
-        .chat-container {
-            border: 2px solid #dedede;
-            background-color: #f1f1f1;
-            border-radius: 8px;
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .flag-icon {
+            width: 20px;
+            height: 15px;
+            margin-right: 5px;
+            vertical-align: middle;
+        }
+        
+        .economic-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        .economic-table th {
+            background-color: #f2f2f2;
+            padding: 12px;
+            text-align: left;
+            font-weight: bold;
+            border-bottom: 2px solid #ddd;
+        }
+        
+        .economic-table td {
             padding: 10px;
-            margin: 10px 0;
+            border-bottom: 1px solid #ddd;
         }
-        .darker {
-            border-color: #ccc;
-            background-color: #e5e5e5;
+        
+        .economic-table tr:hover {
+            background-color: #f5f5f5;
         }
-        .trade-item {
-            background-color: #f9f9f9;
+        
+        .better-than-expected {
+            color: #2ecc71;
+        }
+        
+        .worse-than-expected {
+            color: #e74c3c;
+        }
+        
+        .ticker {
+            background-color: #1a1a1a;
+            color: white;
+            padding: 10px 0;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+        
+        .ticker-content {
+            display: inline-block;
+            animation: ticker 30s linear infinite;
+        }
+        
+        .ticker-item {
+            display: inline-block;
+            padding: 0 20px;
+        }
+        
+        @keyframes ticker {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
+        }
+        
+        .api-key-section {
+            background-color: #fff;
+            border-radius: 8px;
             padding: 15px;
-            margin-bottom: 15px;
-            border-radius: 8px;
-            border-left: 5px solid #4CAF50;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
-        .affirmation-card {
-            background-color: #e8f5e9;
-            padding: 20px;
-            margin: 10px 0;
-            border-radius: 8px;
-            border-left: 5px solid #2e7d32;
+
+        /* Klasse für das visuelle Feedback nach dem Klicken */
+        .button-clicked {
+            animation: pulse 0.5s;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
         }
     </style>
 </head>
-<body class="p-4">
-    <header class="bg-blue-600 text-white p-4 rounded-lg mb-6">
-        <h1 class="text-3xl font-bold">Trading Affirmations App</h1>
-        <div class="mt-4 flex flex-wrap">
-            <div class="w-full md:w-1/2 p-2">
-                <label for="gemini-api" class="block font-bold">Gemini API-Schlüssel:</label>
-                <input type="text" id="gemini-api" class="input-field" placeholder="Geben Sie Ihren Gemini API-Schlüssel ein">
-                <button onclick="saveAPIKey('gemini')" class="btn">Speichern</button>
+<body class="min-h-screen">
+    <!-- Header mit API-Schlüsseleingabe -->
+    <header class="bg-white shadow-md p-4">
+        <div class="container mx-auto flex flex-col md:flex-row justify-between items-center">
+            <h1 class="text-2xl font-bold text-gray-800 mb-4 md:mb-0">Trading Affirmations App</h1>
+            
+            <div class="flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-4">
+                <div class="api-key-section flex items-center">
+                    <label for="gemini-api" class="mr-2 font-semibold text-sm">Gemini API:</label>
+                    <input type="password" id="gemini-api" class="border rounded px-2 py-1 text-sm w-32" placeholder="API-Schlüssel">
+                    <button onclick="saveApiKey('gemini')" class="ml-2 bg-blue-500 text-white px-3 py-1 rounded text-sm btn-confirm">Speichern</button>
+                </div>
+                
+                <div class="api-key-section flex items-center">
+                    <label for="alpha-api" class="mr-2 font-semibold text-sm">Alpha Vantage:</label>
+                    <input type="password" id="alpha-api" class="border rounded px-2 py-1 text-sm w-32" placeholder="API-Schlüssel">
+                    <button onclick="saveApiKey('alpha')" class="ml-2 bg-blue-500 text-white px-3 py-1 rounded text-sm btn-confirm">Speichern</button>
+                </div>
+                
+                <div class="api-key-section flex items-center">
+                    <label for="finnhub-api" class="mr-2 font-semibold text-sm">Finnhub:</label>
+                    <input type="password" id="finnhub-api" class="border rounded px-2 py-1 text-sm w-32" placeholder="API-Schlüssel">
+                    <button onclick="saveApiKey('finnhub')" class="ml-2 bg-blue-500 text-white px-3 py-1 rounded text-sm btn-confirm">Speichern</button>
+                </div>
             </div>
-            <div class="w-full md:w-1/2 p-2">
-                <label for="alphavantage-api" class="block font-bold">Alpha Vantage API-Schlüssel:</label>
-                <input type="text" id="alphavantage-api" class="input-field" placeholder="Geben Sie Ihren Alpha Vantage API-Schlüssel ein">
-                <button onclick="saveAPIKey('alphavantage')" class="btn">Speichern</button>
+        </div>
+        
+        <!-- TradingView Ticker -->
+        <div class="ticker mt-4">
+            <div class="ticker-content">
+                <span class="ticker-item">S&P 500: <span class="text-green-500">+0.75%</span></span>
+                <span class="ticker-item">NASDAQ: <span class="text-green-500">+1.2%</span></span>
+                <span class="ticker-item">DOW: <span class="text-red-500">-0.3%</span></span>
+                <span class="ticker-item">EUR/USD: <span class="text-green-500">+0.15%</span></span>
+                <span class="ticker-item">BTC/USD: <span class="text-green-500">+2.4%</span></span>
+                <span class="ticker-item">Gold: <span class="text-red-500">-0.1%</span></span>
+                <span class="ticker-item">Oil: <span class="text-green-500">+0.8%</span></span>
+                <span class="ticker-item">10Y Yield: <span class="text-red-500">-0.02%</span></span>
+                <span class="ticker-item">VIX: <span class="text-red-500">-5.2%</span></span>
             </div>
         </div>
     </header>
-
-    <nav class="mb-6">
-        <div class="flex flex-wrap">
-            <button onclick="showSection('sessions')" class="btn">Trading Sessions</button>
-            <button onclick="showSection('intermarket')" class="btn">Intermarket Analyse</button>
-            <button onclick="showSection('affirmations')" class="btn">Affirmationen</button>
-            <button onclick="showSection('opportunities')" class="btn">Trading Opportunities</button>
-            <button onclick="showSection('my-trades')" class="btn">Meine Trades</button>
+    
+    <!-- Hauptnavigation -->
+    <nav class="bg-white shadow-md mb-6">
+        <div class="container mx-auto">
+            <div class="flex overflow-x-auto">
+                <div class="nav-tab active" onclick="switchTab('home')">Home</div>
+                <div class="nav-tab" onclick="switchTab('asia')">Asien-Session</div>
+                <div class="nav-tab" onclick="switchTab('europe')">Europa-Session</div>
+                <div class="nav-tab" onclick="switchTab('usa')">USA-Session</div>
+                <div class="nav-tab" onclick="switchTab('intermarket')">Intermarket-Analyse</div>
+                <div class="nav-tab" onclick="switchTab('affirmations')">Affirmationen</div>
+                <div class="nav-tab" onclick="switchTab('opportunities')">Trading-Chancen</div>
+                <div class="nav-tab" onclick="switchTab('mytrades')">Meine Trades</div>
+            </div>
         </div>
     </nav>
-
-    <!-- Market Ticker -->
-    <div class="section mb-6 overflow-x-auto">
-        <div class="text-xl font-bold mb-2">Markt Ticker</div>
-        <div class="flex space-x-4">
-            <div class="px-4 py-2 bg-green-100 rounded">NASDAQ:AAPL <span class="text-green-600">+1.2%</span></div>
-            <div class="px-4 py-2 bg-red-100 rounded">NASDAQ:NVDA <span class="text-red-600">-0.5%</span></div>
-            <div class="px-4 py-2 bg-green-100 rounded">BINANCE:BNBUSDT <span class="text-green-600">+2.3%</span></div>
-            <div class="px-4 py-2 bg-red-100 rounded">FOREX:EURUSD <span class="text-red-600">-0.1%</span></div>
-            <div class="px-4 py-2 bg-green-100 rounded">PEPPERSTONE:XAUUSD <span class="text-green-600">+0.8%</span></div>
-        </div>
-    </div>
-
-    <!-- Trading Sessions Section -->
-    <section id="sessions" class="section">
-        <h2 class="section-title">Trading Sessions</h2>
-        
-        <div class="mb-4">
-            <button onclick="selectSession('asia')" class="tab-button" id="asia-tab">Asien</button>
-            <button onclick="selectSession('europe')" class="tab-button" id="europe-tab">Europa</button>
-            <button onclick="selectSession('usa')" class="tab-button" id="usa-tab">USA</button>
-        </div>
-        
-        <div id="asia-content" class="tab-content">
-            <h3 class="text-xl font-bold mb-4">Asien Session</h3>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div class="border p-4 rounded">
-                    <h4 class="font-bold">Session-Zeiten:</h4>
-                    <p>Start: 00:00 GMT / 01:00 CET</p>
-                    <p>Ende: 09:00 GMT / 10:00 CET</p>
-                    <p class="mt-2 font-bold text-blue-600">Aktiv: Tokio, Sydney, Hong Kong, Shanghai</p>
+    
+    <!-- Hauptinhalt -->
+    <main class="container mx-auto px-4 pb-10">
+        <!-- Home-Bereich -->
+        <section id="home" class="content-section active bg-white rounded-lg shadow-md p-6 mb-6">
+            <h2 class="section-header text-xl font-bold text-gray-800">Dashboard-Übersicht</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-6">
+                <div class="bg-blue-50 p-4 rounded-lg shadow">
+                    <h3 class="font-bold mb-2">Aktive Session</h3>
+                    <p>Aktuelle Zeit: <span id="current-time">08:30 UTC</span></p>
+                    <p>Aktive Session: <span class="font-semibold">Europa</span></p>
                 </div>
-                <div class="border p-4 rounded">
-                    <h4 class="font-bold">Wichtige Ereignisse heute:</h4>
-                    <ul class="list-disc pl-5">
-                        <li>Bank of Japan Zinsentscheidung - 02:00 GMT</li>
-                        <li>China PMI Daten - 01:30 GMT</li>
-                        <li>Australien Einzelhandelsumsätze - 00:30 GMT</li>
-                    </ul>
+                
+                <div class="bg-green-50 p-4 rounded-lg shadow">
+                    <h3 class="font-bold mb-2">Trading-Status</h3>
+                    <p>Offene Trades: <span class="font-semibold">3</span></p>
+                    <p>Aktuelle Performance: <span class="text-green-600">+2.3%</span></p>
+                </div>
+                
+                <div class="bg-purple-50 p-4 rounded-lg shadow">
+                    <h3 class="font-bold mb-2">Wichtige Ereignisse heute</h3>
+                    <p>Bevorstehend: <span class="font-semibold">EZB Zinsentscheid (14:30 UTC)</span></p>
                 </div>
             </div>
-            <div class="mt-4 border p-4 rounded">
-                <h4 class="font-bold">Hauptmärkte:</h4>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-2">
+            
+            <div class="bg-white rounded-lg shadow p-4 mb-6">
+                <h3 class="font-bold mb-4">Schnelleinstellungen</h3>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
                     <div>
-                        <p><strong>Nikkei 225:</strong> 36,450 <span class="text-green-600">+1.2%</span></p>
-                        <p><strong>Hang Seng:</strong> 17,890 <span class="text-red-600">-0.3%</span></p>
+                        <label class="block mb-2">Bevorzugte Session:</label>
+                        <select class="w-full p-2 border rounded">
+                            <option>Alle anzeigen</option>
+                            <option>Nur Asien</option>
+                            <option>Nur Europa</option>
+                            <option>Nur USA</option>
+                        </select>
                     </div>
+                    
                     <div>
-                        <p><strong>USD/JPY:</strong> 151.25 <span class="text-green-600">+0.4%</span></p>
-                        <p><strong>AUD/USD:</strong> 0.6580 <span class="text-red-600">-0.2%</span></p>
-                    </div>
-                    <div>
-                        <p><strong>ASX 200:</strong> 7,750 <span class="text-green-600">+0.8%</span></p>
-                        <p><strong>Shanghai Comp:</strong> 3,120 <span class="text-red-600">-0.5%</span></p>
+                        <label class="block mb-2">Zeitzonenanzeige:</label>
+                        <select class="w-full p-2 border rounded">
+                            <option>UTC</option>
+                            <option>Lokale Zeit</option>
+                            <option>New York (EST)</option>
+                            <option>London (GMT)</option>
+                            <option>Tokio (JST)</option>
+                        </select>
                     </div>
                 </div>
+                
+                <button onclick="saveHomeSettings()" class="btn-confirm">Einstellungen speichern</button>
+                <div id="home-feedback" class="success-feedback">Einstellungen wurden erfolgreich gespeichert!</div>
             </div>
-        </div>
+        </section>
         
-        <div id="europe-content" class="tab-content">
-            <h3 class="text-xl font-bold mb-4">Europa Session</h3>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div class="border p-4 rounded">
-                    <h4 class="font-bold">Session-Zeiten:</h4>
-                    <p>Start: 07:00 GMT / 08:00 CET</p>
-                    <p>Ende: 16:00 GMT / 17:00 CET</p>
-                    <p class="mt-2 font-bold text-blue-600">Aktiv: London, Frankfurt, Paris, Zürich</p>
-                </div>
-                <div class="border p-4 rounded">
-                    <h4 class="font-bold">Wichtige Ereignisse heute:</h4>
-                    <ul class="list-disc pl-5">
-                        <li>EZB Zinsentscheidung - 12:45 GMT</li>
-                        <li>UK Inflationsdaten - 09:30 GMT</li>
-                        <li>Deutschland Ifo-Geschäftsklimaindex - 09:00 GMT</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="mt-4 border p-4 rounded">
-                <h4 class="font-bold">Hauptmärkte:</h4>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-2">
-                    <div>
-                        <p><strong>DAX:</strong> 17,850 <span class="text-green-600">+0.9%</span></p>
-                        <p><strong>FTSE 100:</strong> 8,120 <span class="text-green-600">+0.7%</span></p>
+        <!-- Asien-Session -->
+        <section id="asia" class="content-section bg-white rounded-lg shadow-md p-6 mb-6">
+            <h2 class="section-header text-xl font-bold text-gray-800">Asien-Session</h2>
+            
+            <div class="mb-6">
+                <h3 class="font-bold mb-3">Session-Information</h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+                    <div class="bg-blue-50 p-3 rounded">
+                        <p class="font-semibold">Handelszeiten:</p>
+                        <p>00:00 - 09:00 UTC</p>
+                        <p>Hauptmärkte: Tokyo, Sydney, Shanghai, Hong Kong</p>
                     </div>
-                    <div>
-                        <p><strong>EUR/USD:</strong> 1.0830 <span class="text-red-600">-0.3%</span></p>
-                        <p><strong>GBP/USD:</strong> 1.2680 <span class="text-red-600">-0.1%</span></p>
+                    
+                    <div class="bg-blue-50 p-3 rounded">
+                        <p class="font-semibold">Aktuelle Indizes:</p>
+                        <p>Nikkei 225: <span class="text-green-600">+1.2%</span></p>
+                        <p>Hang Seng: <span class="text-red-600">-0.5%</span></p>
+                        <p>ASX 200: <span class="text-green-600">+0.3%</span></p>
                     </div>
-                    <div>
-                        <p><strong>CAC 40:</strong> 7,590 <span class="text-green-600">+0.6%</span></p>
-                        <p><strong>STOXX 600:</strong> 495 <span class="text-green-600">+0.5%</span></p>
+                    
+                    <div class="bg-blue-50 p-3 rounded">
+                        <p class="font-semibold">Hauptwährungspaare:</p>
+                        <p>USD/JPY, AUD/USD, NZD/USD</p>
+                        <p>EUR/JPY, GBP/JPY</p>
                     </div>
                 </div>
             </div>
-        </div>
-        
-        <div id="usa-content" class="tab-content">
-            <h3 class="text-xl font-bold mb-4">USA Session</h3>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div class="border p-4 rounded">
-                    <h4 class="font-bold">Session-Zeiten:</h4>
-                    <p>Start: 13:30 GMT / 14:30 CET / 8:30 ET</p>
-                    <p>Ende: 20:00 GMT / 21:00 CET / 15:00 ET</p>
-                    <p class="mt-2 font-bold text-blue-600">Aktiv: New York, Chicago, Toronto</p>
-                </div>
-                <div class="border p-4 rounded">
-                    <h4 class="font-bold">Wichtige Ereignisse heute:</h4>
-                    <ul class="list-disc pl-5">
-                        <li>US Arbeitsmarktbericht - 13:30 GMT</li>
-                        <li>Fed Powell Rede - 17:00 GMT</li>
-                        <li>US BIP Q2 (vorläufig) - 13:30 GMT</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="mt-4 border p-4 rounded">
-                <h4 class="font-bold">Hauptmärkte:</h4>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-2">
-                    <div>
-                        <p><strong>S&P 500:</strong> 5,180 <span class="text-green-600">+0.6%</span></p>
-                        <p><strong>Nasdaq:</strong> 16,780 <span class="text-green-600">+0.8%</span></p>
-                    </div>
-                    <div>
-                        <p><strong>USD Index:</strong> 104.20 <span class="text-green-600">+0.3%</span></p>
-                        <p><strong>US 10Y Yield:</strong> 4.35% <span class="text-red-600">-0.02</span></p>
-                    </div>
-                    <div>
-                        <p><strong>Dow Jones:</strong> 38,950 <span class="text-green-600">+0.4%</span></p>
-                        <p><strong>Russell 2000:</strong> 2,050 <span class="text-green-600">+1.1%</span></p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Intermarket Analysis Section -->
-    <section id="intermarket" class="section" style="display:none;">
-        <h2 class="section-title">Murphy's Intermarket Analyse</h2>
-        
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div class="border p-4 rounded">
-                <h3 class="text-xl font-bold mb-3">Anleihen ↔ Aktien</h3>
-                <p class="mb-2">Aktuelle Beziehung: <span class="font-bold text-blue-600">Inverse Korrelation</span></p>
-                <p>US 10Y Yield: <span class="font-bold">4.35%</span> <span class="text-red-600">-0.02</span></p>
-                <p>S&P 500: <span class="font-bold">5,180</span> <span class="text-green-600">+0.6%</span></p>
-                <p class="mt-2">
-                    <button onclick="showAnalysis('bonds-stocks')" class="btn">Detailanalyse anzeigen</button>
-                </p>
-            </div>
             
-            <div class="border p-4 rounded">
-                <h3 class="text-xl font-bold mb-3">Anleihen ↔ Rohstoffe</h3>
-                <p class="mb-2">Aktuelle Beziehung: <span class="font-bold text-blue-600">Inverse Korrelation</span></p>
-                <p>US 10Y Yield: <span class="font-bold">4.35%</span> <span class="text-red-600">-0.02</span></p>
-                <p>Gold: <span class="font-bold">$2,375</span> <span class="text-green-600">+0.8%</span></p>
-                <p class="mt-2">
-                    <button onclick="showAnalysis('bonds-commodities')" class="btn">Detailanalyse anzeigen</button>
-                </p>
-            </div>
-            
-            <div class="border p-4 rounded">
-                <h3 class="text-xl font-bold mb-3">Rohstoffe ↔ Dollar</h3>
-                <p class="mb-2">Aktuelle Beziehung: <span class="font-bold text-blue-600">Inverse Korrelation</span></p>
-                <p>USD Index: <span class="font-bold">104.20</span> <span class="text-green-600">+0.3%</span></p>
-                <p>CRB Index: <span class="font-bold">325.8</span> <span class="text-red-600">-0.4%</span></p>
-                <p class="mt-2">
-                    <button onclick="showAnalysis('commodities-dollar')" class="btn">Detailanalyse anzeigen</button>
-                </p>
-            </div>
-            
-            <div class="border p-4 rounded">
-                <h3 class="text-xl font-bold mb-3">Dollar ↔ Aktien</h3>
-                <p class="mb-2">Aktuelle Beziehung: <span class="font-bold text-blue-600">Wechselnde Korrelation</span></p>
-                <p>USD Index: <span class="font-bold">104.20</span> <span class="text-green-600">+0.3%</span></p>
-                <p>S&P 500: <span class="font-bold">5,180</span> <span class="text-green-600">+0.6%</span></p>
-                <p class="mt-2">
-                    <button onclick="showAnalysis('dollar-stocks')" class="btn">Detailanalyse anzeigen</button>
-                </p>
-            </div>
-        </div>
-        
-        <div class="mt-6">
-            <h3 class="text-xl font-bold mb-3">Aktuelle Zyklusposition</h3>
-            <div class="p-4 bg-blue-50 rounded border border-blue-200">
-                <p class="font-bold text-lg mb-2">Wirtschaftszyklus-Phase: <span class="text-blue-600">Spätzyklus / Frührezession</span></p>
-                <p class="mb-2">Erwartete Sektorentwicklung basierend auf Murphy's Intermarket-Analyse:</p>
-                <ul class="list-disc pl-5">
-                    <li>Stärke: Energie, Basiskonsumgüter, Gesundheitswesen</li>
-                    <li>Schwäche: Technologie, Immobilien, Industrie</li>
-                    <li>Erwartete Bewegung: Anleiherenditen ↓, USD ↓, Gold ↑</li>
-                </ul>
-            </div>
-        </div>
-    </section>
-
-    <!-- Affirmations Section -->
-    <section id="affirmations" class="section" style="display:none;">
-        <h2 class="section-title">Trading Affirmationen</h2>
-        
-        <div class="mb-6">
-            <h3 class="font-bold text-lg mb-2">Aktuellen Trading-Status wählen:</h3>
-            <select id="trader-status" class="select-field" onchange="updateAffirmations()">
-                <option value="">Bitte Status wählen...</option>
-                <option value="preparation">Ich bereite mich auf einen Trade vor</option>
-                <option value="active">Ich bin in einem aktiven Trade</option>
-                <option value="strategy">Ich entwickle eine Strategie</option>
-                <option value="break">Ich mache eine Pause / reflektiere</option>
-            </select>
-        </div>
-        
-        <div class="mb-6">
-            <h3 class="font-bold text-lg mb-2">Affirmationstyp wählen:</h3>
-            <select id="affirmation-type" class="select-field" onchange="updateAffirmations()">
-                <option value="">Bitte Typ wählen...</option>
-                <option value="discipline">Disziplin und Geduld entwickeln</option>
-                <option value="abundance">Überflussdenken fördern</option>
-                <option value="selection">Handelsauswahl verbessern</option>
-                <option value="burnout">Burnout und Erschöpfung überwinden</option>
-                <option value="bias">Bestätigungsfehler überwinden</option>
-                <option value="paralysis">Entscheidungslähmung überwinden</option>
-                <option value="fomo">FOMO überwinden</option>
-                <option value="losses">Verluste schnell akzeptieren</option>
-                <option value="attachment">Emotionale Bindung an Trades lösen</option>
-                <option value="overtrading">Überhandel widerstehen</option>
-                <option value="patience">Geduld bei langsamen Märkten bewahren</option>
-            </select>
-        </div>
-        
-        <div id="affirmations-container" class="mt-4">
-            <div class="p-6 border rounded bg-gray-100 text-center">
-                <p class="text-lg">Bitte wähle deinen Trading-Status und Affirmationstyp oben.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Trading Opportunities Section -->
-    <section id="opportunities" class="section" style="display:none;">
-        <h2 class="section-title">Trading Opportunity Creation</h2>
-        
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div>
-                <h3 class="font-bold text-lg mb-2">Symbol wählen:</h3>
-                <select id="trading-symbol" class="select-field">
-                    <option value="">Bitte Symbol wählen...</option>
-                    <option value="NASDAQ:AAPL">NASDAQ:AAPL - Apple</option>
-                    <option value="NASDAQ:NVDA">NASDAQ:NVDA - Nvidia</option>
-                    <option value="NASDAQ:ASML">NASDAQ:ASML - ASML Holding</option>
-                    <option value="BINANCE:BNBUSDT">BINANCE:BNBUSDT - Binance Coin</option>
-                    <option value="CAPITALCOM:BTCUSD">CAPITALCOM:BTCUSD - Bitcoin</option>
-                    <option value="PEPPERSTONE:XAUUSD">PEPPERSTONE:XAUUSD - Gold</option>
-                    <option value="PEPPERSTONE:EURUSD">PEPPERSTONE:EURUSD - EUR/USD</option>
-                    <option value="PEPPERSTONE:US500">PEPPERSTONE:US500 - S&P 500</option>
-                </select>
+            <!-- Wirtschaftskalender für Asien -->
+            <div class="mb-6">
+                <h3 class="font-bold mb-3">Wirtschaftskalender - Asien</h3>
                 
-                <h3 class="font-bold text-lg mt-4 mb-2">Zeitrahmen:</h3>
-                <select id="trading-timeframe" class="select-field">
-                    <option value="short">Kurzfristig (Minuten/Stunden)</option>
-                    <option value="medium">Mittelfristig (Tage/Wochen)</option>
-                    <option value="long">Langfristig (Wochen/Monate)</option>
-                </select>
-                
-                <h3 class="font-bold text-lg mt-4 mb-2">Analyseanfrage:</h3>
-                <textarea id="analysis-request" class="input-field" rows="3" placeholder="Spezifische Anfrage für die Analyse..."></textarea>
-                
-                <button onclick="generateOpportunity()" class="btn mt-4 w-full">Trading Opportunity generieren</button>
-            </div>
-            
-            <div id="opportunity-result" class="border p-4 rounded bg-gray-50">
-                <h3 class="font-bold text-lg mb-3">Generierte Trading Opportunity:</h3>
-                <p class="text-gray-500">Ergebnisse werden hier angezeigt, nachdem du eine Analyse generiert hast.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- My Trades Section -->
-    <section id="my-trades" class="section" style="display:none;">
-        <h2 class="section-title">Meine Trades</h2>
-        
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
-            <div>
-                <h3 class="font-bold text-lg mb-2">Symbol:</h3>
-                <select id="trade-symbol" class="select-field">
-                    <option value="">Bitte Symbol wählen...</option>
-                    <option value="NASDAQ:AAPL">NASDAQ:AAPL - Apple</option>
-                    <option value="NASDAQ:NVDA">NASDAQ:NVDA - Nvidia</option>
-                    <option value="NASDAQ:ASML">NASDAQ:ASML - ASML Holding</option>
-                    <option value="BINANCE:BNBUSDT">BINANCE:BNBUSDT - Binance Coin</option>
-                    <option value="CAPITALCOM:BTCUSD">CAPITALCOM:BTCUSD - Bitcoin</option>
-                    <option value="PEPPERSTONE:XAUUSD">PEPPERSTONE:XAUUSD - Gold</option>
-                    <option value="PEPPERSTONE:EURUSD">PEPPERSTONE:EURUSD - EUR/USD</option>
-                    <option value="PEPPERSTONE:US500">PEPPERSTONE:US500 - S&P 500</option>
-                </select>
-            </div>
-            
-            <div>
-                <h3 class="font-bold text-lg mb-2">Richtung:</h3>
-                <select id="trade-direction" class="select-field">
-                    <option value="long">Long (Kaufen)</option>
-                    <option value="short">Short (Verkaufen)</option>
-                </select>
-            </div>
-            
-            <div>
-                <h3 class="font-bold text-lg mb-2">Einstiegspreis:</h3>
-                <input type="number" id="trade-entry" class="input-field" placeholder="Einstiegspreis">
-            </div>
-        </div>
-        
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
-            <div>
-                <h3 class="font-bold text-lg mb-2">Zielpreis:</h3>
-                <input type="number" id="trade-target" class="input-field" placeholder="Zielpreis">
-            </div>
-            
-            <div>
-                <h3 class="font-bold text-lg mb-2">Stop-Loss:</h3>
-                <input type="number" id="trade-stop" class="input-field" placeholder="Stop-Loss-Preis">
-            </div>
-            
-            <div>
-                <h3 class="font-bold text-lg mb-2">Notizen:</h3>
-                <input type="text" id="trade-notes" class="input-field" placeholder="Trade-Notizen">
-            </div>
-        </div>
-        
-        <div class="text-center mb-6">
-            <button onclick="addTrade()" class="btn px-8">Trade hinzufügen</button>
-        </div>
-        
-        <h3 class="text-xl font-bold mb-4">Aktuelle Trades:</h3>
-        <div id="trades-container">
-            <p class="text-gray-500 text-center">Keine aktiven Trades. Füge oben einen neuen Trade hinzu.</p>
-        </div>
-    </section>
-
-    <!-- Chat Pop-up -->
-    <div id="chat-popup" class="fixed bottom-0 right-0 m-4 p-4 bg-white rounded-lg shadow-lg border" style="width: 300px;">
-        <div class="flex justify-between items-center mb-4">
-            <h3 class="font-bold">Gemini Chat-Assistent</h3>
-            <button onclick="toggleChat()" class="text-gray-500 hover:text-gray-700">
-                <span id="chat-toggle-icon">-</span>
-            </button>
-        </div>
-        
-        <div id="chat-content">
-            <div id="chat-messages" class="h-64 overflow-y-auto mb-4 p-2 border rounded">
-                <div class="chat-container">
-                    <p><strong>Gemini:</strong> Hallo! Wie kann ich dir heute bei deinem Trading helfen?</p>
-                </div>
-            </div>
-            
-            <div class="flex">
-                <input type="text" id="chat-input" class="input-field flex-grow mr-2" placeholder="Deine Nachricht...">
-                <button onclick="sendChatMessage()" class="btn px-4 py-2">Senden</button>
-            </div>
-        </div>
-    </div>
-
-    <script>
-        // Basic functions for showing/hiding sections
-        function showSection(sectionId) {
-            // Hide all sections
-            document.querySelectorAll('.section').forEach(section => {
-                section.style.display = 'none';
-            });
-            
-            // Show selected section
-            document.getElementById(sectionId).style.display = 'block';
-        }
-        
-        // Initialize - show first section
-        window.onload = function() {
-            showSection('sessions');
-            selectSession('asia');
-        };
-        
-        // Session tabs
-        function selectSession(session) {
-            // Hide all tab contents
-            document.querySelectorAll('.tab-content').forEach(content => {
-                content.classList.remove('active');
-            });
-            
-            // Remove active class from all tabs
-            document.querySelectorAll('.tab-button').forEach(tab => {
-                tab.classList.remove('active');
-            });
-            
-            // Show selected tab content
-            document.getElementById(session + '-content').classList.add('active');
-            
-            // Add active class to selected tab
-            document.getElementById(session + '-tab').classList.add('active');
-        }
-        
-        // API key storage
-        function saveAPIKey(type) {
-            const keyInput = document.getElementById(type + '-api');
-            if (keyInput.value.trim() === '') {
-                alert('Bitte geben Sie einen API-Schlüssel ein.');
-                return;
-            }
-            
-            // In a real app, we would securely store this
-            localStorage.setItem(type + 'ApiKey', keyInput.value);
-            alert(type.charAt(0).toUpperCase() + type.slice(1) + ' API-Schlüssel gespeichert!');
-        }
-        
-        // Intermarket analysis
-        function showAnalysis(relation) {
-            alert('Detaillierte Analyse für ' + relation + ' wird geladen...');
-            // In a real app, this would show detailed charts and data
-        }
-        
-        // Affirmations system
-        function updateAffirmations() {
-            const status = document.getElementById('trader-status').value;
-            const type = document.getElementById('affirmation-type').value;
-            
-            if (!status || !type) {
-                return;
-            }
-            
-            const container = document.getElementById('affirmations-container');
-            container.innerHTML = '';
-            
-            // Sample affirmations
-            let affirmations = [];
-            
-            if (type === 'discipline') {
-                affirmations = [
-                    "Ich bin ein disziplinierter und geduldiger Trader, der seinem Handelsplan mit unerschütterlichem Engagement folgt.",
-                    "Ich vertraue auf die Wirksamkeit meiner Strategien und warte geduldig auf Setups mit hoher Wahrscheinlichkeit.",
-                    "Ich besitze die Selbstkontrolle, um an meinen etablierten Regeln festzuhalten und impulsive Handlungen zu vermeiden."
-                ];
-            } else if (type === 'abundance') {
-                affirmations = [
-                    "Ich ziehe reichlich Handelsmöglichkeiten an, die mit meiner Strategie übereinstimmen und zu profitablen Ergebnissen führen.",
-                    "Ich bin ein geschickter Trader, der in der Lage ist, die Fülle von Chancen im Markt zu nutzen.",
-                    "Jeder Trade, den ich eingehe, ist eine Gelegenheit für finanziellen Wohlstand und Wachstum."
-                ];
-            } else if (type === 'selection') {
-                affirmations = [
-                    "Ich bin ein disziplinierter Trader, der Trades basierend auf sorgfältiger Analyse und vordefinierten Kriterien auswählt.",
-                    "Ich vertraue meiner Fähigkeit, Märkte mit hoher Volatilität zu identifizieren, die gewinnbringende Trading-Möglichkeiten bieten.",
-                    "Ich stütze mich auf technische Indikatoren, um meine Handelsauswahl zu lenken, und wähle diejenigen, die mit meiner Strategie übereinstimmen."
-                ];
-            }
-            // More affirmation types would be added here
-            
-            // Display affirmations
-            affirmations.forEach(text => {
-                const card = document.createElement('div');
-                card.className = 'affirmation-card mb-4';
-                card.innerHTML = `<p class="text-lg">${text}</p>`;
-                container.appendChild(card);
-            });
-        }
-        
-        // Trading opportunities
-        function generateOpportunity() {
-            const symbol = document.getElementById('trading-symbol').value;
-            if (!symbol) {
-                alert('Bitte wähle ein Symbol aus.');
-                return;
-            }
-            
-            const timeframe = document.getElementById('trading-timeframe').value;
-            const request = document.getElementById('analysis-request').value;
-            
-            // In a real app, this would call Gemini API
-            const resultContainer = document.getElementById('opportunity-result');
-            resultContainer.innerHTML = `
-                <h3 class="font-bold text-lg mb-3">Trading Opportunity: ${symbol}</h3>
-                <div class="mb-3 p-3 bg-blue-50 rounded">
-                    <p class="font-bold">Empfehlung: <span class="text-green-600">KAUFEN</span></p>
-                    <p class="font-bold mt-2">Zeitrahmen: ${timeframe === 'short' ? 'Kurzfristig' : timeframe === 'medium' ? 'Mittelfristig' : 'Langfristig'}</p>
-                </div>
-                
-                <h4 class="font-bold mt-4">Technische Analyse:</h4>
-                <p>Der Preis hat einen starken Aufwärtstrend gebildet und gerade eine wichtige Widerstandslinie durchbrochen. Der RSI zeigt 65, was auf Stärke hindeutet, ohne überkauft zu sein.</p>
-                
-                <h4 class="font-bold mt-4">Einstiegspunkte:</h4>
-                <p>Aktueller Preis: $182.30</p>
-                <p>Empfohlener Einstieg: $180-$185</p>
-                
-                <h4 class="font-bold mt-4">Stop-Loss und Ziele:</h4>
-                <p>Stop-Loss: $172.50 (unter dem letzten Swing Low)</p>
-                <p>Ziel 1: $195.00</p>
-                <p>Ziel 2: $205.00</p>
-                
-                <button onclick="addOpportunityToTrades('${symbol}')" class="btn mt-4">Zu meinen Trades hinzufügen</button>
-            `;
-        }
-        
-        // Add opportunity to trades
-        function addOpportunityToTrades(symbol) {
-            // In a real app, this would pre-fill the trade form
-            document.getElementById('trade-symbol').value = symbol;
-            document.getElementById('trade-direction').value = 'long';
-            document.getElementById('trade-entry').value = '182.30';
-            document.getElementById('trade-target').value = '195.00';
-            document.getElementById('trade-stop').value = '172.50';
-            document.getElementById('trade-notes').value = 'Automatisch aus Opportunity hinzugefügt';
-            
-            showSection('my-trades');
-        }
-        
-        // Trade management
-        let trades = [];
-        
-        function addTrade() {
-            const symbol = document.getElementById('trade-symbol').value;
-            if (!symbol) {
-                alert('Bitte wähle ein Symbol aus.');
-                return;
-            }
-            
-            const direction = document.getElementById('trade-direction').value;
-            const entry = document.getElementById('trade-entry').value;
-            const target = document.getElementById('trade-target').value;
-            const stop = document.getElementById('trade-stop').value;
-            const notes = document.getElementById('trade-notes').value;
-            
-            if (!entry) {
-                alert('Bitte gib einen Einstiegspreis ein.');
-                return;
-            }
-            
-            const tradeId = Date.now(); // Use timestamp as ID
-            
-            const trade = {
-                id: tradeId,
-                symbol,
-                direction,
-                entry,
-                target,
-                stop,
-                notes,
-                date: new Date().toLocaleString()
-            };
-            
-            trades.push(trade);
-            updateTradesDisplay();
-            
-            // Reset form
-            document.getElementById('trade-entry').value = '';
-            document.getElementById('trade-target').value = '';
-            document.getElementById('trade-stop').value = '';
-            document.getElementById('trade-notes').value = '';
-        }
-        
-        function removeTrade(id) {
-            trades = trades.filter(trade => trade.id !== id);
-            updateTradesDisplay();
-        }
-        
-        function updateTradesDisplay() {
-            const container = document.getElementById('trades-container');
-            
-            if (trades.length === 0) {
-                container.innerHTML = '<p class="text-gray-500 text-center">Keine aktiven Trades. Füge oben einen neuen Trade hinzu.</p>';
-                return;
-            }
-            
-            container.innerHTML = '';
-            
-            trades.forEach(trade => {
-                const tradeCard = document.createElement('div');
-                tradeCard.className = 'trade-item mb-4';
-                
-                // Calculate risk/reward
-                const riskPerUnit = Math.abs(parseFloat(trade.entry) - parseFloat(trade.stop));
-                const rewardPerUnit = Math.abs(parseFloat(trade.target) - parseFloat(trade.entry));
-                const riskReward = (rewardPerUnit / riskPerUnit).toFixed(2);
-                
-                tradeCard.innerHTML = `
-                    <div class="flex justify-between items-start">
-                        <h3 class="font-bold text-lg">${trade.symbol}</h3>
+                <div class="bg-gray-100 p-4 rounded mb-4">
+                    <div class="flex flex-wrap items-center gap-3 mb-3">
                         <div>
-                            <span class="px-3 py-1 rounded ${trade.direction === 'long' ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'}">
-                                ${trade.direction === 'long' ? 'LONG' : 'SHORT'}
-                            </span>
-                            <button onclick="removeTrade(${trade.id})" class="ml-2 px-3 py-1 bg-red-500 text-white rounded hover:bg-red-600">
-                                Entfernen
-                            </button>
+                            <label class="block text-sm font-medium mb-1">Datum:</label>
+                            <input type="date" class="border rounded p-1">
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-medium mb-1">Länder:</label>
+                            <select class="border rounded p-1">
+                                <option>Alle</option>
+                                <option>Japan</option>
+                                <option>China</option>
+                                <option>Australien</option>
+                                <option>Neuseeland</option>
+                            </select>
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-medium mb-1">Kategorie:</label>
+                            <select class="border rounded p-1">
+                                <option>Alle</option>
+                                <option>Inflation</option>
+                                <option>BIP</option>
+                                <option>Arbeitsmarkt</option>
+                                <option>Zinsentscheide</option>
+                            </select>
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-medium mb-1">Wichtigkeit:</label>
+                            <select class="border rounded p-1">
+                                <option>Alle</option>
+                                <option>Hoch</option>
+                                <option>Mittel</option>
+                                <option>Niedrig</option>
+                            </select>
                         </div>
                     </div>
                     
-                    <p class="text-sm text-gray-500 mb-2">Eröffnet: ${trade.date}</p>
-                    
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-2 mt-3">
-                        <p><strong>Einstieg:</strong> ${trade.entry}</p>
-                        <p><strong>Ziel:</strong> ${trade.target}</p>
-                        <p><strong>Stop:</strong> ${trade.stop}</p>
+                    <button onclick="applyAsiaFilters()" class="btn-confirm">Filter anwenden</button>
+                    <div id="asia-filter-feedback" class="success-feedback">Filter wurden erfolgreich angewendet!</div>
+                </div>
+                
+                <div class="overflow-x-auto">
+                    <table class="economic-table">
+                        <thead>
+                            <tr>
+                                <th>Zeit</th>
+                                <th>Land</th>
+                                <th>Ereignis</th>
+                                <th>Aktuell</th>
+                                <th>Vorherig</th>
+                                <th>Konsens</th>
+                                <th>Prognose</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>01:30 AM</td>
+                                <td><img src="https://cdn.jsdelivr.net/npm/flag-icon-css@3.5.0/flags/4x3/jp.svg" class="flag-icon"> JP</td>
+                                <td>Inflation Rate YoY</td>
+                                <td class="worse-than-expected">2.8%</td>
+                                <td>2.6%</td>
+                                <td>3.0%</td>
+                                <td>2.7%</td>
+                            </tr>
+                            <tr>
+                                <td>01:30 AM</td>
+                                <td><img src="https://cdn.jsdelivr.net/npm/flag-icon-css@3.5.0/flags/4x3/jp.svg" class="flag-icon"> JP</td>
+                                <td>Core Inflation Rate YoY</td>
+                                <td class="better-than-expected">3.2%</td>
+                                <td>3.0%</td>
+                                <td>3.0%</td>
+                                <td>3.2%</td>
+                            </tr>
+                            <tr>
+                                <td>03:00 AM</td>
+                                <td><img src="https://cdn.jsdelivr.net/npm/flag-icon-css@3.5.0/flags/4x3/cn.svg" class="flag-icon"> CN</td>
+                                <td>Manufacturing PMI</td>
+                                <td class="worse-than-expected">49.3</td>
+                                <td>50.2</td>
+                                <td>50.0</td>
+                                <td>49.8</td>
+                            </tr>
+                            <tr>
+                                <td>06:30 AM</td>
+                                <td><img src="https://cdn.jsdelivr.net/npm/flag-icon-css@3.5.0/flags/4x3/au.svg" class="flag-icon"> AU</td>
+                                <td>Retail Sales MoM</td>
+                                <td class="better-than-expected">0.5%</td>
+                                <td>0.2%</td>
+                                <td>0.3%</td>
+                                <td>0.4%</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <div class="mb-6">
+                <h3 class="font-bold mb-3">Session-Einstellungen</h3>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                    <div>
+                        <label class="block mb-2">Bevorzugte Märkte:</label>
+                        <select multiple class="w-full p-2 border rounded h-32">
+                            <option>Nikkei 225</option>
+                            <option>Hang Seng</option>
+                            <option>Shanghai Composite</option>
+                            <option>ASX 200</option>
+                            <option>KOSPI</option>
+                        </select>
                     </div>
                     
-                    <p class="mt-2"><strong>Risk/Reward:</strong> 1:${riskReward}</p>
-                    
-                    ${trade.notes ? `<p class="mt-2"><strong>Notizen:</strong> ${trade.notes}</p>` : ''}
-                `;
+                    <div>
+                        <label class="block mb-2">Bevorzugte Währungspaare:</label>
+                        <select multiple class="w-full p-2 border rounded h-32">
+                            <option>USD/JPY</option>
+                            <option>AUD/USD</option>
+                            <option>NZD/USD</option>
+                            <option>EUR/JPY</option>
+                            <option>GBP/JPY</option>
+                            <option>AUD/JPY</option>
+                        </select>
+                    </div>
+                </div>
                 
-                container.appendChild(tradeCard);
+                <button onclick="saveAsiaSettings()" class="btn-confirm">Einstellungen speichern</button>
+                <div id="asia-settings-feedback" class="success-feedback">Einstellungen wurden erfolgreich gespeichert!</div>
+            </div>
+        </section>
+        
+        <!-- Europa-Session -->
+        <section id="europe" class="content-section bg-white rounded-lg shadow-md p-6 mb-6">
+            <h2 class="section-header text-xl font-bold text-gray-800">Europa-Session</h2>
+            
+            <div class="mb-6">
+                <h3 class="font-bold mb-3">Session-Information</h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+                    <div class="bg-blue-50 p-3 rounded">
+                        <p class="font-semibold">Handelszeiten:</p>
+                        <p>08:00 - 16:30 UTC</p>
+                        <p>Hauptmärkte: London, Frankfurt, Paris, Zürich</p>
+                    </div>
+                    
+                    <div class="bg-blue-50 p-3 rounded">
+                        <p class="font-semibold">Aktuelle Indizes:</p>
+                        <p>DAX: <span class="text-green-600">+0.7%</span></p>
+                        <p>FTSE 100: <span class="text-green-600">+0.4%</span></p>
+                        <p>CAC 40: <span class="text-green-600">+0.6%</span></p>
+                    </div>
+                    
+                    <div class="bg-blue-50 p-3 rounded">
+                        <p class="font-semibold">Hauptwährungspaare:</p>
+                        <p>EUR/USD, GBP/USD, EUR/GBP</p>
+                        <p>EUR/CHF, EUR/JPY</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Wirtschaftskalender für Europa -->
+            <div class="mb-6">
+                <h3 class="font-bold mb-3">Wirtschaftskalender - Europa</h3>
+                
+                <div class="bg-gray-100 p-4 rounded mb-4">
+                    <div class="flex flex-wrap items-center gap-3 mb-3">
+                        <div>
+                            <label class="block text-sm font-medium mb-1">Datum:</label>
+                            <input type="date" class="border rounded p-1">
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-medium mb-1">Länder:</label>
+                            <select class="border rounded p-1">
+                                <option>Alle</option>
+                                <option>Deutschland</option>
+                                <option>Großbritannien</option>
+                                <option>Frankreich</option>
+                                <option>Italien</option>
+                                <option>Schweiz</option>
+                            </select>
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-medium mb-1">Kategorie:</label>
+                            <select class="border rounded p-1">
+                                <option>Alle</option>
+                                <option>Inflation</option>
+                                <option>BIP</option>
+                                <option>Arbeitsmarkt</option>
+                                <option>Zinsentscheide</option>
+                            </select>
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-medium mb-1">Wichtigkeit:</label>
+                            <select class="border rounded p-1">
+                                <option>Alle</option>
+                                <option>Hoch</option>
+                                <option>Mittel</option>
+                                <option>Niedrig</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <button onclick="applyEuropeFilters()" class="btn-confirm">Filter anwenden</button>
+                    <div id="europe-filter-feedback" class="success-feedback">Filter wurden erfolgreich angewendet!</div>
+                </div>
+                
+                <div class="overflow-x-auto">
+                    <table class="economic-table">
+                        <thead>
+                            <tr>
+                                <th>Zeit</th>
+                                <th>Land</th>
+                                <th>Ereignis</th>
+                                <th>Aktuell</th>
+                                <th>Vorherig</th>
+                                <th>Konsens</th>
+                                <th>Prognose</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>08:00 AM</td>
+                                <td><img src="https://cdn.jsdelivr.net/npm/flag-icon-css@3.5.0/flags/4x3/de.svg" class="flag-icon"> DE</td>
+                                <td>Einzelhandelsumsätze MoM</td>
+                                <td class="better-than-expected">0.6%</td>
+                                <td>-0.1%</td>
+                                <td>0.4%</td>
+                                <td>0.5%</td>
+                            </tr>
+                            <tr>
+                                <td>09:30 AM</td>
+                                <td><img src="https://cdn.jsdelivr.net/npm/flag-icon-css@3.5.0/flags/4x3/gb.svg" class="flag-icon"> GB</td>
+                                <td>BIP QoQ</td>
+                                <td class="worse-than-expected">0.2%</td>
+                                <td>0.3%</td>
+                                <td>0.3%</td>
+                                <td>0.2%</td>
+                            </tr>
+                            <tr>
+                                <td>10:00 AM</td>
+                                <td><img src="https://cdn.jsdelivr.net/npm/flag-icon-css@3.5.0/flags/4x3/eu.svg" class="flag-icon"> EU</td>
+                                <td>Inflation Rate YoY</td>
+                                <td class="better-than-expected">2.4%</td>
+                                <td>2.6%</td>
+                                <td>2.5%</td>
+                                <td>2.4%</td>
+                            </tr>
+                            <tr>
+                                <td>13:00 PM</td>
+                                <td><img src="https://cdn.jsdelivr.net/npm/flag-icon-css@3.5.0/flags/4x3/eu.svg" class="flag-icon"> EU</td>
+                                <td>EZB Zinsentscheid</td>
+                                <td>4.25%</td>
+                                <td>4.25%</td>
+                                <td>4.25%</td>
+                                <td>4.25%</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <div class="mb-6">
+                <h3 class="font-bold mb-3">Session-Einstellungen</h3>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                    <div>
+                        <label class="block mb-2">Bevorzugte Märkte:</label>
+                        <select multiple class="w-full p-2 border rounded h-32">
+                            <option>DAX</option>
+                            <option>FTSE 100</option>
+                            <option>CAC 40</option>
+                            <option>Euro Stoxx 50</option>
+                            <option>SMI</option>
+                        </select>
+                    </div>
+                    
+                    <div>
+                        <label class="block mb-2">Bevorzugte Währungspaare:</label>
+                        <select multiple class="w-full p-2 border rounded h-32">
+                            <option>EUR/USD</option>
+                            <option>GBP/USD</option>
+                            <option>EUR/GBP</option>
+                            <option>EUR/CHF</option>
+                            <option>EUR/JPY</option>
+                            <option>GBP/JPY</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <button onclick="saveEuropeSettings()" class="btn-confirm">Einstellungen speichern</button>
+                <div id="europe-settings-feedback" class="success-feedback">Einstellungen wurden erfolgreich gespeichert!</div>
+            </div>
+        </section>
+        
+        <!-- USA-Session -->
+        <section id="usa" class="content-section bg-white rounded-lg shadow-md p-6 mb-6">
+            <h2 class="section-header text-xl font-bold text-gray-800">USA-Session</h2>
+            
+            <div class="mb-6">
+                <h3 class="font-bold mb-3">Session-Information</h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+                    <div class="bg-blue-50 p-3 rounded">
+                        <p class="font-semibold">Handelszeiten:</p>
+                        <p>13:30 - 22:00 UTC</p>
+                        <p>Hauptmärkte: New York, Chicago, Toronto</p>
+                    </div>
+                    
+                    <div class="bg-blue-50 p-3 rounded">
+                        <p class="font-semibold">Aktuelle Indizes:</p>
+                        <p>S&P 500: <span class="text-green-600">+0.75%</span></p>
+                        <p>NASDAQ: <span class="text-green-600">+1.2%</span></p>
+                        <p>DOW: <span class="text-red-600">-0.3%</span></p>
+                    </div>
+                    
+                    <div class="bg-blue-50 p-3 rounded">
+                        <p class="font-semibold">Hauptwährungspaare:</p>
+                        <p>EUR/USD, USD/JPY, GBP/USD</p>
+                        <p>USD/CAD, USD/CHF</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Wirtschaftskalender für USA -->
+            <div class="mb-6">
+                <h3 class="font-bold mb-3">Wirtschaftskalender - USA</h3>
+                
+                <div class="bg-gray-100 p-4 rounded mb-4">
+                    <div class="flex flex-wrap items-center gap-3 mb-3">
+                        <div>
+                            <label class="block text-sm font-medium mb-1">Datum:</label>
+                            <input type="date" class="border rounded p-1">
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-medium mb-1">Länder:</label>
+                            <select class="border rounded p-1">
+                                <option>Alle</option>
+                                <option>USA</option>
+                                <option>Kanada</option>
+                                <option>Mexiko</option>
+                            </select>
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-medium mb-1">Kategorie:</label>
+                            <select class="border rounded p-1">
+                                <option>Alle</option>
+                                <option>Inflation</option>
+                                <option>BIP</option>
+                                <option>Arbeitsmarkt</option>
+                                <option>Zinsentscheide</option>
+                            </select>
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-medium mb-1">Wichtigkeit:</label>
+                            <select class="border rounded p-1">
+                                <option>Alle</option>
+                                <option>Hoch</option>
+                                <option>Mittel</option>
+                                <option>Niedrig</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <button onclick="applyUsaFilters()" class="btn-confirm">Filter anwenden</button>
+                    <div id="usa-filter-feedback" class="success-feedback">Filter wurden erfolgreich angewendet!</div>
+                </div>
+                
+                <div class="overflow-x-auto">
+                    <table class="economic-table">
+                        <thead>
+                            <tr>
+                                <th>Zeit</th>
+                                <th>Land</th>
+                                <th>Ereignis</th>
+                                <th>Aktuell</th>
+                                <th>Vorherig</th>
+                                <th>Konsens</th>
+                                <th>Prognose</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>08:30 AM</td>
+                                <td><img src="https://cdn.jsdelivr.net/npm/flag-icon-css@3.5.0/flags/4x3/us.svg" class="flag-icon"> US</td>
+                                <td>Erstanträge Arbeitslosenhilfe</td>
+                                <td class="better-than-expected">214K</td>
+                                <td>221K</td>
+                                <td>220K</td>
+                                <td>218K</td>
+                            </tr>
+                            <tr>
+                                <td>08:30 AM</td>
+                                <td><img src="https://cdn.jsdelivr.net/npm/flag-icon-css@3.5.0/flags/4x3/us.svg" class="flag-icon"> US</td>
+                                <td>PCE-Preisindex YoY</td>
+                                <td class="better-than-expected">2.4%</td>
+                                <td>2.5%</td>
+                                <td>2.5%</td>
+                                <td>2.4%</td>
+                            </tr>
+                            <tr>
+                                <td>10:00 AM</td>
+                                <td><img src="https://cdn.jsdelivr.net/npm/flag-icon-css@3.5.0/flags/4x3/us.svg" class="flag-icon"> US</td>
+                                <td>Verbrauchervertrauen</td>
+                                <td class="worse-than-expected">102.5</td>
+                                <td>104.8</td>
+                                <td>105.0</td>
+                                <td>104.0</td>
+                            </tr>
+                            <tr>
+                                <td>02:00 PM</td>
+                                <td><img src="https://cdn.jsdelivr.net/npm/flag-icon-css@3.5.0/flags/4x3/us.svg" class="flag-icon"> US</td>
+                                <td>Fed Zinsentscheid</td>
+                                <td>5.25%</td>
+                                <td>5.25%</td>
+                                <td>5.25%</td>
+                                <td>5.25%</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <div class="mb-6">
+                <h3 class="font-bold mb-3">Session-Einstellungen</h3>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                    <div>
+                        <label class="block mb-2">Bevorzugte Märkte:</label>
+                        <select multiple class="w-full p-2 border rounded h-32">
+                            <option>S&P 500</option>
+                            <option>NASDAQ</option>
+                            <option>Dow Jones</option>
+                            <option>Russell 2000</option>
+                            <option>TSX</option>
+                        </select>
+                    </div>
+                    
+                    <div>
+                        <label class="block mb-2">Bevorzugte Währungspaare:</label>
+                        <select multiple class="w-full p-2 border rounded h-32">
+                            <option>EUR/USD</option>
+                            <option>USD/JPY</option>
+                            <option>GBP/USD</option>
+                            <option>USD/CAD</option>
+                            <option>USD/CHF</option>
+                            <option>USD/MXN</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <button onclick="saveUsaSettings()" class="btn-confirm">Einstellungen speichern</button>
+                <div id="usa-settings-feedback" class="success-feedback">Einstellungen wurden erfolgreich gespeichert!</div>
+            </div>
+        </section>
+        
+        <!-- Intermarket-Analyse -->
+        <section id="intermarket" class="content-section bg-white rounded-lg shadow-md p-6 mb-6">
+            <h2 class="section-header text-xl font-bold text-gray-800">Intermarket-Analyse (Murphy)</h2>
+            
+            <div class="mb-6">
+                <h3 class="font-bold mb-3">Hauptmarktbeziehungen</h3>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-4">
+                    <div class="bg-blue-50 p-4 rounded shadow">
+                        <h4 class="font-semibold mb-2">Anleihen ↔ Aktien</h4>
+                        <p class="mb-2">Aktuelle Korrelation: <span class="font-bold text-red-600">-0.75</span> (Inverse Korrelation)</p>
+                        <p>Zinsen ↑ entspricht Aktien ↓</p>
+                        <p>10-jährige Rendite: <span class="text-red-600">4.02% (+0.05%)</span></p>
+                        <p>S&P 500: <span class="text-green-600">5,123 (+0.75%)</span></p>
+                    </div>
+                    
+                    <div class="bg-blue-50 p-4 rounded shadow">
+                        <h4 class="font-semibold mb-2">Anleihen ↔ Rohstoffe</h4>
+                        <p class="mb-2">Aktuelle Korrelation: <span class="font-bold text-red-600">-0.68</span> (Inverse Korrelation)</p>
+                        <p>Zinsen ↑ entspricht Rohstoffe ↓</p>
+                        <p>10-jährige Rendite: <span class="text-red-600">4.02% (+0.05%)</span></p>
+                        <p>CRB Index: <span class="text-red-600">295.2 (-0.3%)</span></p>
+                    </div>
+                    
+                    <div class="bg-blue-50 p-4 rounded shadow">
+                        <h4 class="font-semibold mb-2">Rohstoffe ↔ US-Dollar</h4>
+                        <p class="mb-2">Aktuelle Korrelation: <span class="font-bold text-red-600">-0.72</span> (Inverse Korrelation)</p>
+                        <p>Dollar ↑ entspricht Rohstoffe ↓</p>
+                        <p>Dollar Index: <span class="text-green-600">104.2 (+0.2%)</span></p>
+                        <p>Gold: <span class="text-red-600">$2,335 (-0.1%)</span></p>
+                    </div>
+                    
+                    <div class="bg-blue-50 p-4 rounded shadow">
+                        <h4 class="font-semibold mb-2">Dollar ↔ Aktien</h4>
+                        <p class="mb-2">Aktuelle Korrelation: <span class="font-bold text-gray-700">+0.12</span> (Schwache Korrelation)</p>
+                        <p>Aktuelle Wirtschaftsphase: <span class="font-bold">Mittlerer Zyklus</span></p>
+                        <p>Dollar Index: <span class="text-green-600">104.2 (+0.2%)</span></p>
+                        <p>Globale Aktien: <span class="text-green-600">+0.5%</span></p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mb-6">
+                <h3 class="font-bold mb-3">Intermarket-Signale</h3>
+                
+                <div class="bg-yellow-50 p-4 rounded shadow mb-4">
+                    <h4 class="font-semibold mb-2">Aktuelle Divergenzen</h4>
+                    <ul class="list-disc ml-5 space-y-1">
+                        <li>Anleihenrenditen steigen, aber Goldpreis fällt nicht proportional</li>
+                        <li>Dollar-Index und Rohstoffpreise bewegen sich beide nach oben (ungewöhnlich)</li>
+                        <li>Energieaktien steigen trotz fallender Ölpreise</li>
+                    </ul>
+                </div>
+                
+                <div class="bg-green-50 p-4 rounded shadow">
+                    <h4 class="font-semibold mb-2">Bestätigungssignale</h4>
+                    <ul class="list-disc ml-5 space-y-1">
+                        <li>Steigende Anleihenrenditen und fallende Aktienmärkte in Schwellenländern</li>
+                        <li>Sinkende Volatilität (VIX) und steigende US-Aktienindizes</li>
+                        <li>Steigende Industriemetallpreise und steigende Aktien im Industriesektor</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="mb-6">
+                <h3 class="font-bold mb-3">Symbol-Auswahl für Analyse</h3>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                    <div>
+                        <label class="block mb-2">Aktien/Indizes:</label>
+                        <select multiple class="w-full p-2 border rounded h-32">
+                            <option>S&P 500 (SPX)</option>
+                            <option>NASDAQ (NDX)</option>
+                            <option>Russell 2000 (RUT)</option>
+                            <option>DAX</option>
+                            <option>Nikkei 225</option>
+                            <option>MSCI Emerging Markets</option>
+                        </select>
+                    </div>
+                    
+                    <div>
+                        <label class="block mb-2">Anleihen/Zinsen:</label>
+                        <select multiple class="w-full p-2 border rounded h-32">
+                            <option>US 10Y Treasury Yield</option>
+                            <option>US 2Y Treasury Yield</option>
+                            <option>German 10Y Bund Yield</option>
+                            <option>JGB 10Y Yield</option>
+                            <option>US Treasury Bond ETF (TLT)</option>
+                            <option>High Yield Corporate Bond ETF (HYG)</option>
+                        </select>
+                    </div>
+                    
+                    <div>
+                        <label class="block mb-2">Rohstoffe:</label>
+                        <select multiple class="w-full p-2 border rounded h-32">
+                            <option>Gold</option>
+                            <option>Silber</option>
+                            <option>Rohöl (WTI)</option>
+                            <option>Kupfer</option>
+                            <option>Erdgas</option>
+                            <option>CRB Commodity Index</option>
+                        </select>
+                    </div>
+                    
+                    <div>
+                        <label class="block mb-2">Währungen:</label>
+                        <select multiple class="w-full p-2 border rounded h-32">
+                            <option>US Dollar Index (DXY)</option>
+                            <option>EUR/USD</option>
+                            <option>USD/JPY</option>
+                            <option>GBP/USD</option>
+                            <option>USD/CNH</option>
+                            <option>Emerging Markets Currency Index</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <button onclick="saveIntermarketSettings()" class="btn-confirm">Analyse durchführen</button>
+                <div id="intermarket-feedback" class="success-feedback">Intermarket-Analyse wurde aktualisiert!</div>
+            </div>
+        </section>
+        
+        <!-- Affirmationen -->
+        <section id="affirmations" class="content-section bg-white rounded-lg shadow-md p-6 mb-6">
+            <h2 class="section-header text-xl font-bold text-gray-800">Trading Affirmationen</h2>
+            
+            <div class="mb-6">
+                <h3 class="font-bold mb-3">Trader-Status</h3>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                    <div>
+                        <label class="block mb-2">Aktueller Status:</label>
+                        <select id="trader-status" class="w-full p-2 border rounded">
+                            <option value="">Bitte Status wählen</option>
+                            <option value="preparing">Vorbereitung auf einen Trade</option>
+                            <option value="active">Im aktiven Trade</option>
+                            <option value="analyzing">Strategie-Entwicklung</option>
+                            <option value="recovery">Nach einem Verlust</option>
+                            <option value="success">Nach einem Erfolg</option>
+                            <option value="break">Trading-Pause</option>
+                        </select>
+                    </div>
+                    
+                    <div>
+                        <label class="block mb-2">Affirmations-Kategorie:</label>
+                        <select id="affirmation-category" class="w-full p-2 border rounded">
+                            <option value="">Bitte Kategorie wählen</option>
+                            <option value="discipline">Disziplin & Geduld entwickeln</option>
+                            <option value="abundance">Überflussdenken fördern</option>
+                            <option value="selection">Handelsauswahl verbessern</option>
+                            <option value="burnout">Burnout & Erschöpfung überwinden</option>
+                            <option value="bias">Bestätigungsfehler überwinden</option>
+                            <option value="paralysis">Entscheidungslähmung überwinden</option>
+                            <option value="fomo">FOMO überwinden</option>
+                            <option value="losses">Verluste schnell akzeptieren</option>
+                            <option value="attachment">Emotionale Bindung an Trades lösen</option>
+                            <option value="overtrading">Überhandel widerstehen</option>
+                            <option value="patience">Geduld bei langsamen Märkten bewahren</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <button onclick="generateAffirmations()" class="btn-confirm">Affirmationen generieren</button>
+                <div id="affirmations-feedback" class="success-feedback">Affirmationen wurden generiert!</div>
+            </div>
+            
+            <div id="affirmations-display" class="mb-6 p-6 bg-indigo-50 rounded-lg shadow hidden">
+                <h3 class="font-bold mb-4 text-center text-indigo-800">Deine personalisierten Affirmationen</h3>
+                
+                <div id="affirmation-text" class="text-lg text-center mb-4 italic">
+                    Ich bin ein disziplinierter und geduldiger Trading-Händler, der seinem Handelsplan mit unerschütterlichem Engagement folgt. Ich vertraue auf die Wirksamkeit meiner Strategien und warte geduldig auf Setups mit hoher Wahrscheinlichkeit. Ich habe die Selbstkontrolle, mich an meine etablierten Regeln zu halten und impulsive Handlungen zu vermeiden. Ich verstehe, dass Disziplin und Geduld Schlüssel zum langfristigen Erfolg sind.
+                </div>
+                
+                <div class="flex justify-center">
+                    <button class="bg-indigo-600 text-white px-4 py-2 rounded mr-2 hover:bg-indigo-700">Nächste Affirmation</button>
+                    <button class="bg-indigo-600 text-white px-4 py-2 rounded hover:bg-indigo-700">Als Favorit speichern</button>
+                </div>
+            </div>
+            
+            <div class="mb-6">
+                <h3 class="font-bold mb-3">Affirmations-Einstellungen</h3>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                    <div>
+                        <label class="block mb-2">Timer für Affirmationen (Minuten):</label>
+                        <input type="number" class="w-full p-2 border rounded" min="1" max="60" value="5">
+                    </div>
+                    
+                    <div>
+                        <label class="block mb-2">Tägliche Erinnerungen:</label>
+                        <select class="w-full p-2 border rounded">
+                            <option>Keine Erinnerungen</option>
+                            <option>Vor Marktöffnung</option>
+                            <option>Nach Marktschluss</option>
+                            <option>Vor und nach dem Markt</option>
+                            <option>Stündlich während der Handelszeit</option>
+                        </select>
+                    </div>
+                    
+                    <div>
+                        <label class="block mb-2">Bevorzugte Anzeige:</label>
+                        <select class="w-full p-2 border rounded">
+                            <option>Text</option>
+                            <option>Audio</option>
+                            <option>Text und Audio</option>
+                        </select>
+                    </div>
+                    
+                    <div>
+                        <label class="block mb-2">Anzahl der Wiederholungen:</label>
+                        <input type="number" class="w-full p-2 border rounded" min="1" max="20" value="3">
+                    </div>
+                </div>
+                
+                <button onclick="saveAffirmationSettings()" class="btn-confirm">Einstellungen speichern</button>
+                <div id="affirmation-settings-feedback" class="success-feedback">Einstellungen wurden erfolgreich gespeichert!</div>
+            </div>
+        </section>
+        
+        <!-- Trading-Chancen -->
+        <section id="opportunities" class="content-section bg-white rounded-lg shadow-md p-6 mb-6">
+            <h2 class="section-header text-xl font-bold text-gray-800">Trading-Chancen</h2>
+            
+            <div class="mb-6">
+                <h3 class="font-bold mb-3">Symbol-Analyse</h3>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+                    <div>
+                        <label class="block mb-2">Wähle Symbol:</label>
+                        <select id="opportunity-symbol" class="w-full p-2 border rounded">
+                            <option value="">Symbol wählen</option>
+                            <optgroup label="Aktien (NASDAQ)">
+                                <option value="NASDAQ:AAPL">NASDAQ:AAPL - Apple</option>
+                                <option value="NASDAQ:NVDA">NASDAQ:NVDA - NVIDIA</option>
+                                <option value="NASDAQ:ASML">NASDAQ:ASML - ASML Holding</option>
+                                <option value="NASDAQ:INTC">NASDAQ:INTC - Intel</option>
+                                <option value="NASDAQ:MSTR">NASDAQ:MSTR - MicroStrategy</option>
+                                <option value="NASDAQ:TSLA">NASDAQ:TSLA - Tesla</option>
+                                <option value="NASDAQ:PLUG">NASDAQ:PLUG - Plug Power</option>
+                            </optgroup>
+                            <optgroup label="Kryptowährungen">
+                                <option value="BINANCE:BNBUSDT">BINANCE:BNBUSDT - Binance Coin</option>
+                                <option value="CAPITALCOM:BTCUSD">CAPITALCOM:BTCUSD - Bitcoin</option>
+                                <option value="BITSTAMP:XRPUSD">BITSTAMP:XRPUSD - Ripple</option>
+                            </optgroup>
+                            <optgroup label="Forex">
+                                <option value="FX:USDJPY">FX:USDJPY - US Dollar/Japanischer Yen</option>
+                                <option value="PEPPERSTONE:USDX">PEPPERSTONE:USDX - US Dollar Index</option>
+                                <option value="CAPITALCOM:EURUSD">CAPITALCOM:EURUSD - Euro/US Dollar</option>
+                                <option value="PEPPERSTONE:EURUSD">PEPPERSTONE:EURUSD - Euro/US Dollar</option>
+                                <option value="OANDA:USDTRY">OANDA:USDTRY - US Dollar/Türkische Lira</option>
+                            </optgroup>
+                            <optgroup label="Indizes">
+                                <option value="PEPPERSTONE:US500">PEPPERSTONE:US500 - S&P 500</option>
+                                <option value="PEPPERSTONE:US30">PEPPERSTONE:US30 - Dow Jones</option>
+                                <option value="PEPPERSTONE:GER40">PEPPERSTONE:GER40 - DAX</option>
+                                <option value="PEPPERSTONE:NAS100">PEPPERSTONE:NAS100 - NASDAQ 100</option>
+                            </optgroup>
+                            <optgroup label="Rohstoffe">
+                                <option value="PEPPERSTONE:SPOTCRUDE">PEPPERSTONE:SPOTCRUDE - Rohöl</option>
+                                <option value="COMEX:SI1!">COMEX:SI1! - Silber</option>
+                                <option value="PEPPERSTONE:XAUUSD">PEPPERSTONE:XAUUSD - Gold</option>
+                                <option value="NYMEX:NG1!">NYMEX:NG1! - Erdgas</option>
+                            </optgroup>
+                        </select>
+                    </div>
+                    
+                    <div>
+                        <label class="block mb-2">Zeitrahmen:</label>
+                        <select id="opportunity-timeframe" class="w-full p-2 border rounded">
+                            <option value="1m">1 Minute</option>
+                            <option value="5m">5 Minuten</option>
+                            <option value="15m">15 Minuten</option>
+                            <option value="30m">30 Minuten</option>
+                            <option value="1h">1 Stunde</option>
+                            <option value="4h">4 Stunden</option>
+                            <option value="1d">1 Tag</option>
+                            <option value="1w">1 Woche</option>
+                        </select>
+                    </div>
+                    
+                    <div>
+                        <label class="block mb-2">Analysetyp:</label>
+                        <select id="opportunity-analysis" class="w-full p-2 border rounded">
+                            <option value="technical">Technische Analyse</option>
+                            <option value="fundamental">Fundamentalanalyse</option>
+                            <option value="sentiment">Sentiment-Analyse</option>
+                            <option value="combined">Kombinierte Analyse</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="mb-4">
+                    <label class="block mb-2">Zusätzliche Anweisungen:</label>
+                    <textarea id="opportunity-instructions" class="w-full p-2 border rounded h-20" placeholder="Spezifische Anfragen oder zusätzliche Informationen für die Analyse..."></textarea>
+                </div>
+                
+                <button onclick="generateOpportunityAnalysis()" class="btn-confirm">Analyse durchführen</button>
+                <div id="opportunity-feedback" class="success-feedback">Analyse wird durchgeführt!</div>
+            </div>
+            
+            <div id="opportunity-results" class="mb-6 p-6 bg-gray-50 rounded-lg shadow hidden">
+                <h3 class="font-bold mb-4">Analyse-Ergebnisse für <span id="analysis-symbol">NASDAQ:AAPL</span></h3>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-4">
+                    <div>
+                        <h4 class="font-semibold mb-2">Technische Indikatoren</h4>
+                        <div class="bg-white p-3 rounded border">
+                            <p>Trend: <span class="font-bold text-green-600">Aufwärts</span></p>
+                            <p>RSI (14): <span>62.5</span> - Neutral mit bullischer Tendenz</p>
+                            <p>MACD: <span class="text-green-600">Bullisch</span> - Signal über Nulllinie</p>
+                            <p>Bollinger Bänder: Preis nahe oberem Band</p>
+                            <p>Support: $190.25 | Widerstand: $198.50</p>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <h4 class="font-semibold mb-2">Handelsempfehlung</h4>
+                        <div class="bg-white p-3 rounded border">
+                            <p>Signal: <span class="font-bold text-green-600">KAUFEN</span></p>
+                            <p>Einstiegspreis: $194.50 - $195.20</p>
+                            <p>Stop-Loss: $190.00</p>
+                            <p>Kursziel 1: $198.50</p>
+                            <p>Kursziel 2: $205.00</p>
+                            <p>Risiko-Ertrags-Verhältnis: 1:3.5</p>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <h4 class="font-semibold mb-2">Fundamentaldaten</h4>
+                        <div class="bg-white p-3 rounded border">
+                            <p>Letzter Quartalsgewinn: Übertrifft Erwartungen</p>
+                            <p>KGV: 28.5 | Branchendurchschnitt: 32.1</p>
+                            <p>Dividendenrendite: 0.54%</p>
+                            <p>Anstehende Ereignisse: Produktankündigung in 15 Tagen</p>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <h4 class="font-semibold mb-2">Sentiment-Analyse</h4>
+                        <div class="bg-white p-3 rounded border">
+                            <p>Markt-Sentiment: <span class="text-green-600">70% Bullisch</span></p>
+                            <p>News-Sentiment: Überwiegend positiv</p>
+                            <p>Social Media Buzz: Erhöhte Aktivität (+25%)</p>
+                            <p>Institutionelle Aktivität: Leichte Akkumulation</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-white p-4 rounded border mb-4">
+                    <h4 class="font-semibold mb-2">Detaillierte Analyse</h4>
+                    <p class="mb-2">AAPL zeigt einen starken Aufwärtstrend mit steigendem Volumen, was auf institutionelles Kaufinteresse hindeutet. Der RSI liegt im neutralen Bereich mit bullischer Tendenz, was Raum für weitere Aufwärtsbewegung bietet, ohne überkauft zu sein.</p>
+                    <p class="mb-2">Die jüngste Konsolidierung in der Nähe des Widerstands bei $195 scheint sich aufzulösen, mit erhöhtem Volumen bei den jüngsten Aufwärtsbewegungen. Der MACD zeigt ein bullisches Kreuz, das das Kaufsignal unterstützt.</p>
+                    <p>Fundamental wird AAPL durch starke Quartalszahlen und die bevorstehende Produktankündigung unterstützt, die typischerweise positive Kursbewegungen vor dem Ereignis auslöst. Das Sentiment ist überwiegend positiv, mit erhöhter Diskussion in sozialen Medien.</p>
+                </div>
+                
+                <div class="flex justify-between">
+                    <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700" onclick="addToWatchlist()">Zur Beobachtungsliste hinzufügen</button>
+                    <button class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700" onclick="createTrade()">Als Trade erstellen</button>
+                </div>
+            </div>
+            
+            <div class="mb-6">
+                <h3 class="font-bold mb-3">Intermarket-Beziehungen für die Symbolanalyse</h3>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                    <div>
+                        <label class="block mb-2">Korrelierte Symbole beobachten:</label>
+                        <select multiple class="w-full p-2 border rounded h-32">
+                            <option>NASDAQ:QQQ - Nasdaq ETF</option>
+                            <option>NASDAQ:MSFT - Microsoft</option>
+                            <option>NASDAQ:GOOG - Google</option>
+                            <option>PEPPERSTONE:US500 - S&P 500</option>
+                            <option>AMEX:IWM - Russell 2000 ETF</option>
+                            <option>US 10Y Treasury Yield</option>
+                        </select>
+                    </div>
+                    
+                    <div>
+                        <label class="block mb-2">Einzubeziehende Indikatoren:</label>
+                        <select multiple class="w-full p-2 border rounded h-32">
+                            <option>Relative Stärke zu Sektor</option>
+                            <option>Dollar-Korrelation</option>
+                            <option>Branchen-Rotation</option>
+                            <option>Earnings Surprise</option>
+                            <option>Marktbreite-Indikatoren</option>
+                            <option>Volatilitäts-Analyse (VIX)</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <button onclick="saveOpportunitySettings()" class="btn-confirm">Einstellungen speichern</button>
+                <div id="opportunity-settings-feedback" class="success-feedback">Einstellungen wurden erfolgreich gespeichert!</div>
+            </div>
+        </section>
+        
+        <!-- Meine Trades -->
+        <section id="mytrades" class="content-section bg-white rounded-lg shadow-md p-6 mb-6">
+            <h2 class="section-header text-xl font-bold text-gray-800">Meine Trades</h2>
+            
+            <div class="mb-6">
+                <h3 class="font-bold mb-3">Neuen Trade hinzufügen</h3>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+                    <div>
+                        <label class="block mb-2">Symbol:</label>
+                        <select id="trade-symbol" class="w-full p-2 border rounded">
+                            <option value="">Symbol wählen</option>
+                            <optgroup label="Aktien (NASDAQ)">
+                                <option value="NASDAQ:AAPL">NASDAQ:AAPL - Apple</option>
+                                <option value="NASDAQ:NVDA">NASDAQ:NVDA - NVIDIA</option>
+                                <option value="NASDAQ:ASML">NASDAQ:ASML - ASML Holding</option>
+                                <option value="NASDAQ:INTC">NASDAQ:INTC - Intel</option>
+                                <option value="NASDAQ:MSTR">NASDAQ:MSTR - MicroStrategy</option>
+                                <option value="NASDAQ:TSLA">NASDAQ:TSLA - Tesla</option>
+                                <option value="NASDAQ:PLUG">NASDAQ:PLUG - Plug Power</option>
+                            </optgroup>
+                            <optgroup label="Kryptowährungen">
+                                <option value="BINANCE:BNBUSDT">BINANCE:BNBUSDT - Binance Coin</option>
+                                <option value="CAPITALCOM:BTCUSD">CAPITALCOM:BTCUSD - Bitcoin</option>
+                                <option value="BITSTAMP:XRPUSD">BITSTAMP:XRPUSD - Ripple</option>
+                            </optgroup>
+                            <optgroup label="Forex">
+                                <option value="FX:USDJPY">FX:USDJPY - US Dollar/Japanischer Yen</option>
+                                <option value="PEPPERSTONE:USDX">PEPPERSTONE:USDX - US Dollar Index</option>
+                                <option value="CAPITALCOM:EURUSD">CAPITALCOM:EURUSD - Euro/US Dollar</option>
+                                <option value="PEPPERSTONE:EURUSD">PEPPERSTONE:EURUSD - Euro/US Dollar</option>
+                                <option value="OANDA:USDTRY">OANDA:USDTRY - US Dollar/Türkische Lira</option>
+                            </optgroup>
+                        </select>
+                    </div>
+                    
+                    <div>
+                        <label class="block mb-2">Richtung:</label>
+                        <select id="trade-direction" class="w-full p-2 border rounded">
+                            <option value="long">Long</option>
+                            <option value="short">Short</option>
+                        </select>
+                    </div>
+                    
+                    <div>
+                        <label class="block mb-2">Einstiegspreis:</label>
+                        <input type="number" id="trade-entry" class="w-full p-2 border rounded" step="0.0001">
+                    </div>
+                    
+                    <div>
+                        <label class="block mb-2">Stop-Loss:</label>
+                        <input type="number" id="trade-stop" class="w-full p-2 border rounded" step="0.0001">
+                    </div>
+                    
+                    <div>
+                        <label class="block mb-2">Zielpreis:</label>
+                        <input type="number" id="trade-target" class="w-full p-2 border rounded" step="0.0001">
+                    </div>
+                    
+                    <div>
+                        <label class="block mb-2">Positionsgröße:</label>
+                        <input type="number" id="trade-size" class="w-full p-2 border rounded" step="0.01">
+                    </div>
+                </div>
+                
+                <div class="mb-4">
+                    <label class="block mb-2">Handelsnotizen:</label>
+                    <textarea id="trade-notes" class="w-full p-2 border rounded h-20" placeholder="Gründe für den Trade, Strategie, Beobachtungen..."></textarea>
+                </div>
+                
+                <button onclick="addNewTrade()" class="btn-confirm">Trade hinzufügen</button>
+                <div id="trade-add-feedback" class="success-feedback">Trade wurde erfolgreich hinzugefügt!</div>
+            </div>
+            
+            <div class="mb-6">
+                <h3 class="font-bold mb-3">Aktive Trades</h3>
+                
+                <div class="overflow-x-auto">
+                    <table class="w-full border-collapse">
+                        <thead class="bg-gray-100">
+                            <tr>
+                                <th class="border p-2 text-left">Symbol</th>
+                                <th class="border p-2 text-left">Richtung</th>
+                                <th class="border p-2 text-left">Einstieg</th>
+                                <th class="border p-2 text-left">Aktuell</th>
+                                <th class="border p-2 text-left">Stop-Loss</th>
+                                <th class="border p-2 text-left">Ziel</th>
+                                <th class="border p-2 text-left">P/L</th>
+                                <th class="border p-2 text-left">Aktionen</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="border p-2">NASDAQ:AAPL</td>
+                                <td class="border p-2 text-green-600">Long</td>
+                                <td class="border p-2">$190.25</td>
+                                <td class="border p-2">$195.40</td>
+                                <td class="border p-2">$185.50</td>
+                                <td class="border p-2">$205.00</td>
+                                <td class="border p-2 text-green-600">+2.71%</td>
+                                <td class="border p-2">
+                                    <button class="bg-blue-500 text-white px-2 py-1 rounded text-sm mr-1">Bearbeiten</button>
+                                    <button class="bg-green-500 text-white px-2 py-1 rounded text-sm mr-1">Schließen</button>
+                                    <button class="bg-red-500 text-white px-2 py-1 rounded text-sm">Löschen</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="border p-2">PEPPERSTONE:EURUSD</td>
+                                <td class="border p-2 text-red-600">Short</td>
+                                <td class="border p-2">1.0850</td>
+                                <td class="border p-2">1.0825</td>
+                                <td class="border p-2">1.0890</td>
+                                <td class="border p-2">1.0750</td>
+                                <td class="border p-2 text-green-600">+0.23%</td>
+                                <td class="border p-2">
+                                    <button class="bg-blue-500 text-white px-2 py-1 rounded text-sm mr-1">Bearbeiten</button>
+                                    <button class="bg-green-500 text-white px-2 py-1 rounded text-sm mr-1">Schließen</button>
+                                    <button class="bg-red-500 text-white px-2 py-1 rounded text-sm">Löschen</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="border p-2">CAPITALCOM:BTCUSD</td>
+                                <td class="border p-2 text-green-600">Long</td>
+                                <td class="border p-2">$63,250</td>
+                                <td class="border p-2">$62,940</td>
+                                <td class="border p-2">$61,500</td>
+                                <td class="border p-2">$68,000</td>
+                                <td class="border p-2 text-red-600">-0.49%</td>
+                                <td class="border p-2">
+                                    <button class="bg-blue-500 text-white px-2 py-1 rounded text-sm mr-1">Bearbeiten</button>
+                                    <button class="bg-green-500 text-white px-2 py-1 rounded text-sm mr-1">Schließen</button>
+                                    <button class="bg-red-500 text-white px-2 py-1 rounded text-sm">Löschen</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <div class="mb-6">
+                <h3 class="font-bold mb-3">Leistungsübersicht</h3>
+                
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-4">
+                    <div class="bg-blue-50 p-3 rounded">
+                        <p class="font-semibold">Offene Trades:</p>
+                        <p class="text-xl">3</p>
+                    </div>
+                    
+                    <div class="bg-blue-50 p-3 rounded">
+                        <p class="font-semibold">Aktuelle P/L:</p>
+                        <p class="text-xl text-green-600">+1.25%</p>
+                    </div>
+                    
+                    <div class="bg-blue-50 p-3 rounded">
+                        <p class="font-semibold">Gewinn/Verlust Ratio:</p>
+                        <p class="text-xl">2.5</p>
+                    </div>
+                    
+                    <div class="bg-blue-50 p-3 rounded">
+                        <p class="font-semibold">Gewinner/Verlierer:</p>
+                        <p class="text-xl">2 / 1</p>
+                    </div>
+                </div>
+                
+                <button onclick="refreshTrades()" class="btn-confirm">Daten aktualisieren</button>
+                <div id="trade-refresh-feedback" class="success-feedback">Trades wurden aktualisiert!</div>
+            </div>
+        </section>
+    </main>
+    
+    <!-- Chat-Popup -->
+    <div id="chat-container" class="fixed bottom-4 right-4 w-80 bg-white rounded-lg shadow-lg overflow-hidden transition-all duration-300 ease-in-out" style="max-height: 500px; height: 400px;">
+        <div class="bg-blue-600 text-white p-3 flex justify-between items-center">
+            <h3 class="font-bold">Gemini AI Assistant</h3>
+            <div>
+                <button id="minimize-chat" class="text-white hover:text-gray-200 mr-2">
+                    <i class="fas fa-minus"></i>
+                </button>
+                <button id="close-chat" class="text-white hover:text-gray-200">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+        </div>
+        
+        <div id="chat-messages" class="p-3 overflow-y-auto h-72 bg-gray-50">
+            <div class="mb-3">
+                <div class="bg-blue-100 rounded-lg p-2 ml-6 mr-2 inline-block">
+                    <p class="text-sm">Hallo! Ich bin dein Gemini AI Assistant. Wie kann ich dir heute mit deinem Trading helfen?</p>
+                </div>
+                <p class="text-xs text-gray-500 ml-6">Gemini AI, 09:15</p>
+            </div>
+        </div>
+        
+        <div class="p-3 border-t flex">
+            <input type="text" id="chat-input" class="flex-grow border rounded-l p-2 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Stelle eine Frage...">
+            <button onclick="sendChatMessage()" class="bg-blue-600 text-white px-4 py-2 rounded-r hover:bg-blue-700">
+                <i class="fas fa-paper-plane"></i>
+            </button>
+        </div>
+    </div>
+    
+    <script>
+        // Tabs wechseln
+        function switchTab(tabId) {
+            // Alle Tabs und Content-Sections deaktivieren
+            document.querySelectorAll('.nav-tab').forEach(tab => {
+                tab.classList.remove('active');
             });
+            
+            document.querySelectorAll('.content-section').forEach(section => {
+                section.classList.remove('active');
+            });
+            
+            // Angeklickten Tab und dessen Content aktivieren
+            document.querySelectorAll('.nav-tab').forEach(tab => {
+                if (tab.textContent.toLowerCase().includes(tabId.toLowerCase())) {
+                    tab.classList.add('active');
+                }
+            });
+            
+            document.getElementById(tabId).classList.add('active');
         }
         
-        // Chat functionality
-        let chatMinimized = false;
-        
-        function toggleChat() {
-            chatMinimized = !chatMinimized;
+        // API-Schlüssel speichern
+        function saveApiKey(type) {
+            let button = event.target;
+            let inputId = '';
+            let successMessage = '';
             
-            const content = document.getElementById('chat-content');
-            const icon = document.getElementById('chat-toggle-icon');
-            
-            if (chatMinimized) {
-                content.style.display = 'none';
-                icon.textContent = '+';
-            } else {
-                content.style.display = 'block';
-                icon.textContent = '-';
+            switch(type) {
+                case 'gemini':
+                    inputId = 'gemini-api';
+                    successMessage = 'Gemini API-Schlüssel gespeichert!';
+                    break;
+                case 'alpha':
+                    inputId = 'alpha-api';
+                    successMessage = 'Alpha Vantage API-Schlüssel gespeichert!';
+                    break;
+                case 'finnhub':
+                    inputId = 'finnhub-api';
+                    successMessage = 'Finnhub API-Schlüssel gespeichert!';
+                    break;
             }
+            
+            let apiKey = document.getElementById(inputId).value;
+            
+            if (apiKey.trim() === '') {
+                alert('Bitte gib einen API-Schlüssel ein!');
+                return;
+            }
+            
+            // API-Schlüssel würde hier gespeichert werden
+            console.log(`${type} API-Schlüssel: ${apiKey}`);
+            
+            // Visuelles Feedback
+            button.classList.add('button-clicked');
+            setTimeout(() => {
+                button.classList.remove('button-clicked');
+            }, 500);
+            
+            alert(successMessage);
         }
         
+        // Einstellungen speichern (Home)
+        function saveHomeSettings() {
+            let button = event.target;
+            
+            // Visuelles Feedback
+            button.classList.add('button-clicked');
+            setTimeout(() => {
+                button.classList.remove('button-clicked');
+            }, 500);
+            
+            // Feedback-Nachricht anzeigen
+            let feedback = document.getElementById('home-feedback');
+            feedback.style.display = 'block';
+            setTimeout(() => {
+                feedback.style.display = 'none';
+            }, 3000);
+        }
+        
+        // Asien-Session Filter anwenden
+        function applyAsiaFilters() {
+            let button = event.target;
+            
+            // Visuelles Feedback
+            button.classList.add('button-clicked');
+            setTimeout(() => {
+                button.classList.remove('button-clicked');
+            }, 500);
+            
+            // Feedback-Nachricht anzeigen
+            let feedback = document.getElementById('asia-filter-feedback');
+            feedback.style.display = 'block';
+            setTimeout(() => {
+                feedback.style.display = 'none';
+            }, 3000);
+        }
+        
+        // Asien-Session Einstellungen speichern
+        function saveAsiaSettings() {
+            let button = event.target;
+            
+            // Visuelles Feedback
+            button.classList.add('button-clicked');
+            setTimeout(() => {
+                button.classList.remove('button-clicked');
+            }, 500);
+            
+            // Feedback-Nachricht anzeigen
+            let feedback = document.getElementById('asia-settings-feedback');
+            feedback.style.display = 'block';
+            setTimeout(() => {
+                feedback.style.display = 'none';
+            }, 3000);
+        }
+        
+        // Europa-Session Filter anwenden
+        function applyEuropeFilters() {
+            let button = event.target;
+            
+            // Visuelles Feedback
+            button.classList.add('button-clicked');
+            setTimeout(() => {
+                button.classList.remove('button-clicked');
+            }, 500);
+            
+            // Feedback-Nachricht anzeigen
+            let feedback = document.getElementById('europe-filter-feedback');
+            feedback.style.display = 'block';
+            setTimeout(() => {
+                feedback.style.display = 'none';
+            }, 3000);
+        }
+        
+        // Europa-Session Einstellungen speichern
+        function saveEuropeSettings() {
+            let button = event.target;
+            
+            // Visuelles Feedback
+            button.classList.add('button-clicked');
+            setTimeout(() => {
+                button.classList.remove('button-clicked');
+            }, 500);
+            
+            // Feedback-Nachricht anzeigen
+            let feedback = document.getElementById('europe-settings-feedback');
+            feedback.style.display = 'block';
+            setTimeout(() => {
+                feedback.style.display = 'none';
+            }, 3000);
+        }
+        
+        // USA-Session Filter anwenden
+        function applyUsaFilters() {
+            let button = event.target;
+            
+            // Visuelles Feedback
+            button.classList.add('button-clicked');
+            setTimeout(() => {
+                button.classList.remove('button-clicked');
+            }, 500);
+            
+            // Feedback-Nachricht anzeigen
+            let feedback = document.getElementById('usa-filter-feedback');
+            feedback.style.display = 'block';
+            setTimeout(() => {
+                feedback.style.display = 'none';
+            }, 3000);
+        }
+        
+        // USA-Session Einstellungen speichern
+        function saveUsaSettings() {
+            let button = event.target;
+            
+            // Visuelles Feedback
+            button.classList.add('button-clicked');
+            setTimeout(() => {
+                button.classList.remove('button-clicked');
+            }, 500);
+            
+            // Feedback-Nachricht anzeigen
+            let feedback = document.getElementById('usa-settings-feedback');
+            feedback.style.display = 'block';
+            setTimeout(() => {
+                feedback.style.display = 'none';
+            }, 3000);
+        }
+        
+        // Intermarket-Analyse-Einstellungen speichern
+        function saveIntermarketSettings() {
+            let button = event.target;
+            
+            // Visuelles Feedback
+            button.classList.add('button-clicked');
+            setTimeout(() => {
+                button.classList.remove('button-clicked');
+            }, 500);
+            
+            // Feedback-Nachricht anzeigen
+            let feedback = document.getElementById('intermarket-feedback');
+            feedback.style.display = 'block';
+            setTimeout(() => {
+                feedback.style.display = 'none';
+            }, 3000);
+        }
+        
+        // Affirmationen generieren
+        function generateAffirmations() {
+            let button = event.target;
+            let status = document.getElementById('trader-status').value;
+            let category = document.getElementById('affirmation-category').value;
+            
+            if (status === '' || category === '') {
+                alert('Bitte wähle einen Trader-Status und eine Affirmations-Kategorie!');
+                return;
+            }
+            
+            // Visuelles Feedback
+            button.classList.add('button-clicked');
+            setTimeout(() => {
+                button.classList.remove('button-clicked');
+            }, 500);
+            
+            // Feedback-Nachricht anzeigen
+            let feedback = document.getElementById('affirmations-feedback');
+            feedback.style.display = 'block';
+            setTimeout(() => {
+                feedback.style.display = 'none';
+            }, 3000);
+            
+            // Affirmationen anzeigen
+            document.getElementById('affirmations-display').classList.remove('hidden');
+        }
+        
+        // Affirmations-Einstellungen speichern
+        function saveAffirmationSettings() {
+            let button = event.target;
+            
+            // Visuelles Feedback
+            button.classList.add('button-clicked');
+            setTimeout(() => {
+                button.classList.remove('button-clicked');
+            }, 500);
+            
+            // Feedback-Nachricht anzeigen
+            let feedback = document.getElementById('affirmation-settings-feedback');
+            feedback.style.display = 'block';
+            setTimeout(() => {
+                feedback.style.display = 'none';
+            }, 3000);
+        }
+        
+        // Trading-Chancen Analyse durchführen
+        function generateOpportunityAnalysis() {
+            let button = event.target;
+            let symbol = document.getElementById('opportunity-symbol').value;
+            
+            if (symbol === '') {
+                alert('Bitte wähle ein Symbol für die Analyse!');
+                return;
+            }
+            
+            // Visuelles Feedback
+            button.classList.add('button-clicked');
+            setTimeout(() => {
+                button.classList.remove('button-clicked');
+            }, 500);
+            
+            // Feedback-Nachricht anzeigen
+            let feedback = document.getElementById('opportunity-feedback');
+            feedback.style.display = 'block';
+            setTimeout(() => {
+                feedback.style.display = 'none';
+                
+                // Analyseergebnisse anzeigen
+                document.getElementById('opportunity-results').classList.remove('hidden');
+                document.getElementById('analysis-symbol').textContent = symbol;
+            }, 2000);
+        }
+        
+        // Trading-Chancen Einstellungen speichern
+        function saveOpportunitySettings() {
+            let button = event.target;
+            
+            // Visuelles Feedback
+            button.classList.add('button-clicked');
+            setTimeout(() => {
+                button.classList.remove('button-clicked');
+            }, 500);
+            
+            // Feedback-Nachricht anzeigen
+            let feedback = document.getElementById('opportunity-settings-feedback');
+            feedback.style.display = 'block';
+            setTimeout(() => {
+                feedback.style.display = 'none';
+            }, 3000);
+        }
+        
+        // Zur Beobachtungsliste hinzufügen
+        function addToWatchlist() {
+            let button = event.target;
+            
+            // Visuelles Feedback
+            button.classList.add('button-clicked');
+            setTimeout(() => {
+                button.classList.remove('button-clicked');
+            }, 500);
+            
+            alert('Symbol wurde zur Beobachtungsliste hinzugefügt!');
+        }
+        
+        // Als Trade erstellen
+        function createTrade() {
+            let button = event.target;
+            
+            // Visuelles Feedback
+            button.classList.add('button-clicked');
+            setTimeout(() => {
+                button.classList.remove('button-clicked');
+            }, 500);
+            
+            // Zur Trades-Sektion wechseln
+            switchTab('mytrades');
+            
+            alert('Symbol wurde als neuer Trade hinzugefügt!');
+        }
+        
+        // Neuen Trade hinzufügen
+        function addNewTrade() {
+            let button = event.target;
+            let symbol = document.getElementById('trade-symbol').value;
+            let entry = document.getElementById('trade-entry').value;
+            
+            if (symbol === '' || entry === '') {
+                alert('Bitte gib mindestens ein Symbol und einen Einstiegspreis an!');
+                return;
+            }
+            
+            // Visuelles Feedback
+            button.classList.add('button-clicked');
+            setTimeout(() => {
+                button.classList.remove('button-clicked');
+            }, 500);
+            
+            // Feedback-Nachricht anzeigen
+            let feedback = document.getElementById('trade-add-feedback');
+            feedback.style.display = 'block';
+            setTimeout(() => {
+                feedback.style.display = 'none';
+            }, 3000);
+            
+            // Formular zurücksetzen
+            document.getElementById('trade-symbol').value = '';
+            document.getElementById('trade-entry').value = '';
+            document.getElementById('trade-stop').value = '';
+            document.getElementById('trade-target').value = '';
+            document.getElementById('trade-size').value = '';
+            document.getElementById('trade-notes').value = '';
+        }
+        
+        // Trades aktualisieren
+        function refreshTrades() {
+            let button = event.target;
+            
+            // Visuelles Feedback
+            button.classList.add('button-clicked');
+            setTimeout(() => {
+                button.classList.remove('button-clicked');
+            }, 500);
+            
+            // Feedback-Nachricht anzeigen
+            let feedback = document.getElementById('trade-refresh-feedback');
+            feedback.style.display = 'block';
+            setTimeout(() => {
+                feedback.style.display = 'none';
+            }, 3000);
+        }
+        
+        // Chat-Nachricht senden
         function sendChatMessage() {
-            const input = document.getElementById('chat-input');
-            const message = input.value.trim();
+            let input = document.getElementById('chat-input');
+            let message = input.value.trim();
             
-            if (!message) return;
+            if (message === '') return;
             
-            const chatMessages = document.getElementById('chat-messages');
+            let chatMessages = document.getElementById('chat-messages');
+            let currentTime = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
             
-            // Add user message
-            const userDiv = document.createElement('div');
-            userDiv.className = 'chat-container darker';
-            userDiv.innerHTML = `<p><strong>Du:</strong> ${message}</p>`;
-            chatMessages.appendChild(userDiv);
+            // Benutzernachricht hinzufügen
+            chatMessages.innerHTML += `
+                <div class="mb-3 text-right">
+                    <div class="bg-blue-600 text-white rounded-lg p-2 ml-2 mr-6 inline-block">
+                        <p class="text-sm">${message}</p>
+                    </div>
+                    <p class="text-xs text-gray-500 mr-6">Du, ${currentTime}</p>
+                </div>
+            `;
             
-            // Clear input
+            // Nachrichtenfeld leeren
             input.value = '';
             
-            // Simulate response (in a real app, this would call Gemini API)
+            // Zum Ende des Nachrichtenverlaufs scrollen
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+            
+            // Antwort simulieren (nach kurzer Verzögerung)
             setTimeout(() => {
-                const responseDiv = document.createElement('div');
-                responseDiv.className = 'chat-container';
+                chatMessages.innerHTML += `
+                    <div class="mb-3">
+                        <div class="bg-blue-100 rounded-lg p-2 ml-6 mr-2 inline-block">
+                            <p class="text-sm">Ich helfe dir gerne mit deiner Anfrage zu "${message}". Das ist eine Beispielantwort, die in einer echten Implementierung durch eine API-Antwort von Gemini ersetzt würde.</p>
+                        </div>
+                        <p class="text-xs text-gray-500 ml-6">Gemini AI, ${currentTime}</p>
+                    </div>
+                `;
                 
-                let response = "Ich analysiere deine Anfrage...";
-                
-                if (message.toLowerCase().includes('markt')) {
-                    response = "Die Märkte zeigen heute gemischte Signale. US-Aktien sind leicht im Plus, während europäische Märkte eine seitwärts gerichtete Bewegung zeigen. Gold ist aufgrund von Inflationssorgen gestiegen.";
-                } else if (message.toLowerCase().includes('affirmation')) {
-                    response = "Eine gute Affirmation für heute könnte sein: 'Ich treffe Handelsentscheidungen basierend auf meiner Strategie und nicht auf Emotionen. Ich bin geduldig und warte auf die besten Gelegenheiten.'";
-                } else if (message.toLowerCase().includes('strategie')) {
-                    response = "Eine bewährte Strategie für volatile Märkte ist es, die Positionsgröße zu reduzieren und enger gesteckte Stop-Losses zu verwenden. Erwäge auch, auf höhere Timeframes zu wechseln, um Rauschen zu reduzieren.";
-                } else {
-                    response = "Ich stehe dir gerne zur Verfügung. Du kannst mich zu Marktanalysen, Trading-Strategien, Affirmationen oder anderen Trading-bezogenen Themen befragen.";
-                }
-                
-                responseDiv.innerHTML = `<p><strong>Gemini:</strong> ${response}</p>`;
-                chatMessages.appendChild(responseDiv);
-                
-                // Scroll to bottom
+                // Zum Ende des Nachrichtenverlaufs scrollen
                 chatMessages.scrollTop = chatMessages.scrollHeight;
             }, 1000);
-            
-            // Scroll to bottom
-            chatMessages.scrollTop = chatMessages.scrollHeight;
         }
         
-        // Allow sending message with Enter key
-        document.getElementById('chat-input').addEventListener('keyup', function(event) {
+        // Chat-Input auf Enter-Taste abfangen
+        document.getElementById('chat-input').addEventListener('keydown', function(event) {
             if (event.key === 'Enter') {
                 sendChatMessage();
             }
         });
+        
+        // Chat-Minimieren/Maximieren
+        document.getElementById('minimize-chat').addEventListener('click', function() {
+            let chatContainer = document.getElementById('chat-container');
+            
+            if (chatContainer.style.height === '400px') {
+                chatContainer.style.height = '40px';
+                document.getElementById('chat-messages').style.display = 'none';
+                document.getElementById('chat-input').parentElement.style.display = 'none';
+            } else {
+                chatContainer.style.height = '400px';
+                document.getElementById('chat-messages').style.display = 'block';
+                document.getElementById('chat-input').parentElement.style.display = 'flex';
+            }
+        });
+        
+        // Chat schließen
+        document.getElementById('close-chat').addEventListener('click', function() {
+            document.getElementById('chat-container').style.display = 'none';
+        });
+        
+        // Aktuelle Zeit anzeigen
+        function updateTime() {
+            const now = new Date();
+            document.getElementById('current-time').textContent = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) + ' UTC';
+        }
+        
+        // Initial und dann jede Minute aktualisieren
+        updateTime();
+        setInterval(updateTime, 60000);
     </script>
 </body>
 </html>
