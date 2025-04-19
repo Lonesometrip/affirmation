@@ -1662,4 +1662,279 @@ html {
     left: 100%;
     margin-right: 0;
     margin-left: 10px;
+}
+
+/* Mobile Optimizations */
+@media screen and (max-width: 768px) {
+    /* General Typography */
+    body {
+        font-size: 16px; /* Base font size for better readability */
+    }
+
+    /* Header & Navigation */
+    header {
+        padding: 0.8rem 0;
+        height: auto;
+    }
+
+    nav {
+        padding: 0 1rem;
+    }
+
+    .logo {
+        transform: scale(0.9);
+    }
+
+    .premium, .chauffeur {
+        font-size: 1.6rem;
+    }
+
+    .nav-links {
+        background: rgba(0, 0, 0, 0.95);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        padding: 2rem 1rem;
+        gap: 1.5rem;
+    }
+
+    .nav-links a {
+        font-size: 1.1rem;
+        width: 100%;
+        text-align: center;
+        padding: 0.8rem;
+    }
+
+    /* Hero Section */
+    .hero {
+        height: 100vh;
+        padding-top: 70px;
+    }
+
+    .hero-content {
+        padding: 0 1rem;
+        margin-top: -40px;
+    }
+
+    .hero h1 {
+        font-size: 2.2rem;
+        margin-bottom: 1rem;
+    }
+
+    .hero-subtitle {
+        font-size: 1.8rem;
+        letter-spacing: 3px;
+    }
+
+    .hero p {
+        font-size: 1rem;
+        margin-bottom: 2rem;
+        padding: 0 1rem;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+        gap: 1rem;
+        padding: 0 2rem;
+    }
+
+    .cta-button, .secondary-button {
+        width: 100%;
+        text-align: center;
+        padding: 1rem;
+    }
+
+    /* Services Section */
+    .services {
+        padding: 4rem 1rem;
+    }
+
+    .services h2 {
+        font-size: 2rem;
+        margin-bottom: 2rem;
+    }
+
+    .services-grid {
+        gap: 1.5rem;
+    }
+
+    .service-card {
+        padding: 1.5rem;
+    }
+
+    .service-icon {
+        width: 60px;
+        height: 60px;
+        font-size: 1.5rem;
+    }
+
+    /* Booking Form */
+    .booking-container {
+        padding: 1.5rem;
+    }
+
+    .booking-form {
+        grid-template-columns: 1fr;
+    }
+
+    .form-group {
+        margin-bottom: 1rem;
+    }
+
+    .form-control {
+        font-size: 16px; /* Prevent auto-zoom on iOS */
+        padding: 0.8rem;
+    }
+
+    /* Contact Section */
+    .contact-container {
+        padding: 1.5rem;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+        font-size: 16px; /* Prevent auto-zoom on iOS */
+    }
+
+    /* Footer */
+    .footer-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 2rem;
+    }
+
+    .social-links {
+        justify-content: center;
+    }
+
+    /* Service Popup */
+    .popup-content {
+        width: 95%;
+        padding: 1.5rem;
+        margin: 1rem;
+        max-height: 85vh;
+    }
+
+    .popup-features {
+        grid-template-columns: 1fr;
+    }
+
+    /* Fix for iPhone notch */
+    @supports (padding-top: env(safe-area-inset-top)) {
+        header {
+            padding-top: env(safe-area-inset-top);
+        }
+
+        .nav-links {
+            padding-top: calc(env(safe-area-inset-top) + 1rem);
+        }
+    }
+
+    /* Better Touch Targets */
+    button,
+    .nav-links a,
+    .social-links a,
+    .whatsapp-button,
+    .scroll-to-top {
+        min-height: 44px; /* iOS minimum touch target size */
+        min-width: 44px;
+    }
+
+    /* Prevent Text Overflow */
+    h1, h2, h3, p {
+        word-wrap: break-word;
+        -webkit-hyphens: auto;
+        -ms-hyphens: auto;
+        hyphens: auto;
+    }
+}
+
+/* iPhone Specific Adjustments */
+@media screen and (max-width: 390px) {
+    .hero h1 {
+        font-size: 2rem;
+    }
+
+    .hero-subtitle {
+        font-size: 1.6rem;
+    }
+
+    .service-card {
+        padding: 1.2rem;
+    }
+}
+
+/* Samsung Galaxy Fold and Similar */
+@media screen and (max-width: 280px) {
+    .hero h1 {
+        font-size: 1.8rem;
+    }
+
+    .hero-subtitle {
+        font-size: 1.4rem;
+    }
+
+    .nav-links a {
+        font-size: 1rem;
+    }
+}
+
+/* Landscape Mode */
+@media screen and (max-height: 480px) and (orientation: landscape) {
+    .hero {
+        height: auto;
+        min-height: 100vh;
+    }
+
+    .hero-content {
+        padding: 6rem 1rem 2rem;
+    }
+
+    .nav-links {
+        overflow-y: auto;
+        max-height: calc(100vh - 70px);
+    }
+}
+
+/* High-DPI Screens (iPhone Retina, Samsung AMOLED) */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    .hero {
+        background-image: url('https://images.unsplash.com/photo-1617469767053-d3b523a0b982?auto=format&fit=crop&w=2000&q=80');
+    }
+}
+
+/* Prevent Pull-to-Refresh on Mobile */
+body {
+    overscroll-behavior-y: none;
+    -webkit-overflow-scrolling: touch;
+}
+
+/* Smooth Scrolling for iOS */
+@supports (-webkit-overflow-scrolling: touch) {
+    body {
+        -webkit-overflow-scrolling: touch;
+    }
+}
+
+/* Fix for iOS Form Elements */
+input,
+textarea,
+select {
+    -webkit-appearance: none;
+    border-radius: 8px;
+    background-clip: padding-box;
+}
+
+/* Fix for iOS Momentum Scrolling */
+.nav-links,
+.popup-content,
+.booking-form,
+.contact-form {
+    -webkit-overflow-scrolling: touch;
+}
+
+/* Better Form Handling on Mobile */
+input[type="date"],
+input[type="datetime-local"] {
+    min-height: 44px;
+    line-height: 44px;
 } 
