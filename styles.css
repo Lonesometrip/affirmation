@@ -202,15 +202,7 @@ nav {
     align-items: center;
     justify-content: center;
     background: linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.85)),
-                url('https://images.unsplash.com/photo-1617469767053-d3b523a0b982?auto=format&fit=crop&w=2000&q=80') center/cover no-repeat fixed;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-    background-position: center center;
-    -webkit-transform: translateZ(0);
-    transform: translateZ(0);
-    will-change: transform;
+                url('https://images.unsplash.com/photo-1617469767053-d3b523a0b982?auto=format&fit=crop&w=2000&q=80') center/cover no-repeat;
 }
 
 .hero-video {
@@ -362,12 +354,6 @@ nav {
     flex-direction: column;
     align-items: center;
     height: 100%;
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
 }
 
 .service-card:hover {
@@ -763,9 +749,6 @@ footer {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: center;
-    -webkit-transform: translateZ(0);
-    transform: translateZ(0);
     transition: transform 0.3s ease;
 }
 
@@ -1683,51 +1666,30 @@ html {
 
 /* Mobile Optimizations */
 @media screen and (max-width: 768px) {
-    /* General Typography */
-    body {
-        font-size: 16px; /* Base font size for better readability */
-    }
-
     /* Header & Navigation */
     header {
-        padding: 0.8rem 0;
-        height: auto;
+        padding: 0.5rem 0;
     }
 
     nav {
         padding: 0 1rem;
     }
 
-    .logo {
-        transform: scale(0.9);
-    }
-
     .premium, .chauffeur {
-        font-size: 1.6rem;
+        font-size: 1.3rem;
     }
 
     .nav-links {
-        background: rgba(0, 0, 0, 0.95);
+        background: rgba(0, 0, 0, 0.98);
         backdrop-filter: blur(10px);
         -webkit-backdrop-filter: blur(10px);
-        padding: 2rem 1rem;
         gap: 1.5rem;
-    }
-
-    .nav-links a {
-        font-size: 1.1rem;
-        width: 100%;
-        text-align: center;
-        padding: 0.8rem;
     }
 
     /* Hero Section */
     .hero {
         height: 100vh;
         padding-top: 70px;
-        background-attachment: scroll;
-        background: linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.85)),
-                    url('https://images.unsplash.com/photo-1617469767053-d3b523a0b982?auto=format&fit=crop&w=1080&q=80') center/cover no-repeat;
     }
 
     .hero-content {
@@ -1736,8 +1698,7 @@ html {
     }
 
     .hero h1 {
-        font-size: 2.2rem;
-        margin-bottom: 1rem;
+        font-size: 2rem;
     }
 
     .hero-subtitle {
@@ -1765,20 +1726,17 @@ html {
 
     /* Services Section */
     .services {
-        padding: 4rem 1rem;
+        padding: 3rem 1rem;
     }
 
     .services h2 {
-        font-size: 2rem;
+        font-size: 1.8rem;
         margin-bottom: 2rem;
-    }
-
-    .services-grid {
-        gap: 1.5rem;
     }
 
     .service-card {
         padding: 1.5rem;
+        margin: 0 1rem;
     }
 
     .service-icon {
@@ -1789,7 +1747,8 @@ html {
 
     /* Booking Form */
     .booking-container {
-        padding: 1.5rem;
+        padding: 1rem;
+        margin: 0 1rem;
     }
 
     .booking-form {
@@ -1797,29 +1756,31 @@ html {
     }
 
     .form-group {
-        margin-bottom: 1rem;
+        margin-bottom: 0.8rem;
     }
 
-    .form-control {
-        font-size: 16px; /* Prevent auto-zoom on iOS */
-        padding: 0.8rem;
+    .booking-form input,
+    .booking-form select,
+    .booking-form textarea {
+        padding: 0.7rem;
+        font-size: 16px; /* Prevents iOS zoom on focus */
     }
 
     /* Contact Section */
     .contact-container {
-        padding: 1.5rem;
+        margin: 0 1rem;
     }
 
     .contact-form input,
     .contact-form textarea {
-        font-size: 16px; /* Prevent auto-zoom on iOS */
+        font-size: 16px; /* Prevents iOS zoom on focus */
     }
 
     /* Footer */
     .footer-content {
         grid-template-columns: 1fr;
         text-align: center;
-        gap: 2rem;
+        gap: 1.5rem;
     }
 
     .social-links {
@@ -1838,58 +1799,39 @@ html {
         grid-template-columns: 1fr;
     }
 
-    /* Fix for iPhone notch */
-    @supports (padding-top: env(safe-area-inset-top)) {
-        header {
-            padding-top: env(safe-area-inset-top);
-        }
-
-        .nav-links {
-            padding-top: calc(env(safe-area-inset-top) + 1rem);
-        }
+    /* Cookie Banner */
+    .cookie-banner {
+        padding: 1rem;
     }
 
-    /* Better Touch Targets */
-    button,
-    .nav-links a,
-    .social-links a,
-    .whatsapp-button,
-    .scroll-to-top {
-        min-height: 44px; /* iOS minimum touch target size */
-        min-width: 44px;
+    .cookie-content {
+        flex-direction: column;
+        gap: 1rem;
     }
 
-    /* Prevent Text Overflow */
-    h1, h2, h3, p {
-        word-wrap: break-word;
-        -webkit-hyphens: auto;
-        -ms-hyphens: auto;
-        hyphens: auto;
+    .cookie-buttons {
+        flex-direction: column;
+        width: 100%;
     }
 
-    /* Force hardware acceleration for smoother scrolling */
-    .hero,
-    .services,
-    .booking,
-    .contact,
-    .footer {
-        -webkit-transform: translate3d(0, 0, 0);
-        transform: translate3d(0, 0, 0);
-        -webkit-backface-visibility: hidden;
-        backface-visibility: hidden;
-        -webkit-perspective: 1000;
-        perspective: 1000;
+    .cookie-btn {
+        width: 100%;
+        padding: 0.8rem;
     }
 }
 
-/* iPhone Specific Adjustments */
+/* iPhone Specific Optimizations */
 @media screen and (max-width: 390px) {
     .hero h1 {
-        font-size: 2rem;
+        font-size: 1.8rem;
     }
 
     .hero-subtitle {
         font-size: 1.6rem;
+    }
+
+    .premium, .chauffeur {
+        font-size: 1.2rem;
     }
 
     .service-card {
@@ -1897,43 +1839,33 @@ html {
     }
 }
 
-/* Samsung Galaxy Fold and Similar */
-@media screen and (max-width: 280px) {
-    .hero h1 {
-        font-size: 1.8rem;
-    }
-
-    .hero-subtitle {
-        font-size: 1.4rem;
-    }
-
-    .nav-links a {
-        font-size: 1rem;
-    }
-}
-
-/* Landscape Mode */
-@media screen and (max-height: 480px) and (orientation: landscape) {
-    .hero {
-        background-attachment: scroll;
-        min-height: 100vh;
-    }
-
-    .hero-content {
-        padding: 6rem 1rem 2rem;
+/* iPhone Notch/Dynamic Island Support */
+@supports (padding-top: env(safe-area-inset-top)) {
+    header {
+        padding-top: env(safe-area-inset-top);
     }
 
     .nav-links {
-        overflow-y: auto;
-        max-height: calc(100vh - 70px);
+        padding-top: env(safe-area-inset-top);
+    }
+
+    .cookie-banner {
+        padding-bottom: env(safe-area-inset-bottom);
     }
 }
 
-/* High-DPI Screens (iPhone Retina, Samsung AMOLED) */
-@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
-    .hero {
-        background: linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.85)),
-                    url('https://images.unsplash.com/photo-1617469767053-d3b523a0b982?auto=format&fit=crop&w=2160&q=80') center/cover no-repeat;
+/* Samsung Galaxy Fold and Similar */
+@media screen and (max-width: 280px) {
+    .hero h1 {
+        font-size: 1.5rem;
+    }
+
+    .hero-subtitle {
+        font-size: 1.3rem;
+    }
+
+    .premium, .chauffeur {
+        font-size: 1.1rem;
     }
 }
 
@@ -1943,167 +1875,71 @@ body {
     -webkit-overflow-scrolling: touch;
 }
 
-/* Smooth Scrolling for iOS */
-@supports (-webkit-overflow-scrolling: touch) {
-    body {
-        -webkit-overflow-scrolling: touch;
-    }
-}
-
-/* Fix for iOS Form Elements */
-input,
-textarea,
-select {
-    -webkit-appearance: none;
-    border-radius: 8px;
-    background-clip: padding-box;
-}
-
-/* Fix for iOS Momentum Scrolling */
-.nav-links,
-.popup-content,
-.booking-form,
-.contact-form {
-    -webkit-overflow-scrolling: touch;
-}
-
-/* Better Form Handling on Mobile */
-input[type="date"],
-input[type="datetime-local"] {
-    min-height: 44px;
-    line-height: 44px;
-}
-
-/* Mobile Zoom Settings */
+/* Fix for Mobile Input Zoom */
 @media screen and (max-width: 768px) {
-    html {
-        -ms-text-size-adjust: 85%;
-        -webkit-text-size-adjust: 85%;
-        zoom: 0.85;
-        -moz-transform: scale(0.85);
-        -moz-transform-origin: 0 0;
-    }
-
-    body {
-        width: 117.647058824%; /* 100/0.85 to compensate for zoom */
-        transform-origin: 0 0;
-        margin: 0;
-        padding: 0;
-        min-height: 117.647058824vh;
-    }
-
-    /* Adjust container widths to account for zoom */
-    .container,
-    .hero-content,
-    .services-grid,
-    .booking-container,
-    .contact-container,
-    .footer-content {
-        max-width: calc(100% / 0.85);
-    }
-
-    /* Adjust fixed position elements */
-    .whatsapp-button,
-    .scroll-to-top,
-    .cookie-banner,
-    header {
-        transform: scale(0.85);
-        transform-origin: bottom right;
-    }
-
-    /* Ensure text remains crisp */
-    * {
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    input[type="datetime-local"],
+    select,
+    textarea {
+        font-size: 16px !important;
     }
 }
 
-/* Additional adjustments for very small screens */
-@media screen and (max-width: 380px) {
-    html {
-        -ms-text-size-adjust: 80%;
-        -webkit-text-size-adjust: 80%;
-        zoom: 0.8;
-        -moz-transform: scale(0.8);
+/* Fix for Mobile Hover States */
+@media (hover: none) {
+    .service-card:hover {
+        transform: none;
     }
 
-    body {
-        width: 125%; /* 100/0.8 */
-        min-height: 125vh;
-    }
-}
-
-/* Ensure proper scaling in landscape mode */
-@media screen and (max-height: 480px) and (orientation: landscape) {
-    html {
-        -ms-text-size-adjust: 85%;
-        -webkit-text-size-adjust: 85%;
+    .service-details {
+        opacity: 1;
+        transform: none;
+        position: relative;
+        background: none;
+        padding: 1rem 0 0;
     }
 
-    body {
-        min-height: 117.647058824vh;
+    .cta-button:active,
+    .secondary-button:active,
+    .submit-button:active {
+        transform: scale(0.98);
     }
 }
 
-/* Mobile Background Image Fixes */
+/* Improved Touch Targets */
 @media screen and (max-width: 768px) {
-    .hero {
-        background-attachment: scroll;
-        background: linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.85)),
-                    url('https://images.unsplash.com/photo-1617469767053-d3b523a0b982?auto=format&fit=crop&w=1080&q=80') center/cover no-repeat;
-        height: 100vh;
+    .nav-links a,
+    .social-links a,
+    .footer-section a {
+        padding: 0.8rem;
+        display: inline-block;
     }
 
-    /* Force hardware acceleration for smoother scrolling */
-    .hero,
-    .services,
-    .booking,
-    .contact,
-    .footer {
-        -webkit-transform: translate3d(0, 0, 0);
-        transform: translate3d(0, 0, 0);
-        -webkit-backface-visibility: hidden;
-        backface-visibility: hidden;
-        -webkit-perspective: 1000;
-        perspective: 1000;
+    .close-popup {
+        padding: 1rem;
+    }
+
+    .hamburger {
+        padding: 1rem;
     }
 }
 
-/* iOS Specific Background Fix */
-@supports (-webkit-touch-callout: none) {
-    .hero {
-        background-attachment: scroll;
-        /* Provide a smaller, optimized image for iOS devices */
-        background: linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.85)),
-                    url('https://images.unsplash.com/photo-1617469767053-d3b523a0b982?auto=format&fit=crop&w=1080&q=80') center/cover no-repeat;
-    }
-}
-
-/* Landscape Mode Background Fix */
+/* Landscape Mode Optimization */
 @media screen and (max-height: 480px) and (orientation: landscape) {
     .hero {
-        background-attachment: scroll;
+        height: auto;
         min-height: 100vh;
+        padding: 6rem 1rem;
     }
-}
 
-/* Service Cards Background Fix */
-.service-card {
-    background-color: rgba(255, 255, 255, 0.05);
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-}
+    .nav-links {
+        max-height: 85vh;
+        overflow-y: auto;
+    }
 
-/* Fleet Images Fix */
-.fleet-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
-    -webkit-transform: translateZ(0);
-    transform: translateZ(0);
+    .popup-content {
+        max-height: 80vh;
+    }
 } 
