@@ -202,7 +202,15 @@ nav {
     align-items: center;
     justify-content: center;
     background: linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.85)),
-                url('https://images.unsplash.com/photo-1617469767053-d3b523a0b982?auto=format&fit=crop&w=2000&q=80') center/cover no-repeat;
+                url('https://images.unsplash.com/photo-1617469767053-d3b523a0b982?auto=format&fit=crop&w=2000&q=80') center/cover no-repeat fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    background-position: center center;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    will-change: transform;
 }
 
 .hero-video {
@@ -354,6 +362,12 @@ nav {
     flex-direction: column;
     align-items: center;
     height: 100%;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
 }
 
 .service-card:hover {
@@ -749,6 +763,9 @@ footer {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    object-position: center;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
     transition: transform 0.3s ease;
 }
 
@@ -1708,6 +1725,9 @@ html {
     .hero {
         height: 100vh;
         padding-top: 70px;
+        background-attachment: scroll;
+        background: linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.85)),
+                    url('https://images.unsplash.com/photo-1617469767053-d3b523a0b982?auto=format&fit=crop&w=1080&q=80') center/cover no-repeat;
     }
 
     .hero-content {
@@ -1846,6 +1866,20 @@ html {
         -ms-hyphens: auto;
         hyphens: auto;
     }
+
+    /* Force hardware acceleration for smoother scrolling */
+    .hero,
+    .services,
+    .booking,
+    .contact,
+    .footer {
+        -webkit-transform: translate3d(0, 0, 0);
+        transform: translate3d(0, 0, 0);
+        -webkit-backface-visibility: hidden;
+        backface-visibility: hidden;
+        -webkit-perspective: 1000;
+        perspective: 1000;
+    }
 }
 
 /* iPhone Specific Adjustments */
@@ -1881,7 +1915,7 @@ html {
 /* Landscape Mode */
 @media screen and (max-height: 480px) and (orientation: landscape) {
     .hero {
-        height: auto;
+        background-attachment: scroll;
         min-height: 100vh;
     }
 
@@ -1898,7 +1932,8 @@ html {
 /* High-DPI Screens (iPhone Retina, Samsung AMOLED) */
 @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
     .hero {
-        background-image: url('https://images.unsplash.com/photo-1617469767053-d3b523a0b982?auto=format&fit=crop&w=2000&q=80');
+        background: linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.85)),
+                    url('https://images.unsplash.com/photo-1617469767053-d3b523a0b982?auto=format&fit=crop&w=2160&q=80') center/cover no-repeat;
     }
 }
 
@@ -2008,4 +2043,67 @@ input[type="datetime-local"] {
     body {
         min-height: 117.647058824vh;
     }
+}
+
+/* Mobile Background Image Fixes */
+@media screen and (max-width: 768px) {
+    .hero {
+        background-attachment: scroll;
+        background: linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.85)),
+                    url('https://images.unsplash.com/photo-1617469767053-d3b523a0b982?auto=format&fit=crop&w=1080&q=80') center/cover no-repeat;
+        height: 100vh;
+    }
+
+    /* Force hardware acceleration for smoother scrolling */
+    .hero,
+    .services,
+    .booking,
+    .contact,
+    .footer {
+        -webkit-transform: translate3d(0, 0, 0);
+        transform: translate3d(0, 0, 0);
+        -webkit-backface-visibility: hidden;
+        backface-visibility: hidden;
+        -webkit-perspective: 1000;
+        perspective: 1000;
+    }
+}
+
+/* iOS Specific Background Fix */
+@supports (-webkit-touch-callout: none) {
+    .hero {
+        background-attachment: scroll;
+        /* Provide a smaller, optimized image for iOS devices */
+        background: linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.85)),
+                    url('https://images.unsplash.com/photo-1617469767053-d3b523a0b982?auto=format&fit=crop&w=1080&q=80') center/cover no-repeat;
+    }
+}
+
+/* Landscape Mode Background Fix */
+@media screen and (max-height: 480px) and (orientation: landscape) {
+    .hero {
+        background-attachment: scroll;
+        min-height: 100vh;
+    }
+}
+
+/* Service Cards Background Fix */
+.service-card {
+    background-color: rgba(255, 255, 255, 0.05);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+}
+
+/* Fleet Images Fix */
+.fleet-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
 } 
