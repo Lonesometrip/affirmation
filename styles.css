@@ -1937,4 +1937,75 @@ input[type="date"],
 input[type="datetime-local"] {
     min-height: 44px;
     line-height: 44px;
+}
+
+/* Mobile Zoom Settings */
+@media screen and (max-width: 768px) {
+    html {
+        -ms-text-size-adjust: 85%;
+        -webkit-text-size-adjust: 85%;
+        zoom: 0.85;
+        -moz-transform: scale(0.85);
+        -moz-transform-origin: 0 0;
+    }
+
+    body {
+        width: 117.647058824%; /* 100/0.85 to compensate for zoom */
+        transform-origin: 0 0;
+        margin: 0;
+        padding: 0;
+        min-height: 117.647058824vh;
+    }
+
+    /* Adjust container widths to account for zoom */
+    .container,
+    .hero-content,
+    .services-grid,
+    .booking-container,
+    .contact-container,
+    .footer-content {
+        max-width: calc(100% / 0.85);
+    }
+
+    /* Adjust fixed position elements */
+    .whatsapp-button,
+    .scroll-to-top,
+    .cookie-banner,
+    header {
+        transform: scale(0.85);
+        transform-origin: bottom right;
+    }
+
+    /* Ensure text remains crisp */
+    * {
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+}
+
+/* Additional adjustments for very small screens */
+@media screen and (max-width: 380px) {
+    html {
+        -ms-text-size-adjust: 80%;
+        -webkit-text-size-adjust: 80%;
+        zoom: 0.8;
+        -moz-transform: scale(0.8);
+    }
+
+    body {
+        width: 125%; /* 100/0.8 */
+        min-height: 125vh;
+    }
+}
+
+/* Ensure proper scaling in landscape mode */
+@media screen and (max-height: 480px) and (orientation: landscape) {
+    html {
+        -ms-text-size-adjust: 85%;
+        -webkit-text-size-adjust: 85%;
+    }
+
+    body {
+        min-height: 117.647058824vh;
+    }
 } 
