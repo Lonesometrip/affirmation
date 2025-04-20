@@ -50,11 +50,11 @@
                     <i class="fab fa-instagram"></i>
                 </a>
             </div>
-            <div class="hamburger">
+            <button class="menu-toggle" aria-label="Menu">
                 <span></span>
                 <span></span>
                 <span></span>
-            </div>
+            </button>
         </nav>
     </header>
 
@@ -531,11 +531,30 @@
         <i class="fas fa-chevron-up"></i>
     </button>
 
-    <!-- WhatsApp Quick Contact -->
-    <a href="https://wa.me/49305550198" class="whatsapp-button" target="_blank" rel="noopener" aria-label="Contact via WhatsApp">
-        <i class="fab fa-whatsapp"></i>
-        <span class="whatsapp-tooltip">Jetzt per WhatsApp kontaktieren</span>
-    </a>
+    <!-- Contact Popup -->
+    <div class="contact-popup">
+        <button class="contact-popup-btn" aria-label="Kontakt öffnen">
+            <i class="fas fa-comments"></i>
+        </button>
+        <div class="contact-popup-content">
+            <div class="contact-popup-header">
+                <button class="close-contact-popup" aria-label="Kontakt schließen">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="contact-popup-links">
+                <a href="https://wa.me/49305550198" target="_blank" rel="noopener">
+                    <i class="fab fa-whatsapp"></i>
+                </a>
+                <a href="mailto:info@premium-chauffeur.de">
+                    <i class="fas fa-envelope"></i>
+                </a>
+                <a href="https://www.instagram.com/premium_chauffeur" target="_blank" rel="noopener">
+                    <i class="fab fa-instagram"></i>
+                </a>
+            </div>
+        </div>
+    </div>
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
@@ -578,19 +597,19 @@
             if (contactForm) contactForm.addEventListener('submit', handleSubmit);
 
             // Mobile Menu Toggle
-            const hamburger = document.querySelector('.hamburger');
+            const menuToggle = document.querySelector('.menu-toggle');
             const navLinks = document.querySelector('.nav-links');
             
-            hamburger.addEventListener('click', () => {
-                hamburger.classList.toggle('active');
+            menuToggle.addEventListener('click', () => {
+                menuToggle.classList.toggle('active');
                 navLinks.classList.toggle('active');
                 document.body.classList.toggle('menu-open');
             });
 
             // Close mobile menu when clicking outside
             document.addEventListener('click', (e) => {
-                if (!hamburger.contains(e.target) && !navLinks.contains(e.target) && navLinks.classList.contains('active')) {
-                    hamburger.classList.remove('active');
+                if (!menuToggle.contains(e.target) && !navLinks.contains(e.target) && navLinks.classList.contains('active')) {
+                    menuToggle.classList.remove('active');
                     navLinks.classList.remove('active');
                     document.body.classList.remove('menu-open');
                 }
@@ -599,7 +618,7 @@
             // Close mobile menu when clicking on a link
             navLinks.querySelectorAll('a').forEach(link => {
                 link.addEventListener('click', () => {
-                    hamburger.classList.remove('active');
+                    menuToggle.classList.remove('active');
                     navLinks.classList.remove('active');
                     document.body.classList.remove('menu-open');
                 });
@@ -618,7 +637,25 @@
                 }, 500);
             });
 
-            // ... existing code ...
+            // Scroll to Top functionality
+            const scrollToTopBtn = document.getElementById('scrollToTop');
+            
+            window.addEventListener('scroll', () => {
+                if (window.pageYOffset > 300) {
+                    scrollToTopBtn.classList.add('visible');
+                } else {
+                    scrollToTopBtn.classList.remove('visible');
+                }
+            });
+            
+            scrollToTopBtn.addEventListener('click', () => {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+
+            // ... rest of your existing JavaScript code ...
         });
 
         const translations = {
@@ -925,22 +962,24 @@
             }
         });
 
-        // Scroll to Top functionality
-        const scrollToTopBtn = document.getElementById('scrollToTop');
-        
-        window.addEventListener('scroll', () => {
-            if (window.pageYOffset > 300) {
-                scrollToTopBtn.classList.add('visible');
-            } else {
-                scrollToTopBtn.classList.remove('visible');
-            }
+        // Contact Popup Functionality
+        const contactPopup = document.querySelector('.contact-popup');
+        const contactPopupBtn = document.querySelector('.contact-popup-btn');
+        const closeContactPopup = document.querySelector('.close-contact-popup');
+
+        contactPopupBtn.addEventListener('click', () => {
+            contactPopup.classList.add('active');
         });
-        
-        scrollToTopBtn.addEventListener('click', () => {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
+
+        closeContactPopup.addEventListener('click', () => {
+            contactPopup.classList.remove('active');
+        });
+
+        // Close popup when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!contactPopup.contains(e.target) && !contactPopupBtn.contains(e.target)) {
+                contactPopup.classList.remove('active');
+            }
         });
     </script>
 </body>

@@ -206,15 +206,16 @@ nav {
 }
 
 .header-contact {
-    display: flex;
-    align-items: center;
-    gap: 1.5rem;
+    display: none;
 }
 
 .header-contact a {
     color: var(--gold);
     font-size: 1.2rem;
     transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
 }
 
 .header-contact a:hover {
@@ -231,6 +232,7 @@ nav {
     border: 1px solid var(--gold);
     border-radius: 50%;
     transition: all 0.3s ease;
+    font-size: 1.2rem;
 }
 
 .header-contact a:hover i {
@@ -241,6 +243,7 @@ nav {
 .header-contact span {
     display: none;
     color: var(--light);
+    font-size: 0.9rem;
 }
 
 @media (min-width: 1200px) {
@@ -1256,79 +1259,8 @@ footer {
     border: 0;
 }
 
-/* WhatsApp Quick Contact */
-.whatsapp-button {
-    position: fixed;
-    bottom: 2rem;
-    right: 2rem;
-    background: #25D366;
-    color: white;
-    width: 45px;
-    height: 45px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.5rem;
-    text-decoration: none;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-    transition: all 0.3s ease;
-    z-index: 999;
-}
-
-.whatsapp-button:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
-}
-
-.whatsapp-tooltip {
-    position: absolute;
-    left: 100%;
-    top: 50%;
-    transform: translateY(-50%);
-    background: rgba(0, 0, 0, 0.8);
-    color: white;
-    padding: 0.5rem 1rem;
-    border-radius: 4px;
-    font-size: 0.9rem;
-    white-space: nowrap;
-    margin-left: 10px;
-    opacity: 0;
-    visibility: hidden;
-    transition: all 0.3s ease;
-}
-
-.whatsapp-button:hover .whatsapp-tooltip {
-    opacity: 1;
-    visibility: visible;
-}
-
+/* Mobile Responsive Styles */
 @media (max-width: 768px) {
-    .whatsapp-button {
-        bottom: 1.5rem;
-        right: 1.5rem;
-    }
-
-    .whatsapp-tooltip {
-        display: none;
-    }
-}
-
-/* RTL Support */
-[dir="rtl"] .whatsapp-button {
-    right: auto;
-    left: 2rem;
-}
-
-[dir="rtl"] .whatsapp-tooltip {
-    right: auto;
-    left: 100%;
-    margin-right: 0;
-    margin-left: 10px;
-}
-
-/* Mobile Optimizations */
-@media screen and (max-width: 768px) {
     /* Header & Navigation */
     header {
         padding: 0.5rem 0;
@@ -1878,4 +1810,436 @@ body {
     height: 1px;
     background: linear-gradient(90deg, transparent, var(--gold), transparent);
     margin: 2rem 0;
+}
+
+/* Contact Popup Styles */
+.contact-popup {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    z-index: 999;
+}
+
+.contact-popup-btn {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: var(--gold);
+    color: var(--dark);
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.contact-popup-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+}
+
+.contact-popup-content {
+    position: absolute;
+    bottom: 80px;
+    right: 0;
+    background: var(--dark);
+    border: 1px solid var(--gold);
+    border-radius: 12px;
+    padding: 0.8rem;
+    width: 88px;
+    display: none;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+    -webkit-tap-highlight-color: transparent;
+}
+
+.contact-popup.active .contact-popup-content {
+    display: block;
+    animation: slideUp 0.3s ease-out;
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.contact-popup-header {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 0.8rem;
+}
+
+.close-contact-popup {
+    background: none;
+    border: none;
+    color: var(--gold);
+    cursor: pointer;
+    font-size: 1.2rem;
+    padding: 0.5rem;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.contact-popup-links {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+.contact-popup-links a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--light);
+    text-decoration: none;
+    padding: 0.8rem;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+    background: rgba(196, 164, 77, 0.1);
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+}
+
+.contact-popup-links a:active {
+    transform: scale(0.95);
+}
+
+.contact-popup-links a:hover {
+    background: rgba(196, 164, 77, 0.2);
+    transform: translateX(5px);
+}
+
+.contact-popup-links i {
+    font-size: 1.8rem;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+.contact-popup-links a:nth-child(1) i {
+    background: #25D366;
+    color: white;
+}
+
+.contact-popup-links a:nth-child(2) i {
+    background: #D44638;
+    color: white;
+}
+
+.contact-popup-links a:nth-child(3) i {
+    background: #E1306C;
+    color: white;
+}
+
+.contact-popup-links span {
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+/* RTL Support for Contact Popup */
+[dir="rtl"] .contact-popup {
+    right: auto;
+    left: 2rem;
+}
+
+[dir="rtl"] .contact-popup-content {
+    right: auto;
+    left: 0;
+}
+
+[dir="rtl"] .contact-popup-links a:hover {
+    transform: translateX(-5px);
+}
+
+/* Mobile Responsive Styles */
+@media (max-width: 768px) {
+    .contact-popup {
+        bottom: 1.5rem;
+        right: 1.5rem;
+    }
+
+    .contact-popup-btn {
+        width: 56px;
+        height: 56px;
+        font-size: 1.4rem;
+    }
+
+    .contact-popup-content {
+        bottom: 70px;
+        width: 84px;
+        padding: 0.7rem;
+    }
+
+    .contact-popup-links {
+        gap: 0.7rem;
+    }
+
+    .contact-popup-links a {
+        padding: 0.7rem;
+    }
+
+    .contact-popup-links i {
+        font-size: 1.7rem;
+        width: 38px;
+        height: 38px;
+    }
+}
+
+/* iPhone Notch/Dynamic Island Support */
+@supports (padding-bottom: env(safe-area-inset-bottom)) {
+    .contact-popup {
+        bottom: calc(1.5rem + env(safe-area-inset-bottom));
+    }
+}
+
+/* Prevent Pull-to-Refresh on Mobile */
+.contact-popup-btn,
+.contact-popup-content {
+    touch-action: manipulation;
+}
+
+/* Improved Touch Targets */
+@media (hover: none) {
+    .contact-popup-links a:hover {
+        transform: none;
+    }
+    
+    .contact-popup-links a:active {
+        transform: scale(0.95);
+        background: rgba(196, 164, 77, 0.2);
+    }
+}
+
+/* Menu Toggle Button */
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+    -webkit-tap-highlight-color: transparent;
+    z-index: 1001;
+    position: relative;
+    width: 40px;
+    height: 40px;
+    margin-left: 1rem;
+}
+
+.menu-toggle span {
+    display: block;
+    width: 25px;
+    height: 2px;
+    background-color: var(--gold);
+    margin: 5px 0;
+    transition: all 0.3s ease;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.menu-toggle span:nth-child(1) {
+    top: 10px;
+}
+
+.menu-toggle span:nth-child(2) {
+    top: 19px;
+}
+
+.menu-toggle span:nth-child(3) {
+    top: 28px;
+}
+
+.menu-toggle.active span:nth-child(1) {
+    transform: translateX(-50%) translateY(9px) rotate(45deg);
+}
+
+.menu-toggle.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.menu-toggle.active span:nth-child(3) {
+    transform: translateX(-50%) translateY(-9px) rotate(-45deg);
+}
+
+/* Mobile Responsive Styles */
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: block;
+        order: 3;
+    }
+
+    .nav-links {
+        position: fixed;
+        top: 80px;
+        left: -100%;
+        width: 100%;
+        height: calc(100vh - 80px);
+        background: var(--dark);
+        flex-direction: column;
+        align-items: center;
+        padding: 2rem;
+        transition: all 0.3s ease;
+        z-index: 1000;
+        overflow-y: auto;
+    }
+
+    .nav-links.active {
+        left: 0;
+    }
+
+    .nav-links li {
+        margin: 1rem 0;
+        width: 100%;
+        text-align: center;
+    }
+
+    .nav-links a {
+        display: block;
+        padding: 1rem;
+        font-size: 1.2rem;
+    }
+
+    .language-selector {
+        margin-top: 1rem;
+    }
+
+    .lang-dropdown {
+        position: static;
+        display: none;
+        width: 100%;
+        margin-top: 0.5rem;
+    }
+
+    .language-selector:hover .lang-dropdown,
+    .language-selector:focus-within .lang-dropdown {
+        display: block;
+    }
+}
+
+/* iPhone Notch/Dynamic Island Support */
+@supports (padding-top: env(safe-area-inset-top)) {
+    .nav-links {
+        padding-top: calc(2rem + env(safe-area-inset-top));
+    }
+}
+
+/* Prevent Pull-to-Refresh on Mobile */
+.menu-toggle {
+    touch-action: manipulation;
+}
+
+/* Improved Touch Targets */
+@media (hover: none) {
+    .menu-toggle:active {
+        transform: scale(0.95);
+    }
+}
+
+/* Scroll to Top Button */
+.scroll-to-top {
+    position: fixed;
+    bottom: 2rem;
+    left: 2rem;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: var(--gold);
+    color: var(--dark);
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+    z-index: 999;
+    -webkit-tap-highlight-color: transparent;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px);
+}
+
+.scroll-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.scroll-to-top:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+}
+
+/* Mobile Responsive Styles */
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: block;
+    }
+
+    .nav-links {
+        position: fixed;
+        top: 80px;
+        left: -100%;
+        width: 100%;
+        height: calc(100vh - 80px);
+        background: var(--dark);
+        flex-direction: column;
+        align-items: center;
+        padding: 2rem;
+        transition: all 0.3s ease;
+        z-index: 1000;
+    }
+
+    .nav-links.active {
+        left: 0;
+    }
+
+    .nav-links li {
+        margin: 1rem 0;
+    }
+
+    .scroll-to-top {
+        bottom: 1.5rem;
+        left: 1.5rem;
+        width: 56px;
+        height: 56px;
+        font-size: 1.4rem;
+    }
+}
+
+/* iPhone Notch/Dynamic Island Support */
+@supports (padding-bottom: env(safe-area-inset-bottom)) {
+    .scroll-to-top {
+        bottom: calc(1.5rem + env(safe-area-inset-bottom));
+    }
+}
+
+/* Prevent Pull-to-Refresh on Mobile */
+.menu-toggle,
+.scroll-to-top {
+    touch-action: manipulation;
+}
+
+/* Improved Touch Targets */
+@media (hover: none) {
+    .scroll-to-top:hover {
+        transform: none;
+    }
+    
+    .scroll-to-top:active {
+        transform: scale(0.95);
+    }
 } 
