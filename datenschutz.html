@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Datenschutz - Premium Chauffeur Service</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <a href="index.html">
+                    <span class="premium">Premium</span> 
+                    <span class="chauffeur">Chauffeur</span>
+                </a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html#services" data-lang="nav-services">Dienstleistungen</a></li>
+                <li><a href="index.html#fleet" data-lang="nav-fleet">Fahrzeugflotte</a></li>
+                <li><a href="index.html#booking" data-lang="nav-booking">Buchung</a></li>
+                <li><a href="index.html#contact" data-lang="nav-contact">Kontakt</a></li>
+                <li class="language-selector">
+                    <button class="lang-btn">
+                        <i class="fas fa-globe"></i>
+                        <span>DE</span>
+                    </button>
+                    <div class="lang-dropdown">
+                        <a href="#" data-lang="de">Deutsch</a>
+                        <a href="#" data-lang="en">English</a>
+                        <a href="#" data-lang="ar">العربية</a>
+                    </div>
+                </li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <section class="privacy-section">
+        <div class="privacy-container">
+            <h1 data-lang="privacy-title">Datenschutzerklärung</h1>
+            
+            <div class="privacy-content">
+                <h2 data-lang="privacy-intro">1. Einleitung</h2>
+                <p data-lang="privacy-intro-text">Wir nehmen den Schutz Ihrer persönlichen Daten sehr ernst. Diese Datenschutzerklärung informiert Sie über die Verarbeitung Ihrer personenbezogenen Daten bei der Nutzung unserer Website.</p>
+
+                <h2 data-lang="privacy-data">2. Verantwortlicher</h2>
+                <p data-lang="privacy-data-text">Premium Chauffeur Service<br>
+                Luxusstraße 123<br>
+                10115 Berlin<br>
+                Deutschland<br>
+                E-Mail: kontakt@premium-chauffeur.de</p>
+
+                <h2 data-lang="privacy-cookies">3. Cookies</h2>
+                <p data-lang="privacy-cookies-text">Unsere Website verwendet Cookies, um Ihnen ein optimales Nutzererlebnis zu bieten. Sie können Ihre Cookie-Einstellungen jederzeit anpassen.</p>
+
+                <h2 data-lang="privacy-form">4. Kontaktformular</h2>
+                <p data-lang="privacy-form-text">Die über das Kontaktformular übermittelten Daten werden ausschließlich zur Bearbeitung Ihrer Anfrage verwendet und nicht an Dritte weitergegeben.</p>
+
+                <h2 data-lang="privacy-rights">5. Ihre Rechte</h2>
+                <p data-lang="privacy-rights-text">Sie haben das Recht auf Auskunft, Berichtigung, Löschung, Einschränkung der Verarbeitung, Datenübertragbarkeit und Widerspruch gegen die Verarbeitung Ihrer personenbezogenen Daten.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Premium Chauffeur</h3>
+                <p>Ihr exklusiver Partner für erstklassige Transportlösungen</p>
+            </div>
+            <div class="footer-section">
+                <h3 data-lang="footer-quick">Schnellzugriff</h3>
+                <ul>
+                    <li><a href="index.html#services" data-lang="nav-services">Dienstleistungen</a></li>
+                    <li><a href="index.html#fleet" data-lang="nav-fleet">Fahrzeugflotte</a></li>
+                    <li><a href="index.html#booking" data-lang="nav-booking">Buchung</a></li>
+                    <li><a href="index.html#contact" data-lang="nav-contact">Kontakt</a></li>
+                    <li><a href="datenschutz.html" data-lang="privacy-link">Datenschutz</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3 data-lang="footer-follow">Folgen Sie uns</h3>
+                <div class="social-links">
+                    <a href="https://wa.me/49305550198" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                    <a href="mailto:kontakt@premium-chauffeur.de"><i class="fas fa-envelope"></i></a>
+                    <a href="https://instagram.com/premium.chauffeur.berlin" target="_blank"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p data-lang="footer-copyright">&copy; 2024 Premium Chauffeur. Alle Rechte vorbehalten.</p>
+        </div>
+    </footer>
+
+    <script>
+        const translations = {
+            de: {
+                "privacy-title": "Datenschutzerklärung",
+                "privacy-intro": "1. Einleitung",
+                "privacy-intro-text": "Wir nehmen den Schutz Ihrer persönlichen Daten sehr ernst. Diese Datenschutzerklärung informiert Sie über die Verarbeitung Ihrer personenbezogenen Daten bei der Nutzung unserer Website.",
+                "privacy-data": "2. Verantwortlicher",
+                "privacy-data-text": "Premium Chauffeur Service\nLuxusstraße 123\n10115 Berlin\nDeutschland\nE-Mail: kontakt@premium-chauffeur.de",
+                "privacy-cookies": "3. Cookies",
+                "privacy-cookies-text": "Unsere Website verwendet Cookies, um Ihnen ein optimales Nutzererlebnis zu bieten. Sie können Ihre Cookie-Einstellungen jederzeit anpassen.",
+                "privacy-form": "4. Kontaktformular",
+                "privacy-form-text": "Die über das Kontaktformular übermittelten Daten werden ausschließlich zur Bearbeitung Ihrer Anfrage verwendet und nicht an Dritte weitergegeben.",
+                "privacy-rights": "5. Ihre Rechte",
+                "privacy-rights-text": "Sie haben das Recht auf Auskunft, Berichtigung, Löschung, Einschränkung der Verarbeitung, Datenübertragbarkeit und Widerspruch gegen die Verarbeitung Ihrer personenbezogenen Daten.",
+                "privacy-link": "Datenschutz"
+            },
+            en: {
+                "privacy-title": "Privacy Policy",
+                "privacy-intro": "1. Introduction",
+                "privacy-intro-text": "We take the protection of your personal data very seriously. This privacy policy informs you about the processing of your personal data when using our website.",
+                "privacy-data": "2. Controller",
+                "privacy-data-text": "Premium Chauffeur Service\nLuxusstraße 123\n10115 Berlin\nGermany\nEmail: kontakt@premium-chauffeur.de",
+                "privacy-cookies": "3. Cookies",
+                "privacy-cookies-text": "Our website uses cookies to provide you with an optimal user experience. You can adjust your cookie settings at any time.",
+                "privacy-form": "4. Contact Form",
+                "privacy-form-text": "The data transmitted via the contact form is used exclusively for processing your request and is not passed on to third parties.",
+                "privacy-rights": "5. Your Rights",
+                "privacy-rights-text": "You have the right to information, correction, deletion, restriction of processing, data portability and objection to the processing of your personal data.",
+                "privacy-link": "Privacy Policy"
+            },
+            ar: {
+                "privacy-title": "سياسة الخصوصية",
+                "privacy-intro": "1. المقدمة",
+                "privacy-intro-text": "نحن نأخذ حماية بياناتك الشخصية على محمل الجد. هذه السياسة تخبرك عن معالجة بياناتك الشخصية عند استخدام موقعنا.",
+                "privacy-data": "2. المسؤول",
+                "privacy-data-text": "خدمة السائق الفاخرة\nشارع الرفاهية 123\n10115 برلين\nألمانيا\nالبريد الإلكتروني: kontakt@premium-chauffeur.de",
+                "privacy-cookies": "3. ملفات تعريف الارتباط",
+                "privacy-cookies-text": "يستخدم موقعنا ملفات تعريف الارتباط لتوفير تجربة مستخدم مثالية. يمكنك تعديل إعدادات ملفات تعريف الارتباط في أي وقت.",
+                "privacy-form": "4. نموذج الاتصال",
+                "privacy-form-text": "يتم استخدام البيانات المرسلة عبر نموذج الاتصال حصريًا لمعالجة طلبك ولا يتم تمريرها إلى أطراف ثالثة.",
+                "privacy-rights": "5. حقوقك",
+                "privacy-rights-text": "لديك الحق في الحصول على معلومات وتصحيح وحذف وتقييد المعالجة وحرية نقل البيانات والاعتراض على معالجة بياناتك الشخصية.",
+                "privacy-link": "سياسة الخصوصية"
+            }
+        };
+
+        function setLanguage(lang) {
+            document.documentElement.lang = lang;
+            document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+            
+            document.querySelectorAll('[data-lang]').forEach(element => {
+                const key = element.getAttribute('data-lang');
+                if (translations[lang][key]) {
+                    element.textContent = translations[lang][key];
+                }
+            });
+        }
+
+        document.querySelector('.lang-dropdown').addEventListener('click', (e) => {
+            if (e.target.tagName === 'A') {
+                e.preventDefault();
+                const lang = e.target.getAttribute('data-lang');
+                setLanguage(lang);
+                document.querySelector('.lang-btn span').textContent = lang.toUpperCase();
+            }
+        });
+    </script>
+</body>
+</html> 
