@@ -496,13 +496,36 @@
     <div class="cookie-banner" id="cookieBanner">
         <div class="cookie-content">
             <div class="cookie-text">
-                <p>Wir verwenden Cookies, um Ihnen das beste Erlebnis auf unserer Website zu bieten. Durch die Nutzung unserer Website stimmen Sie der Verwendung von Cookies zu.</p>
-                <p>We use cookies to provide you with the best experience on our website. By using our website, you agree to the use of cookies.</p>
-                <p>نحن نستخدم ملفات تعريف الارتباط لتزويدك بأفضل تجربة على موقعنا. باستخدام موقعنا ، فإنك توافق على استخدام ملفات تعريف الارتباط.</p>
+                <h3>Cookie-Einstellungen</h3>
+                <p>Wir verwenden Cookies, um Ihnen die bestmögliche Erfahrung auf unserer Website zu bieten. Hier können Sie Ihre Präferenzen verwalten.</p>
+            </div>
+            <div class="cookie-options">
+                <div class="cookie-option">
+                    <input type="checkbox" id="essentialCookies" checked disabled>
+                    <label for="essentialCookies">
+                        <strong>Essenziell</strong>
+                        <span>Diese Cookies sind für die Grundfunktionen der Website erforderlich.</span>
+                    </label>
+                </div>
+                <div class="cookie-option">
+                    <input type="checkbox" id="analyticsCookies">
+                    <label for="analyticsCookies">
+                        <strong>Analyse</strong>
+                        <span>Diese Cookies helfen uns, die Nutzung der Website zu verstehen und zu verbessern.</span>
+                    </label>
+                </div>
+                <div class="cookie-option">
+                    <input type="checkbox" id="marketingCookies">
+                    <label for="marketingCookies">
+                        <strong>Marketing</strong>
+                        <span>Diese Cookies werden verwendet, um Werbung relevanter für Sie zu machen.</span>
+                    </label>
+                </div>
             </div>
             <div class="cookie-buttons">
-                <button class="cookie-btn accept-btn" onclick="acceptCookies()">Akzeptieren / Accept / قبول</button>
-                <button class="cookie-btn decline-btn" onclick="declineCookies()">Ablehnen / Decline / رفض</button>
+                <button class="cookie-btn accept-all-btn" onclick="acceptAllCookies()">Alle akzeptieren</button>
+                <button class="cookie-btn save-btn" onclick="saveCookiePreferences()">Auswahl speichern</button>
+                <button class="cookie-btn reject-all-btn" onclick="rejectAllCookies()">Alle ablehnen</button>
             </div>
         </div>
     </div>
@@ -526,10 +549,15 @@
         </div>
     </div>
 
-    <!-- Scroll to Top Button -->
-    <button id="scrollToTop" class="scroll-to-top" aria-label="Scroll to top">
-        <i class="fas fa-chevron-up"></i>
-    </button>
+    <!-- Scroll to Top and Cookie Settings Buttons -->
+    <div class="fixed-buttons">
+        <button id="scrollToTop" class="scroll-to-top" aria-label="Scroll to top">
+            <i class="fas fa-chevron-up"></i>
+        </button>
+        <button id="cookieSettings" class="cookie-settings-btn" aria-label="Cookie Einstellungen" onclick="showCookieSettings()">
+            <i class="fas fa-cookie-bite"></i>
+        </button>
+    </div>
 
     <!-- Contact Popup -->
     <div class="contact-popup">
@@ -815,24 +843,71 @@
         });
 
         // Cookie Consent Functions
+        function setCookie(name, value, days) {
+            const expires = new Date();
+            expires.setTime(expires.getTime() + (days * 24 * 60 * 60 * 1000));
+            document.cookie = name + '=' + value + ';expires=' + expires.toUTCString() + ';path=/';
+        }
+
+        function getCookie(name) {
+            const nameEQ = name + "=";
+            const ca = document.cookie.split(';');
+            for(let i = 0; i < ca.length; i++) {
+                let c = ca[i];
+                while (c.charAt(0) === ' ') c = c.substring(1, c.length);
+                if (c.indexOf(nameEQ) === 0) return c.substring(nameEQ.length, c.length);
+            }
+            return null;
+        }
+
         function checkCookieConsent() {
-            if (!localStorage.getItem('cookieConsent')) {
+            if (!getCookie('cookieConsent')) {
                 document.getElementById('cookieBanner').classList.add('active');
             }
         }
 
-        function acceptCookies() {
-            localStorage.setItem('cookieConsent', 'accepted');
+        function acceptAllCookies() {
+            setCookie('cookieConsent', 'all', 365);
+            setCookie('analyticsCookies', 'true', 365);
+            setCookie('marketingCookies', 'true', 365);
             document.getElementById('cookieBanner').classList.remove('active');
         }
 
-        function declineCookies() {
-            localStorage.setItem('cookieConsent', 'declined');
+        function rejectAllCookies() {
+            setCookie('cookieConsent', 'essential', 365);
+            setCookie('analyticsCookies', 'false', 365);
+            setCookie('marketingCookies', 'false', 365);
             document.getElementById('cookieBanner').classList.remove('active');
+        }
+
+        function saveCookiePreferences() {
+            const analytics = document.getElementById('analyticsCookies').checked;
+            const marketing = document.getElementById('marketingCookies').checked;
+            
+            setCookie('cookieConsent', 'custom', 365);
+            setCookie('analyticsCookies', analytics.toString(), 365);
+            setCookie('marketingCookies', marketing.toString(), 365);
+            document.getElementById('cookieBanner').classList.remove('active');
+        }
+
+        // Load saved preferences
+        function loadSavedPreferences() {
+            const analyticsCookie = getCookie('analyticsCookies');
+            const marketingCookie = getCookie('marketingCookies');
+            
+            if (analyticsCookie) {
+                document.getElementById('analyticsCookies').checked = analyticsCookie === 'true';
+            }
+            if (marketingCookie) {
+                document.getElementById('marketingCookies').checked = marketingCookie === 'true';
+            }
         }
 
         // Check cookie consent on page load
-        document.addEventListener('DOMContentLoaded', checkCookieConsent);
+        document.addEventListener('DOMContentLoaded', () => {
+            checkCookieConsent();
+            loadSavedPreferences();
+        });
 
         // Service Details Popup Functions
         const serviceDetails = {
@@ -981,6 +1056,12 @@
                 contactPopup.classList.remove('active');
             }
         });
+
+        // Add this to your existing JavaScript
+        function showCookieSettings() {
+            document.getElementById('cookieBanner').classList.add('active');
+            loadSavedPreferences();
+        }
     </script>
 </body>
 </html> 
