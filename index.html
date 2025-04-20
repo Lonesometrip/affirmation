@@ -252,6 +252,42 @@
                     </div>
                 </div>
             </div>
+
+            <div class="fleet-card">
+                <div class="fleet-image">
+                    <img src="https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?auto=format&fit=crop&w=800&q=80" alt="Mercedes-Benz G63 AMG">
+                    <h3>Mercedes-Benz G63 AMG</h3>
+                </div>
+                <p>Der Mercedes-Benz G63 AMG vereint Luxus mit beeindruckender Leistung. Diese Ikone bietet höchsten Komfort und modernste Technologie in einem einzigartigen Design.</p>
+                <div class="fleet-specs">
+                    <div class="spec-item">
+                        <span class="spec-label">Sitze</span>
+                        <span class="spec-value">5</span>
+                    </div>
+                    <div class="spec-item">
+                        <span class="spec-label">Gepäck</span>
+                        <span class="spec-value">3 Koffer</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="fleet-card">
+                <div class="fleet-image">
+                    <img src="https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?auto=format&fit=crop&w=800&q=80" alt="Maserati Quattroporte">
+                    <h3>Maserati Quattroporte</h3>
+                </div>
+                <p>Die Maserati Quattroporte vereint italienisches Design mit sportlicher Performance. Mit ihrem charakteristischen Sound und luxuriöser Ausstattung ist sie ein echter Hingucker.</p>
+                <div class="fleet-specs">
+                    <div class="spec-item">
+                        <span class="spec-label">Sitze</span>
+                        <span class="spec-value">4</span>
+                    </div>
+                    <div class="spec-item">
+                        <span class="spec-label">Gepäck</span>
+                        <span class="spec-value">2 Koffer</span>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -286,6 +322,8 @@
                                 <option value="7series">BMW 7er Limousine</option>
                                 <option value="a8">Audi A8</option>
                                 <option value="v-class">Mercedes-Benz V-Klasse</option>
+                                <option value="phantom">Rolls-Royce Phantom</option>
+                                <option value="maserati">Maserati Quattroporte</option>
                             </select>
                         </label>
                     </div>
@@ -381,7 +419,7 @@
         <h2 data-lang="contact-title">Kontakt</h2>
         <div class="contact-container">
             <div class="contact-info">
-                <div class="info-item company-name">
+                <div class="info-item">
                     <i class="fas fa-building"></i>
                     <p>WBS Limoservice</p>
                 </div>
@@ -918,26 +956,14 @@
                 ],
                 extra: 'Ideal für Geschäftsreisen und wichtige Termine. Unsere Chauffeure sind in Business-Etikette geschult und garantieren einen professionellen Service.'
             },
-            events: {
-                icon: 'fas fa-glass-cheers',
-                title: 'Event & Feierlichkeiten',
-                description: 'Stilvoller Transport für Hochzeiten, Jubiläen und andere besondere Anlässe mit individuellem Service.',
-                features: [
-                    'Champagner-Service',
-                    'Blumenschmuck',
-                    'Individuelle Routenplanung',
-                    'Mehrere Fahrzeuge möglich'
-                ],
-                extra: 'Wir machen Ihre besonderen Anlässe noch spezieller mit maßgeschneiderten Transportlösungen und persönlicher Betreuung.'
-            },
             city: {
                 icon: 'fas fa-city',
                 title: 'Stadtrundfahrten',
                 description: 'Entdecken Sie die schönsten Attraktionen und Ausflugsziele mit unserem erfahrenen Chauffeurservice.',
                 features: [
-                    'Freizeitparks (Holidaypark, Disneyland, Phantasialand, Europa Park)',
-                    'Premium Outlets (Metzingen, Roermond, Mailand, Wertheim)',
-                    'Städtetouren (Baden-Baden, Schwarzwald, Düsseldorf, München)',
+                    'Freizeitparks & Shopping',
+                    'Premium Outlets',
+                    'Städtetouren',
                     'Individuelle Routenplanung'
                 ],
                 extra: 'Wir bringen Sie zu den schönsten Destinationen in Deutschland und den Nachbarländern.'
@@ -957,21 +983,21 @@
             valet: {
                 icon: 'fas fa-car',
                 title: 'Valet-Service',
-                description: 'Bei diesem Service wird das Auto direkt vor dem Terminal abgegeben und der Fahrer holt es nach der Rückkehr wieder ab, manchmal auch mit zusätzlichen Leistungen wie Parken oder Fahrzeugpflege.',
+                description: 'Bei diesem Service wird das Auto direkt vor dem Terminal abgegeben und der Fahrer holt es nach der Rückkehr wieder ab.',
                 features: [
                     'Terminal Abholung & Rückgabe',
                     'Sicheres Parken',
                     'Fahrzeugpflege möglich',
                     'Flexible Terminplanung'
                 ],
-                extra: 'Unser Valet-Service bietet Ihnen maximalen Komfort bei der An- und Abreise.'
+                extra: 'Unser Valet-Service bietet Ihnen maximalen Komfort bei der An- und Abreise. Ihr Fahrzeug wird sicher verwahrt und auf Wunsch gereinigt.'
             },
             long: {
                 icon: 'fas fa-route',
                 title: 'Langstreckenfahrten',
-                description: 'Komfortable Fernreisen zu beliebten europäischen Destinationen mit erfahrenen Chauffeuren und Luxusfahrzeugen.',
+                description: 'Komfortable Fernreisen zu beliebten europäischen Destinationen mit erfahrenen Chauffeuren.',
                 features: [
-                    'Internationale Ziele in Frankreich, Niederlande, Schweiz, Österreich und Italien',
+                    'Internationale Ziele',
                     'Erfahrene Chauffeure',
                     'Flexible Routenplanung',
                     'Komfortpausen nach Wunsch'
@@ -1012,14 +1038,7 @@
             link.addEventListener('click', function(e) {
                 e.preventDefault();
                 const serviceCard = this.closest('.service-card');
-                const serviceType = serviceCard.querySelector('h3').textContent.toLowerCase()
-                    .replace(/[^a-z]/g, '')
-                    .replace('flughafentransfer', 'airport')
-                    .replace('businesstransfer', 'business')
-                    .replace('eventfeierlichkeiten', 'events')
-                    .replace('stadtrundfahrten', 'city')
-                    .replace('vipservice', 'vip')
-                    .replace('langstreckenfahrten', 'long');
+                const serviceType = serviceCard.querySelector('h3').getAttribute('data-lang').replace('service-', '');
                 showServicePopup(serviceType);
             });
         });
