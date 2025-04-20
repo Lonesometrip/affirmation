@@ -70,16 +70,19 @@ header {
     top: 0;
     z-index: 1000;
     padding: 1rem 0;
-    background: rgba(0,0,0,0.8);
+    background: rgba(0,0,0,0.6);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     transition: all 0.3s ease;
     border-bottom: 1px solid rgba(196, 164, 77, 0.1);
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
 }
 
 header.scrolled {
-    background: rgba(0,0,0,0.95);
+    background: rgba(0,0,0,0.8);
     padding: 0.8rem 0;
+    border-bottom: 1px solid rgba(196, 164, 77, 0.2);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
 }
 
 nav {
@@ -99,13 +102,12 @@ nav {
 
 .logo {
     flex-shrink: 0;
+    position: relative;
+    transition: transform 0.3s ease;
 }
 
-.logo a {
-    text-decoration: none;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
+.logo:hover {
+    transform: scale(1.05);
 }
 
 .premium {
@@ -113,6 +115,23 @@ nav {
     font-size: 2rem;
     font-weight: 600;
     letter-spacing: 1px;
+    position: relative;
+    display: inline-block;
+}
+
+.premium::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--gold);
+    transition: width 0.3s ease;
+}
+
+.logo:hover .premium::after {
+    width: 100%;
 }
 
 .chauffeur {
@@ -120,6 +139,8 @@ nav {
     font-size: 2rem;
     font-weight: 300;
     letter-spacing: 1px;
+    position: relative;
+    display: inline-block;
 }
 
 .nav-links {
@@ -127,6 +148,7 @@ nav {
     list-style: none;
     align-items: center;
     gap: 3rem;
+    position: relative;
 }
 
 .nav-links a {
@@ -136,12 +158,13 @@ nav {
     font-weight: 400;
     transition: all 0.3s;
     position: relative;
+    padding: 0.5rem 0;
 }
 
-.nav-links a:after {
+.nav-links a::before {
     content: '';
     position: absolute;
-    bottom: -5px;
+    bottom: 0;
     left: 0;
     width: 0;
     height: 2px;
@@ -149,16 +172,33 @@ nav {
     transition: width 0.3s ease;
 }
 
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--gold));
+    transition: width 0.3s ease;
+}
+
 .nav-links a:hover {
     color: var(--gold);
 }
 
-.nav-links a:hover:after {
+.nav-links a:hover::before,
+.nav-links a:hover::after {
     width: 100%;
 }
 
 .language-selector {
     position: relative;
+    transition: transform 0.3s ease;
+}
+
+.language-selector:hover {
+    transform: translateY(-2px);
 }
 
 .lang-btn {
@@ -170,10 +210,16 @@ nav {
     gap: 0.5rem;
     cursor: pointer;
     padding: 0.5rem;
+    transition: all 0.3s ease;
 }
 
 .lang-btn i {
     color: var(--gold);
+    transition: transform 0.3s ease;
+}
+
+.language-selector:hover .lang-btn i {
+    transform: rotate(180deg);
 }
 
 .lang-dropdown {
