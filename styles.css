@@ -7,15 +7,17 @@
 
 /* Theme Variables */
 :root {
-    --gold: #C4A44D;
-    --dark: #1A1A1A;
+    --gold: #D4AF37;
+    --gold-light: #F4D160;
+    --dark: #121212;
+    --dark-lighter: #1E1E1E;
     --light: #FFFFFF;
     --gray: #333333;
-    --bg-primary: #FFFFFF;
-    --bg-secondary: #F5F5F5;
-    --text-primary: #333333;
+    --bg-primary: var(--dark);
+    --bg-secondary: var(--dark-lighter);
+    --text-primary: #FFFFFF;
     --text-secondary: #666666;
-    --border-color: #E0E0E0;
+    --border-color: rgba(196, 164, 77, 0.1);
 }
 
 body {
@@ -206,27 +208,34 @@ nav {
 .header-contact {
     display: flex;
     align-items: center;
-    gap: 2rem;
+    gap: 1.5rem;
 }
 
 .header-contact a {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
     color: var(--gold);
-    text-decoration: none;
-    font-size: 0.9rem;
+    font-size: 1.2rem;
     transition: all 0.3s ease;
-    white-space: nowrap;
 }
 
 .header-contact a:hover {
-    color: #D4B45D;
+    color: var(--gold-light);
     transform: translateY(-2px);
 }
 
 .header-contact i {
-    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border: 1px solid var(--gold);
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+.header-contact a:hover i {
+    background-color: var(--gold);
+    color: var(--dark);
 }
 
 .header-contact span {
@@ -294,7 +303,7 @@ nav {
     align-items: center;
     justify-content: center;
     background: linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.85)),
-                url('https://images.unsplash.com/photo-1617469767053-d3b523a0b982?auto=format&fit=crop&w=2000&q=80') center/cover no-repeat;
+                url('https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?auto=format&fit=crop&w=2000&q=80') center/cover no-repeat;
 }
 
 .hero-video {
@@ -434,12 +443,12 @@ nav {
 }
 
 .service-card {
-    background-color: rgba(255, 255, 255, 0.05);
+    background-color: var(--dark-lighter);
     padding: 2.5rem 2rem;
     text-align: center;
     border-radius: 8px;
-    transition: all 0.3s;
-    border: 1px solid rgba(196, 164, 77, 0.1);
+    transition: all 0.3s ease;
+    border: 1px solid transparent;
     position: relative;
     overflow: hidden;
     display: flex;
@@ -449,10 +458,9 @@ nav {
 }
 
 .service-card:hover {
-    transform: translateY(-10px);
-    background-color: rgba(255, 255, 255, 0.08);
+    transform: translateY(-5px);
     border-color: var(--gold);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
 }
 
 .service-icon {
@@ -818,15 +826,15 @@ footer {
 }
 
 .fleet-card {
-    background-color: rgba(255, 255, 255, 0.05);
+    background-color: var(--dark-lighter);
     border-radius: 8px;
     overflow: hidden;
     transition: all 0.3s ease;
-    border: 1px solid rgba(196, 164, 77, 0.1);
+    border: 1px solid transparent;
 }
 
 .fleet-card:hover {
-    transform: translateY(-10px);
+    transform: translateY(-5px);
     border-color: var(--gold);
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
 }
@@ -1839,4 +1847,35 @@ body {
 [dir="rtl"] .close-popup {
     right: auto;
     left: 1.5rem;
+}
+
+/* Gold Decorative Elements */
+.gold-decoration-1 {
+    position: absolute;
+    top: 100px;
+    left: 50px;
+    width: 100px;
+    height: 100px;
+    border: 1px solid var(--gold);
+    transform: rotate(45deg);
+    opacity: 0.2;
+    z-index: -1;
+}
+
+.gold-decoration-2 {
+    position: absolute;
+    top: 500px;
+    right: 80px;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    border: 1px solid var(--gold);
+    opacity: 0.15;
+    z-index: -1;
+}
+
+.gold-line {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    margin: 2rem 0;
 } 
