@@ -16,15 +16,197 @@ body {
 .hero-section {
     position: relative;
     height: 100vh;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1549399542-7e3f8b79c341?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
+    overflow: hidden;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
     color: var(--light-color);
+}
+
+.hero-section::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 150px;
+    background: linear-gradient(to top, #fff 20%, rgba(255, 255, 255, 0));
+    z-index: 2;
+    pointer-events: none;
+}
+
+.hero-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: calc(100% + 100px); /* Extra height for smooth blend */
+    background-image: url('https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8');
+    background-size: cover;
+    background-position: center;
+    transform: scale(1.1);
+    animation: heroZoom 20s infinite alternate;
+    transition: transform 0.8s ease-out;
+}
+
+.hero-section:hover .hero-background {
+    transform: scale(1.2);
+}
+
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(180deg, 
+        rgba(0,0,0,0.4) 0%,
+        rgba(0,0,0,0.7) 80%,
+        rgba(0,0,0,0) 100%
+    );
+    z-index: 1;
+    transition: background 0.3s ease;
+}
+
+.hero-section:hover::before {
+    background: linear-gradient(180deg, 
+        rgba(0,0,0,0.3) 0%,
+        rgba(0,0,0,0.6) 80%,
+        rgba(0,0,0,0) 100%
+    );
+}
+
+/* Add margin to the next section for smooth transition */
+.hero-section + section {
+    position: relative;
+    margin-top: -50px;
+    background: #fff;
+    padding-top: 100px;
+    z-index: 3;
+}
+
+@keyframes heroZoom {
+    0% {
+        transform: scale(1);
+    }
+    100% {
+        transform: scale(1.1);
+    }
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 1200px;
+    padding: 0 20px;
+}
+
+.hero-title {
+    font-size: 4rem;
+    font-weight: bold;
+    margin-bottom: 1.5rem;
+    line-height: 1.2;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    animation: titleFade 1.5s ease-out forwards;
+    background: linear-gradient(45deg, #ffffff, #c5a47e);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    position: relative;
+    letter-spacing: 2px;
+}
+
+.hero-title::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, var(--secondary-color), transparent);
+    animation: lineWidth 2s ease-out forwards;
+}
+
+.hero-subtitle {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+    line-height: 1.6;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+    animation: subtitleFade 2s ease-out forwards;
+    animation-delay: 0.5s;
+    opacity: 0;
+    letter-spacing: 1px;
+}
+
+@keyframes titleFade {
+    0% {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes subtitleFade {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes lineWidth {
+    0% {
+        width: 0;
+        opacity: 0;
+    }
+    100% {
+        width: 100px;
+        opacity: 1;
+    }
+}
+
+/* Add shimmer effect on hover */
+.hero-title:hover {
+    background-size: 200% auto;
+    animation: shimmer 2s linear infinite;
+}
+
+@keyframes shimmer {
+    0% {
+        background-position: -100% center;
+    }
+    100% {
+        background-position: 200% center;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-section {
+        height: 80vh;
+    }
+
+    .hero-title {
+        font-size: 2.5rem;
+        letter-spacing: 1px;
+    }
+
+    .hero-subtitle {
+        font-size: 1.25rem;
+        letter-spacing: 0.5px;
+    }
+
+    .hero-title::after {
+        width: 80px;
+    }
 }
 
 /* Navigation */
@@ -687,75 +869,307 @@ input:checked + .cookie-slider:before {
     bottom: 0;
     left: 0;
     right: 0;
-    background: rgba(255, 255, 255, 0.95);
-    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+    background: #fff;
+    box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.15);
     z-index: 9999;
-    border-top: 3px solid var(--accent-color);
+    font-size: 14px;
+    line-height: 1.5;
 }
 
 .cookie-notice-content {
-    max-width: 1200px;
+    max-width: 800px;
     margin: 0 auto;
-    padding: 15px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 20px;
+    padding: 20px;
 }
 
-.cookie-notice-content p {
+.cookie-notice-header {
+    margin-bottom: 15px;
+}
+
+.cookie-notice-header h3 {
+    font-size: 18px;
+    font-weight: 600;
+    color: #333;
     margin: 0;
-    font-size: 14px;
+}
+
+.cookie-info {
+    margin-bottom: 20px;
+}
+
+.cookie-info p {
+    color: #666;
+    margin: 0;
+}
+
+.cookie-options {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.cookie-option {
+    background: #f8f8f8;
+    border-radius: 6px;
+    padding: 15px;
+}
+
+.cookie-option-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 8px;
+}
+
+.cookie-option-title {
+    font-weight: 600;
     color: #333;
 }
 
-.cookie-notice-buttons {
-    display: flex;
-    gap: 15px;
-    align-items: center;
+.cookie-option-desc {
+    color: #666;
+    margin: 0;
+    font-size: 13px;
 }
 
-.cookie-accept {
+/* Switch styles */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 40px;
+    height: 22px;
+    flex-shrink: 0;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+    border-radius: 22px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 18px;
+    width: 18px;
+    left: 2px;
+    bottom: 2px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+}
+
+input:checked + .slider {
+    background-color: var(--accent-color);
+}
+
+input:disabled + .slider {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+input:checked + .slider:before {
+    transform: translateX(18px);
+}
+
+.cookie-notice-footer {
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+    align-items: center;
+    border-top: 1px solid #eee;
+    padding-top: 15px;
+}
+
+.cookie-btn {
+    padding: 8px 16px;
+    border-radius: 4px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: none;
+}
+
+.cookie-accept-all {
     background: var(--accent-color);
     color: white;
-    padding: 8px 20px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-weight: 500;
-    transition: all 0.3s ease;
 }
 
-.cookie-accept:hover {
+.cookie-accept-all:hover {
     background: var(--accent-hover);
-    transform: translateY(-2px);
+}
+
+.cookie-save {
+    background: transparent;
+    border: 1px solid #ccc;
+    color: #666;
+}
+
+.cookie-save:hover {
+    background: #f5f5f5;
 }
 
 .cookie-more {
     color: #666;
-    text-decoration: underline;
-    font-size: 14px;
-    transition: color 0.3s ease;
+    text-decoration: none;
+    font-size: 13px;
 }
 
 .cookie-more:hover {
     color: var(--accent-color);
+    text-decoration: underline;
 }
 
 @media (max-width: 768px) {
     .cookie-notice-content {
-        flex-direction: column;
-        text-align: center;
         padding: 15px;
     }
 
-    .cookie-notice-buttons {
+    .cookie-notice-footer {
         flex-direction: column;
-        width: 100%;
+        gap: 10px;
     }
 
-    .cookie-accept {
+    .cookie-btn {
         width: 100%;
-        margin-top: 10px;
+        text-align: center;
+    }
+
+    .cookie-more {
+        text-align: center;
+        padding: 8px 0;
+    }
+}
+
+/* Cookie Settings Button */
+.cookie-settings-btn {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    background: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    cursor: pointer;
+    z-index: 998;
+    transition: all 0.3s ease;
+}
+
+.cookie-settings-btn i {
+    font-size: 20px;
+    color: var(--accent-color);
+}
+
+.cookie-settings-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.cookie-settings-btn:active {
+    transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+    .cookie-settings-btn {
+        bottom: 15px;
+        left: 15px;
+        width: 40px;
+        height: 40px;
+    }
+
+    .cookie-settings-btn i {
+        font-size: 18px;
+    }
+}
+
+/* Common styles for all section titles */
+.section-title {
+    position: relative;
+    font-weight: bold;
+    line-height: 1.2;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
+    animation: titleFade 1.5s ease-out forwards;
+    letter-spacing: 2px;
+    margin-bottom: 2rem;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, var(--secondary-color), transparent);
+    animation: lineWidth 2s ease-out forwards;
+}
+
+/* Specific styles for each section title */
+#services .section-title,
+#fleet .section-title,
+#booking .section-title,
+#contact .section-title {
+    opacity: 0;
+    transform: translateY(30px);
+}
+
+/* Animation trigger when section becomes visible */
+#services.visible .section-title,
+#fleet.visible .section-title,
+#booking.visible .section-title,
+#contact.visible-section .section-title {
+    animation: sectionTitleFade 1.5s ease-out forwards;
+}
+
+@keyframes sectionTitleFade {
+    0% {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Add shimmer effect on hover for all section titles */
+.section-title:hover::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        120deg,
+        transparent,
+        rgba(255,255,255,0.3),
+        transparent
+    );
+    animation: shimmer 1.5s linear;
+}
+
+@keyframes shimmer {
+    100% {
+        left: 100%;
     }
 } 

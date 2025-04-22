@@ -1576,11 +1576,11 @@
     <section class="hero-section">
         <div class="hero-background"></div>
         <div class="hero-content">
-            <h1 class="hero-title">LUXURIÖSER CHAUFFEUR SERVICE</h1>
-            <p class="hero-subtitle">Erstklassiger Transport mit persönlichem Chauffeur für besondere Anlässe, Geschäftsreisen und Flughafentransfers.</p>
+            <h1 class="hero-title">Luxuriöser Chauffeur Service</h1>
+            <p class="hero-subtitle">Erleben Sie erstklassigen Komfort und professionellen Service</p>
             <div class="hero-buttons">
-                <a href="#booking" class="hero-button hero-button-primary">JETZT BUCHEN</a>
-                <a href="#services" class="hero-button hero-button-secondary">MEHR ERFAHREN</a>
+                <a href="#fleet" class="hero-button hero-button-primary">Unsere Flotte</a>
+                <a href="#contact" class="hero-button hero-button-secondary">Jetzt Buchen</a>
             </div>
         </div>
     </section>
@@ -1591,7 +1591,7 @@
     <!-- Services Section -->
     <section id="services" class="py-20 px-4 md:px-8 bg-white">
         <div class="container mx-auto">
-            <h2 class="text-4xl font-bold text-center mb-4">Unsere Premium Dienstleistungen</h2>
+            <h2 class="text-4xl font-bold text-center mb-4 section-title">Unsere Premium Dienstleistungen</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12">
                 <!-- Service Card 1 -->
                 <div class="service-card bg-white p-8 rounded-lg shadow-lg">
@@ -1686,7 +1686,7 @@
     <!-- Fleet Section -->
     <section id="fleet" class="py-20 px-4 md:px-8 bg-white">
         <div class="container mx-auto">
-            <h2 class="text-4xl font-bold text-center mb-4">Unsere Fahrzeugflotte</h2>
+            <h2 class="text-4xl font-bold text-center mb-4 section-title">Unsere Fahrzeugflotte</h2>
             <div id="vehicle-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 mt-12">
                 <!-- Vehicle cards will be dynamically inserted here -->
             </div>
@@ -1698,123 +1698,125 @@
 
     <!-- Booking Section -->
     <section id="booking" class="py-20 px-4 md:px-8 bg-white">
-        <div class="container mx-auto max-w-3xl">
-            <h2 class="text-4xl font-bold text-center mb-12">Online Buchung</h2>
-            <form class="booking-form space-y-6" action="https://formspree.io/f/myzerjwz" method="POST">
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div>
-                        <label class="block text-gray-700 mb-2">Service</label>
-                        <select name="service" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900" title="Service auswählen" required>
-                            <option value="">-- Bitte wählen --</option>
-                            <option value="Flughafentransfer">Flughafentransfer</option>
-                            <option value="Business Transfer">Business Transfer</option>
-                            <option value="Event & Feierlichkeiten">Event & Feierlichkeiten</option>
-                            <option value="Stadtrundfahrten">Stadtrundfahrten</option>
-                            <option value="VIP Service">VIP Service</option>
-                            <option value="Valet-Service">Valet-Service</option>
-                            <option value="Langstreckenfahrten">Langstreckenfahrten</option>
-                        </select>
+        <div class="container mx-auto">
+            <h2 class="text-4xl font-bold text-center mb-4 section-title">Online Buchung</h2>
+            <div class="mt-12">
+                <form class="booking-form space-y-6" action="https://formspree.io/f/myzerjwz" method="POST">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-gray-700 mb-2">Service</label>
+                            <select name="service" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900" title="Service auswählen" required>
+                                <option value="">-- Bitte wählen --</option>
+                                <option value="Flughafentransfer">Flughafentransfer</option>
+                                <option value="Business Transfer">Business Transfer</option>
+                                <option value="Event & Feierlichkeiten">Event & Feierlichkeiten</option>
+                                <option value="Stadtrundfahrten">Stadtrundfahrten</option>
+                                <option value="VIP Service">VIP Service</option>
+                                <option value="Valet-Service">Valet-Service</option>
+                                <option value="Langstreckenfahrten">Langstreckenfahrten</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-gray-700 mb-2">Fahrzeug</label>
+                            <select name="vehicle" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900" title="Fahrzeug auswählen" required>
+                                <option value="">-- Bitte wählen --</option>
+                                <option value="Mercedes-Benz S-Klasse">Mercedes-Benz S-Klasse</option>
+                                <option value="BMW 7er Limousine">BMW 7er Limousine</option>
+                                <option value="Audi A8">Audi A8</option>
+                                <option value="Mercedes-Benz V-Klasse">Mercedes-Benz V-Klasse</option>
+                                <option value="Mercedes-Benz G63 AMG">Mercedes-Benz G63 AMG</option>
+                                <option value="Maserati Quattroporte">Maserati Quattroporte</option>
+                            </select>
+                        </div>
                     </div>
-                    <div>
-                        <label class="block text-gray-700 mb-2">Fahrzeug</label>
-                        <select name="vehicle" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900" title="Fahrzeug auswählen" required>
-                            <option value="">-- Bitte wählen --</option>
-                            <option value="Mercedes-Benz S-Klasse">Mercedes-Benz S-Klasse</option>
-                            <option value="BMW 7er Limousine">BMW 7er Limousine</option>
-                            <option value="Audi A8">Audi A8</option>
-                            <option value="Mercedes-Benz V-Klasse">Mercedes-Benz V-Klasse</option>
-                            <option value="Mercedes-Benz G63 AMG">Mercedes-Benz G63 AMG</option>
-                            <option value="Maserati Quattroporte">Maserati Quattroporte</option>
-                        </select>
-                    </div>
-                </div>
 
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-gray-700 mb-2">Datum & Zeit</label>
+                            <input type="datetime-local" 
+                                   name="date"
+                                   class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900"
+                                   title="Wählen Sie Datum und Uhrzeit" required>
+                        </div>
+                        <div>
+                            <label class="block text-gray-700 mb-2">Anzahl der Passagiere</label>
+                            <select name="passengers" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900" title="Anzahl der Passagiere auswählen" required>
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                                <option>6</option>
+                                <option>7</option>
+                            </select>
+                        </div>
+                    </div>
+
                     <div>
-                        <label class="block text-gray-700 mb-2">Datum & Zeit</label>
-                        <input type="datetime-local" 
-                               name="date"
-                               class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900"
-                               title="Wählen Sie Datum und Uhrzeit" required>
+                        <label class="block text-gray-700 mb-2">Abholadresse</label>
+                        <input type="text" name="pickup" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900" title="Abholadresse eingeben" placeholder="Ihre Abholadresse" required>
                     </div>
+
                     <div>
-                        <label class="block text-gray-700 mb-2">Anzahl der Passagiere</label>
-                        <select name="passengers" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900" title="Anzahl der Passagiere auswählen" required>
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                            <option>5</option>
-                            <option>6</option>
-                            <option>7</option>
-                        </select>
+                        <label class="block text-gray-700 mb-2">Zieladresse</label>
+                        <input type="text" name="dropoff" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900" title="Zieladresse eingeben" placeholder="Ihre Zieladresse" required>
                     </div>
-                </div>
 
-                <div>
-                    <label class="block text-gray-700 mb-2">Abholadresse</label>
-                    <input type="text" name="pickup" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900" title="Abholadresse eingeben" placeholder="Ihre Abholadresse" required>
-                </div>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <div>
+                            <label for="name" class="block text-gray-700 mb-2">Name</label>
+                            <input type="text" id="name" name="name" 
+                                   class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900"
+                                   required title="Please enter your name" placeholder="Your name">
+                        </div>
+                        <div>
+                            <label for="email" class="block text-gray-700 mb-2">Email</label>
+                            <input type="email" id="email" name="email" 
+                                   class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900"
+                                   required title="Please enter your email" placeholder="Your email">
+                        </div>
+                        <div>
+                            <label for="phone" class="block text-gray-700 mb-2">Phone</label>
+                            <input type="tel" id="phone" name="phone" 
+                                   class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900"
+                                   required title="Please enter your phone number" placeholder="Your phone number">
+                        </div>
+                    </div>
 
-                <div>
-                    <label class="block text-gray-700 mb-2">Zieladresse</label>
-                    <input type="text" name="dropoff" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900" title="Zieladresse eingeben" placeholder="Ihre Zieladresse" required>
-                </div>
-
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                     <div>
-                        <label for="name" class="block text-gray-700 mb-2">Name</label>
-                        <input type="text" id="name" name="name" 
-                               class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900"
-                               required title="Please enter your name" placeholder="Your name">
+                        <label class="block text-gray-700 mb-2">Zahlungsmethode</label>
+                        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                            <label class="flex items-center">
+                                <input type="radio" name="payment" value="credit" class="mr-2" required>
+                                <span>Kreditkarte</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input type="radio" name="payment" value="ec" class="mr-2" required>
+                                <span>EC-Karte</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input type="radio" name="payment" value="invoice" class="mr-2" required>
+                                <span>Rechnung</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input type="radio" name="payment" value="cash" class="mr-2" required>
+                                <span>Barzahlung</span>
+                            </label>
+                        </div>
                     </div>
+
                     <div>
-                        <label for="email" class="block text-gray-700 mb-2">Email</label>
-                        <input type="email" id="email" name="email" 
-                               class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900"
-                               required title="Please enter your email" placeholder="Your email">
+                        <label class="block text-gray-700 mb-2">Besondere Wünsche</label>
+                        <textarea name="notes" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900" rows="4" title="Besondere Wünsche eingeben" placeholder="Ihre besonderen Wünsche oder Anmerkungen" required></textarea>
                     </div>
-                    <div>
-                        <label for="phone" class="block text-gray-700 mb-2">Phone</label>
-                        <input type="tel" id="phone" name="phone" 
-                               class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900"
-                               required title="Please enter your phone number" placeholder="Your phone number">
+
+                    <div class="text-center">
+                        <button type="submit" class="bg-gray-900 text-white px-8 py-3 rounded-full font-bold hover:bg-gray-800 transition duration-300">
+                            BUCHUNG ABSENDEN
+                        </button>
                     </div>
-                </div>
-
-                <div>
-                    <label class="block text-gray-700 mb-2">Zahlungsmethode</label>
-                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                        <label class="flex items-center">
-                            <input type="radio" name="payment" value="credit" class="mr-2" required>
-                            <span>Kreditkarte</span>
-                        </label>
-                        <label class="flex items-center">
-                            <input type="radio" name="payment" value="ec" class="mr-2" required>
-                            <span>EC-Karte</span>
-                        </label>
-                        <label class="flex items-center">
-                            <input type="radio" name="payment" value="invoice" class="mr-2" required>
-                            <span>Rechnung</span>
-                        </label>
-                        <label class="flex items-center">
-                            <input type="radio" name="payment" value="cash" class="mr-2" required>
-                            <span>Barzahlung</span>
-                        </label>
-                    </div>
-                </div>
-
-                <div>
-                    <label class="block text-gray-700 mb-2">Besondere Wünsche</label>
-                    <textarea name="notes" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900" rows="4" title="Besondere Wünsche eingeben" placeholder="Ihre besonderen Wünsche oder Anmerkungen" required></textarea>
-                </div>
-
-                <div class="text-center">
-                    <button type="submit" class="bg-gray-900 text-white px-8 py-3 rounded-full font-bold hover:bg-gray-800 transition duration-300">
-                        BUCHUNG ABSENDEN
-                    </button>
-                </div>
-            </form>
+                </form>
+            </div>
         </div>
     </section>
 
@@ -1823,64 +1825,66 @@
 
     <!-- Contact Section -->
     <section id="contact" class="py-20 px-4 md:px-8 bg-white">
-        <div class="container mx-auto max-w-5xl">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
-                <div>
-                    <h2 class="text-4xl font-bold mb-6">Kontakt</h2>
-                    <div class="space-y-4">
-                        <p class="text-xl font-bold">WBS Limoservice</p>
-                        <p class="flex items-center">
-                            <i class="fas fa-phone mr-3"></i>
-                            +49 (30) 555-0198
-                        </p>
-                        <p class="flex items-center">
-                            <i class="fas fa-map-marker-alt mr-3"></i>
-                            Luxusstraße 123, 10115 Berlin
-                        </p>
-                        <p class="flex items-center">
-                            <i class="fas fa-envelope mr-3"></i>
-                            kontakt@premium-chauffeur.de
-                        </p>
+        <div class="container mx-auto">
+            <h2 class="text-4xl font-bold text-center mb-4 section-title">Kontakt</h2>
+            <div class="mt-12">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                    <div>
+                        <div class="space-y-4">
+                            <p class="text-xl font-bold">WBS Limoservice</p>
+                            <p class="flex items-center">
+                                <i class="fas fa-phone mr-3"></i>
+                                +49 (30) 555-0198
+                            </p>
+                            <p class="flex items-center">
+                                <i class="fas fa-map-marker-alt mr-3"></i>
+                                Luxusstraße 123, 10115 Berlin
+                            </p>
+                            <p class="flex items-center">
+                                <i class="fas fa-envelope mr-3"></i>
+                                kontakt@premium-chauffeur.de
+                            </p>
+                        </div>
                     </div>
-                </div>
-                <div>
-                    <form class="contact-form space-y-6" action="https://formspree.io/f/myzerjwz" method="POST">
-                        <div>
-                            <label for="contact-name" class="block text-gray-700 mb-2">Name</label>
-                            <input type="text" id="contact-name" name="name" 
-                                   class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900"
-                                   required title="Please enter your name" placeholder="Your name">
-                        </div>
-                        <div>
-                            <label for="contact-email" class="block text-gray-700 mb-2">Email</label>
-                            <input type="email" id="contact-email" name="email" 
-                                   class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900"
-                                   required title="Please enter your email" placeholder="Your email">
-                        </div>
-                        <div>
-                            <label for="contact-phone" class="block text-gray-700 mb-2">Phone</label>
-                            <input type="tel" id="contact-phone" name="phone" 
-                                   class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900"
-                                   required title="Please enter your phone number" placeholder="Your phone number">
-                        </div>
-                        <div>
-                            <label for="contact-subject" class="block text-gray-700 mb-2">Subject</label>
-                            <input type="text" id="contact-subject" name="subject" 
-                                   class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900"
-                                   required title="Please enter a subject" placeholder="Your subject">
-                        </div>
-                        <div>
-                            <label for="contact-message" class="block text-gray-700 mb-2">Message</label>
-                            <textarea id="contact-message" name="message" rows="4"
-                                      class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900"
-                                      required title="Please enter your message" placeholder="Your message"></textarea>
-                        </div>
-                        <div>
-                            <button type="submit" class="bg-gray-900 text-white px-8 py-3 rounded-full font-bold hover:bg-gray-800 transition duration-300">
-                                NACHRICHT SENDEN
-                            </button>
-                        </div>
-                    </form>
+                    <div>
+                        <form class="contact-form space-y-6" action="https://formspree.io/f/myzerjwz" method="POST">
+                            <div>
+                                <label for="contact-name" class="block text-gray-700 mb-2">Name</label>
+                                <input type="text" id="contact-name" name="name" 
+                                       class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900"
+                                       required title="Please enter your name" placeholder="Your name">
+                            </div>
+                            <div>
+                                <label for="contact-email" class="block text-gray-700 mb-2">Email</label>
+                                <input type="email" id="contact-email" name="email" 
+                                       class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900"
+                                       required title="Please enter your email" placeholder="Your email">
+                            </div>
+                            <div>
+                                <label for="contact-phone" class="block text-gray-700 mb-2">Phone</label>
+                                <input type="tel" id="contact-phone" name="phone" 
+                                       class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900"
+                                       required title="Please enter your phone number" placeholder="Your phone number">
+                            </div>
+                            <div>
+                                <label for="contact-subject" class="block text-gray-700 mb-2">Subject</label>
+                                <input type="text" id="contact-subject" name="subject" 
+                                       class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900"
+                                       required title="Please enter a subject" placeholder="Your subject">
+                            </div>
+                            <div>
+                                <label for="contact-message" class="block text-gray-700 mb-2">Message</label>
+                                <textarea id="contact-message" name="message" rows="4"
+                                          class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900"
+                                          required title="Please enter your message" placeholder="Your message"></textarea>
+                            </div>
+                            <div>
+                                <button type="submit" class="bg-gray-900 text-white px-8 py-3 rounded-full font-bold hover:bg-gray-800 transition duration-300">
+                                    NACHRICHT SENDEN
+                                </button>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
@@ -2107,13 +2111,13 @@
                     <div class="cookie-setting-item">
                         <label class="cookie-switch">
                             <input type="checkbox" id="analyticsConsent"
-                                   title="Analyse-Cookies"
-                                   aria-label="Analyse-Cookies">
+                                   title="Analyse und Marketing Cookies"
+                                   aria-label="Analyse und Marketing Cookies">
                             <span class="cookie-slider"></span>
                         </label>
                         <div class="cookie-setting-text">
-                            <span>Analyse</span>
-                            <p>Diese Cookies helfen uns, die Website zu verbessern.</p>
+                            <span>Analyse & Marketing</span>
+                            <p>Diese Cookies helfen uns, das Besucherverhalten zu analysieren und unsere Website zu verbessern.</p>
                         </div>
                     </div>
                 </div>
@@ -2928,24 +2932,134 @@
 
     <div id="cookieNotice" class="cookie-notice">
         <div class="cookie-notice-content">
-            <p>Diese Website verwendet Cookies. Durch die weitere Nutzung der Website stimmen Sie der Verwendung von Cookies zu.</p>
-            <div class="cookie-notice-buttons">
-                <button onclick="acceptCookies()" class="cookie-accept">Akzeptieren</button>
-                <a href="datenschutz.html" class="cookie-more">Mehr erfahren</a>
+            <div class="cookie-notice-header">
+                <h3>Datenschutzeinstellungen</h3>
+            </div>
+            <div class="cookie-notice-body">
+                <div class="cookie-section">
+                    <div class="cookie-info">
+                        <p>Diese Website verwendet Cookies und ähnliche Technologien, die für den technischen Betrieb der Website erforderlich sind und stets gesetzt werden. Andere Cookies, die den Komfort bei Benutzung dieser Website erhöhen oder der direkten Kommunikation dienen, werden nur mit Ihrer Zustimmung gesetzt.</p>
+                    </div>
+                    <div class="cookie-options">
+                        <div class="cookie-option">
+                            <div class="cookie-option-header">
+                                <label class="switch" for="necessaryCookies">
+                                    <input type="checkbox" id="necessaryCookies" 
+                                           checked disabled
+                                           title="Technisch erforderliche Cookies"
+                                           aria-label="Technisch erforderliche Cookies">
+                                    <span class="slider"></span>
+                                </label>
+                                <span class="cookie-option-title">Technisch erforderlich</span>
+                            </div>
+                            <p class="cookie-option-desc">Diese Cookies sind für die Grundfunktionen der Website erforderlich.</p>
+                        </div>
+                        <div class="cookie-option">
+                            <div class="cookie-option-header">
+                                <label class="switch" for="analyticsConsent">
+                                    <input type="checkbox" id="analyticsConsent"
+                                           title="Analyse und Marketing Cookies"
+                                           aria-label="Analyse und Marketing Cookies">
+                                    <span class="slider"></span>
+                                </label>
+                                <span class="cookie-option-title">Analyse & Marketing</span>
+                            </div>
+                            <p class="cookie-option-desc">Diese Cookies helfen uns, das Besucherverhalten zu analysieren und unsere Website zu verbessern.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="cookie-notice-footer">
+                <button onclick="acceptAllCookies()" class="cookie-btn cookie-accept-all">Alle akzeptieren</button>
+                <button onclick="saveSelection()" class="cookie-btn cookie-save">Auswahl bestätigen</button>
+                <a href="datenschutz.html" class="cookie-more">Weitere Informationen</a>
             </div>
         </div>
     </div>
 
     <script>
-        function acceptCookies() {
-            localStorage.setItem('cookiesAccepted', 'true');
+        function acceptAllCookies() {
+            document.getElementById('analyticsConsent').checked = true;
+            saveSelection();
+        }
+
+        function saveSelection() {
+            const settings = {
+                necessary: true,
+                analytics: document.getElementById('analyticsConsent').checked
+            };
+            localStorage.setItem('cookieSettings', JSON.stringify(settings));
             document.getElementById('cookieNotice').style.display = 'none';
         }
 
         // Check if cookies were already accepted
-        if (!localStorage.getItem('cookiesAccepted')) {
+        window.addEventListener('DOMContentLoaded', function() {
+            const savedSettings = localStorage.getItem('cookieSettings');
+            if (!savedSettings) {
+                document.getElementById('cookieNotice').style.display = 'block';
+                document.getElementById('cookieSettingsBtn').style.display = 'none';
+            } else {
+                document.getElementById('cookieSettingsBtn').style.display = 'block';
+                const settings = JSON.parse(savedSettings);
+                document.getElementById('analyticsConsent').checked = settings.analytics;
+            }
+        });
+    </script>
+
+    <!-- Cookie Settings Button -->
+    <button id="cookieSettingsBtn" class="cookie-settings-btn" onclick="showCookieNotice()" title="Cookie Einstellungen">
+        <i class="fas fa-cookie-bite"></i>
+    </button>
+
+    <script>
+        function showCookieNotice() {
             document.getElementById('cookieNotice').style.display = 'block';
         }
+
+        function acceptAllCookies() {
+            document.getElementById('analyticsConsent').checked = true;
+            saveSelection();
+        }
+
+        function saveSelection() {
+            const settings = {
+                necessary: true,
+                analytics: document.getElementById('analyticsConsent').checked
+            };
+            localStorage.setItem('cookieSettings', JSON.stringify(settings));
+            document.getElementById('cookieNotice').style.display = 'none';
+        }
+
+        // Check if cookies were already accepted
+        window.addEventListener('DOMContentLoaded', function() {
+            const savedSettings = localStorage.getItem('cookieSettings');
+            if (!savedSettings) {
+                document.getElementById('cookieNotice').style.display = 'block';
+                document.getElementById('cookieSettingsBtn').style.display = 'none';
+            } else {
+                document.getElementById('cookieSettingsBtn').style.display = 'block';
+                const settings = JSON.parse(savedSettings);
+                document.getElementById('analyticsConsent').checked = settings.analytics;
+            }
+        });
+    </script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const sections = document.querySelectorAll('#services, #fleet, #booking, #contact');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, { threshold: 0.3 });
+
+            sections.forEach(section => {
+                observer.observe(section);
+            });
+        });
     </script>
 </body>
 </html> 
