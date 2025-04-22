@@ -1,0 +1,896 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Impressum - WBS Limoservice</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        :root {
+            --accent-color: #D4A017;
+            --accent-hover: #E8B423;
+            --accent-light: rgba(212, 160, 23, 0.1);
+            --accent-dark: #A37A0E;
+        }
+
+        .privacy-section {
+            padding: 120px 20px 60px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .privacy-container {
+            background: white;
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .privacy-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .privacy-content h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .privacy-content h2 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--accent-color);
+            margin: 2rem 0 1rem;
+        }
+
+        .privacy-content p {
+            color: #4a4a4a;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Logo Styling */
+        .logo {
+            font-size: 2rem;
+            font-weight: 800;
+            color: #1a1a1a;
+            text-decoration: none;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            z-index: 60;
+            display: inline-flex;
+            align-items: center;
+            letter-spacing: 0.5px;
+        }
+
+        .logo .wbs {
+            color: var(--accent-color);
+            font-weight: 900;
+            margin-right: 5px;
+        }
+
+        .logo .limo {
+            background: linear-gradient(45deg, #1a1a1a, #333333);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        /* Navigation Styles */
+        .nav-link {
+            color: #1a1a1a;
+            text-decoration: none;
+            font-weight: 500;
+            position: relative;
+            padding: 0.5rem 0;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: var(--accent-color);
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: var(--accent-color);
+        }
+
+        .nav-link:hover::before {
+            transform: scaleX(1);
+            transform-origin: left;
+        }
+
+        /* Language Selector */
+        .language-selector {
+            position: relative;
+        }
+
+        .lang-btn {
+            background: none;
+            border: 1px solid rgba(26,26,26,0.3);
+            color: #1a1a1a;
+            cursor: pointer;
+            padding: 0.5rem 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border-radius: 2rem;
+        }
+
+        .lang-btn:hover {
+            background: rgba(26,26,26,0.05);
+            border-color: rgba(26,26,26,0.5);
+        }
+
+        .lang-dropdown {
+            position: absolute;
+            top: calc(100% + 0.5rem);
+            right: 0;
+            background: white;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            padding: 0.5rem 0;
+            min-width: 150px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+        }
+
+        .language-selector:hover .lang-dropdown {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .lang-dropdown a {
+            padding: 0.5rem 1rem;
+            color: #1a1a1a;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: background-color 0.3s ease;
+        }
+
+        .lang-dropdown a:hover {
+            background-color: #f3f3f3;
+        }
+
+        /* Back to Homepage Button Style */
+        .back-to-home {
+            display: inline-flex;
+            align-items: center;
+            padding: 1rem 2rem;
+            background-color: var(--accent-color);
+            color: white;
+            border-radius: 9999px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .back-to-home:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, var(--accent-dark), var(--accent-hover));
+            opacity: 0;
+            transition: opacity 0.2s ease;
+        }
+
+        .back-to-home:hover {
+            transform: translateY(-2px) scale(1.02);
+            box-shadow: 0 6px 15px rgba(212, 160, 23, 0.3);
+        }
+
+        .back-to-home:hover:before {
+            opacity: 1;
+        }
+
+        .back-to-home:active {
+            transform: translateY(0) scale(0.98);
+            box-shadow: 0 2px 8px rgba(212, 160, 23, 0.2);
+        }
+
+        .back-to-home i {
+            margin-right: 0.75rem;
+            position: relative;
+            z-index: 1;
+            transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .back-to-home span {
+            position: relative;
+            z-index: 1;
+        }
+
+        .back-to-home:hover i {
+            transform: translateX(-5px);
+        }
+
+        [dir="rtl"] .back-to-home i {
+            margin-right: 0;
+            margin-left: 0.75rem;
+            transform: scaleX(-1);
+        }
+
+        [dir="rtl"] .back-to-home:hover i {
+            transform: scaleX(-1) translateX(-5px);
+        }
+
+        /* Page Transition */
+        body {
+            opacity: 1;
+            transition: opacity 0.3s ease;
+        }
+
+        .page-exit {
+            opacity: 0;
+        }
+
+        @media (max-width: 768px) {
+            .privacy-section {
+                padding: 100px 15px 40px;
+            }
+
+            .privacy-container {
+                padding: 20px;
+            }
+
+            .privacy-content h1 {
+                font-size: 2rem;
+            }
+
+            .privacy-content h2 {
+                font-size: 1.25rem;
+            }
+        }
+
+        /* Add Mobile Menu Styles */
+        .mobile-menu-button {
+            display: block;
+            background: none;
+            border: none;
+            padding: 0.5rem;
+            cursor: pointer;
+            z-index: 60;
+        }
+
+        @media (min-width: 1024px) {
+            .mobile-menu-button {
+                display: none;
+            }
+        }
+
+        .menu-icon {
+            width: 24px;
+            height: 20px;
+            position: relative;
+            transform: rotate(0deg);
+            transition: 0.5s ease-in-out;
+        }
+
+        .menu-icon span {
+            display: block;
+            position: absolute;
+            height: 2px;
+            width: 100%;
+            background: #1a1a1a;
+            border-radius: 9px;
+            opacity: 1;
+            left: 0;
+            transform: rotate(0deg);
+            transition: 0.25s ease-in-out;
+        }
+
+        .menu-icon span:nth-child(1) { top: 0px; }
+        .menu-icon span:nth-child(2) { top: 9px; }
+        .menu-icon span:nth-child(3) { top: 18px; }
+
+        .menu-open .menu-icon span:nth-child(1) {
+            top: 9px;
+            transform: rotate(135deg);
+        }
+
+        .menu-open .menu-icon span:nth-child(2) {
+            opacity: 0;
+            left: -60px;
+        }
+
+        .menu-open .menu-icon span:nth-child(3) {
+            top: 9px;
+            transform: rotate(-135deg);
+        }
+
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(255, 255, 255, 0.98);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateX(-100%);
+            transition: all 0.5s ease;
+            z-index: 50;
+        }
+
+        .menu-open .mobile-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(0);
+        }
+
+        .mobile-menu .nav-link {
+            color: #1a1a1a;
+            font-size: 1.5rem;
+        }
+
+        .mobile-menu .language-options {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        /* Cookie Banner Styles */
+        #cookieBanner {
+            display: none;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.95);
+            color: #fff;
+            padding: 1.5rem;
+            z-index: 9999;
+            box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        #cookieBanner.active {
+            display: block;
+            animation: slideUp 0.3s ease-out;
+        }
+
+        @keyframes slideUp {
+            from {
+                transform: translateY(100%);
+            }
+            to {
+                transform: translateY(0);
+            }
+        }
+
+        .cookie-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .cookie-header {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .cookie-description {
+            font-size: 0.95rem;
+            line-height: 1.5;
+            margin-bottom: 1rem;
+        }
+
+        .cookie-options {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .cookie-option {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+        }
+
+        .cookie-option input[type="checkbox"] {
+            margin-top: 0.25rem;
+        }
+
+        .cookie-option label {
+            font-weight: 500;
+        }
+
+        .cookie-option p {
+            font-size: 0.9rem;
+            margin-top: 0.25rem;
+            color: #ccc;
+        }
+
+        .cookie-actions {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .cookie-btn {
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.2s ease;
+        }
+
+        .cookie-btn.accept-all {
+            background: #D4AF37;
+            color: #000;
+        }
+
+        .cookie-btn.save-preferences {
+            background: #333;
+            color: #fff;
+            border: 1px solid #555;
+        }
+
+        .cookie-btn.reject-all {
+            background: transparent;
+            color: #fff;
+            border: 1px solid #555;
+        }
+
+        .cookie-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .cookie-btn.accept-all:hover {
+            background: #E5C04D;
+        }
+
+        .cookie-btn.save-preferences:hover {
+            background: #444;
+        }
+
+        .cookie-btn.reject-all:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        @media (max-width: 768px) {
+            #cookieBanner {
+                padding: 1rem;
+            }
+
+            .cookie-actions {
+                flex-direction: column;
+            }
+
+            .cookie-btn {
+                width: 100%;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="fixed top-0 left-0 right-0 bg-white shadow-md z-50">
+        <div class="container mx-auto px-4">
+            <nav class="flex items-center justify-between h-20">
+                <a href="index.html" class="logo">
+                    <span class="wbs">WBS</span>
+                    <span class="limo">Limoservice</span>
+                </a>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="index.html#services" class="nav-link" data-lang="nav-services">Dienstleistungen</a>
+                    <a href="index.html#fleet" class="nav-link" data-lang="nav-fleet">Fahrzeugflotte</a>
+                    <a href="index.html#booking" class="nav-link" data-lang="nav-booking">Buchung</a>
+                    <a href="index.html#contact" class="nav-link" data-lang="nav-contact">Kontakt</a>
+                    <div class="language-selector">
+                        <button class="lang-btn">
+                            <i class="fas fa-globe"></i>
+                            <span>DE</span>
+                        </button>
+                        <div class="lang-dropdown">
+                            <a href="#" data-lang="de">
+                                <img src="https://flagcdn.com/w20/de.png" alt="Deutsch" width="20"> Deutsch
+                            </a>
+                            <a href="#" data-lang="en">
+                                <img src="https://flagcdn.com/w20/gb.png" alt="English" width="20"> English
+                            </a>
+                            <a href="#" data-lang="ar">
+                                <img src="https://flagcdn.com/w20/sa.png" alt="العربية" width="20"> العربية
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Add Mobile Menu Button -->
+                <button class="mobile-menu-button" aria-label="Menu öffnen">
+                    <div class="menu-icon">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </button>
+            </nav>
+        </div>
+
+        <!-- Add Mobile Menu -->
+        <div class="mobile-menu">
+            <a href="index.html#services" class="nav-link" data-lang="nav-services">Dienstleistungen</a>
+            <a href="index.html#fleet" class="nav-link" data-lang="nav-fleet">Fahrzeugflotte</a>
+            <a href="index.html#booking" class="nav-link" data-lang="nav-booking">Buchung</a>
+            <a href="index.html#contact" class="nav-link" data-lang="nav-contact">Kontakt</a>
+            <div class="language-options">
+                <a href="#" class="language-option" data-lang="de">
+                    <img src="https://flagcdn.com/w20/de.png" alt="Deutsch" width="20"> DE
+                </a>
+                <a href="#" class="language-option" data-lang="en">
+                    <img src="https://flagcdn.com/w20/gb.png" alt="English" width="20"> EN
+                </a>
+                <a href="#" class="language-option" data-lang="ar">
+                    <img src="https://flagcdn.com/w20/sa.png" alt="العربية" width="20"> AR
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Impressum Content -->
+    <section class="privacy-section">
+        <div class="privacy-container">
+            <div class="privacy-content">
+                <h1 data-lang="impressum-title">Impressum</h1>
+                
+                <h2 data-lang="impressum-company">Angaben gemäß § 5 TMG</h2>
+                <p data-lang="impressum-company-text">WBS Limoservice<br>
+                Luxusstraße 123<br>
+                10115 Berlin<br>
+                Deutschland</p>
+
+                <h2 data-lang="impressum-contact">Kontakt</h2>
+                <p data-lang="impressum-contact-text">Telefon: +49 (30) 555-0198<br>
+                E-Mail: kontakt@wbs-limoservice.de</p>
+
+                <h2 data-lang="impressum-register">Registereintrag</h2>
+                <p data-lang="impressum-register-text">Eintragung im Handelsregister.<br>
+                Registergericht: Amtsgericht Berlin<br>
+                Registernummer: HRB 123456</p>
+
+                <h2 data-lang="impressum-vat">Umsatzsteuer-ID</h2>
+                <p data-lang="impressum-vat-text">Umsatzsteuer-Identifikationsnummer gemäß §27 a Umsatzsteuergesetz:<br>
+                DE123456789</p>
+
+                <h2 data-lang="impressum-responsible">Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV</h2>
+                <p data-lang="impressum-responsible-text">Max Mustermann<br>
+                Luxusstraße 123<br>
+                10115 Berlin</p>
+
+                <!-- Add Back to Homepage Button -->
+                <div class="text-center mt-12">
+                    <a href="./index.html" class="back-to-home" id="backButton">
+                        <i class="fas fa-arrow-left"></i>
+                        <span>Zurück zur Homepage</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cookie Banner -->
+    <div id="cookieBanner">
+        <div class="cookie-content">
+            <div>
+                <h3 class="cookie-header">Cookie-Einstellungen</h3>
+                <p class="cookie-description">Wir verwenden Cookies, um Ihnen die bestmögliche Erfahrung auf unserer Website zu bieten. Hier können Sie Ihre Präferenzen verwalten.</p>
+            </div>
+            
+            <div class="cookie-options">
+                <div class="cookie-option">
+                    <input type="checkbox" id="essentialCookies" checked disabled>
+                    <div>
+                        <label for="essentialCookies">Notwendige Cookies</label>
+                        <p>Diese Cookies sind für die Grundfunktionen der Website erforderlich und können nicht deaktiviert werden.</p>
+                    </div>
+                </div>
+                
+                <div class="cookie-option">
+                    <input type="checkbox" id="analyticsCookies">
+                    <div>
+                        <label for="analyticsCookies">Analyse-Cookies</label>
+                        <p>Diese Cookies helfen uns, die Nutzung der Website zu verstehen und zu verbessern.</p>
+                    </div>
+                </div>
+                
+                <div class="cookie-option">
+                    <input type="checkbox" id="marketingCookies">
+                    <div>
+                        <label for="marketingCookies">Marketing-Cookies</label>
+                        <p>Diese Cookies werden verwendet, um Werbung relevanter für Sie zu machen.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="cookie-actions">
+                <button class="cookie-btn accept-all" onclick="acceptAllCookies()">Alle akzeptieren</button>
+                <button class="cookie-btn save-preferences" onclick="saveCookiePreferences()">Auswahl speichern</button>
+                <button class="cookie-btn reject-all" onclick="rejectAllCookies()">Alle ablehnen</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-10 px-4">
+        <div class="container mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <div class="footer-logo">
+                        <span class="wbs">WBS</span>
+                        <span class="limo">Limoservice</span>
+                    </div>
+                    <p class="text-gray-400">Ihr exklusiver Partner für erstklassige Transportlösungen</p>
+                </div>
+                <div>
+                    <h3 class="text-xl mb-4 footer-title">Schnellzugriff</h3>
+                    <ul class="space-y-2">
+                        <li><a href="index.html#services" class="footer-link">Dienstleistungen</a></li>
+                        <li><a href="index.html#fleet" class="footer-link">Fahrzeugflotte</a></li>
+                        <li><a href="index.html#booking" class="footer-link">Buchung</a></li>
+                        <li><a href="index.html#contact" class="footer-link">Kontakt</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-xl mb-4 footer-title">Rechtliches</h3>
+                    <ul class="space-y-2">
+                        <li><a href="./datenschutz.html" class="footer-link">Datenschutz</a></li>
+                        <li><a href="./impressum.html" class="footer-link">Impressum</a></li>
+                        <li><a href="#" class="footer-link">AGB</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-xl mb-4 footer-title">Folgen Sie uns</h3>
+                    <div class="flex space-x-4">
+                        <a href="#" class="footer-social-icon bg-white text-gray-900 h-10 w-10 rounded-full flex items-center justify-center">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="footer-social-icon bg-white text-gray-900 h-10 w-10 rounded-full flex items-center justify-center">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="footer-social-icon bg-white text-gray-900 h-10 w-10 rounded-full flex items-center justify-center">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <hr class="border-gray-800 my-8">
+            <div class="text-center">
+                <p class="footer-bottom-text">&copy; 2024 WBS Limoservice. Alle Rechte vorbehalten.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const translations = {
+            de: {
+                "impressum-title": "Impressum",
+                "impressum-company": "Angaben gemäß § 5 TMG",
+                "impressum-company-text": "WBS Limoservice\nLuxusstraße 123\n10115 Berlin\nDeutschland",
+                "impressum-contact": "Kontakt",
+                "impressum-contact-text": "Telefon: +49 (30) 555-0198\nE-Mail: kontakt@wbs-limoservice.de",
+                "impressum-register": "Registereintrag",
+                "impressum-register-text": "Eintragung im Handelsregister.\nRegistergericht: Amtsgericht Berlin\nRegisternummer: HRB 123456",
+                "impressum-vat": "Umsatzsteuer-ID",
+                "impressum-vat-text": "Umsatzsteuer-Identifikationsnummer gemäß §27 a Umsatzsteuergesetz:\nDE123456789",
+                "impressum-responsible": "Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV",
+                "impressum-responsible-text": "Max Mustermann\nLuxusstraße 123\n10115 Berlin",
+                "nav-services": "Dienstleistungen",
+                "nav-fleet": "Fahrzeugflotte",
+                "nav-booking": "Buchung",
+                "nav-contact": "Kontakt"
+            },
+            en: {
+                "impressum-title": "Legal Notice",
+                "impressum-company": "Information according to § 5 TMG",
+                "impressum-company-text": "WBS Limoservice\nLuxusstraße 123\n10115 Berlin\nGermany",
+                "impressum-contact": "Contact",
+                "impressum-contact-text": "Phone: +49 (30) 555-0198\nEmail: kontakt@wbs-limoservice.de",
+                "impressum-register": "Commercial Register",
+                "impressum-register-text": "Registered in the Commercial Register.\nRegister Court: Local Court Berlin\nRegistration Number: HRB 123456",
+                "impressum-vat": "VAT ID",
+                "impressum-vat-text": "VAT identification number according to §27 a of the German VAT Act:\nDE123456789",
+                "impressum-responsible": "Responsible for content according to § 55 Abs. 2 RStV",
+                "impressum-responsible-text": "Max Mustermann\nLuxusstraße 123\n10115 Berlin",
+                "nav-services": "Services",
+                "nav-fleet": "Fleet",
+                "nav-booking": "Booking",
+                "nav-contact": "Contact"
+            },
+            ar: {
+                "impressum-title": "إشعار قانوني",
+                "impressum-company": "معلومات وفقًا للمادة 5 من قانون الوسائط الإلكترونية",
+                "impressum-company-text": "دبليو بي إس ليموزين\nشارع لوكسوس 123\n10115 برلين\nألمانيا",
+                "impressum-contact": "اتصل بنا",
+                "impressum-contact-text": "هاتف: 49305550198+\nالبريد الإلكتروني: kontakt@wbs-limoservice.de",
+                "impressum-register": "السجل التجاري",
+                "impressum-register-text": "مسجل في السجل التجاري.\nمحكمة السجل: المحكمة المحلية في برلين\nرقم التسجيل: HRB 123456",
+                "impressum-vat": "رقم ضريبة القيمة المضافة",
+                "impressum-vat-text": "رقم تعريف ضريبة القيمة المضافة وفقًا للمادة 27 أ من قانون ضريبة القيمة المضافة الألماني:\nDE123456789",
+                "impressum-responsible": "المسؤول عن المحتوى وفقًا للمادة 55 فقرة 2 من قانون الخدمات الإعلامية",
+                "impressum-responsible-text": "ماكس موستيرمان\nشارع لوكسوس 123\n10115 برلين",
+                "nav-services": "الخدمات",
+                "nav-fleet": "الأسطول",
+                "nav-booking": "الحجز",
+                "nav-contact": "اتصل بنا"
+            }
+        };
+
+        function setLanguage(lang) {
+            document.documentElement.lang = lang;
+            document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+            
+            document.querySelectorAll('[data-lang]').forEach(element => {
+                const key = element.getAttribute('data-lang');
+                if (translations[lang][key]) {
+                    if (element.tagName === 'P' && translations[lang][key].includes('\n')) {
+                        element.innerHTML = translations[lang][key].replace(/\n/g, '<br>');
+                    } else {
+                        element.textContent = translations[lang][key];
+                    }
+                }
+            });
+        }
+
+        document.querySelector('.lang-dropdown').addEventListener('click', (e) => {
+            if (e.target.tagName === 'A') {
+                e.preventDefault();
+                const lang = e.target.getAttribute('data-lang');
+                setLanguage(lang);
+                document.querySelector('.lang-btn span').textContent = lang.toUpperCase();
+            }
+        });
+
+        // Add Mobile Menu JavaScript
+        const mobileMenuButton = document.querySelector('.mobile-menu-button');
+        const mobileMenu = document.querySelector('.mobile-menu');
+        const body = document.body;
+        let isMenuOpen = false;
+
+        function toggleMenu() {
+            isMenuOpen = !isMenuOpen;
+            body.classList.toggle('menu-open');
+            
+            if (isMenuOpen) {
+                body.style.overflow = 'hidden';
+            } else {
+                body.style.overflow = '';
+            }
+        }
+
+        mobileMenuButton.addEventListener('click', toggleMenu);
+
+        // Close mobile menu when clicking a link
+        const mobileMenuLinks = mobileMenu.querySelectorAll('a');
+        mobileMenuLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                if (isMenuOpen) {
+                    toggleMenu();
+                }
+            });
+        });
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (isMenuOpen && !mobileMenu.contains(e.target) && !mobileMenuButton.contains(e.target)) {
+                toggleMenu();
+            }
+        });
+
+        // Close mobile menu on escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && isMenuOpen) {
+                toggleMenu();
+            }
+        });
+
+        // Add this at the beginning of your script section
+        document.getElementById('backButton').addEventListener('click', function(e) {
+            e.preventDefault();
+            document.body.classList.add('page-exit');
+            
+            setTimeout(() => {
+                window.location.href = this.href;
+            }, 200);
+        });
+
+        // Ensure smooth entrance when loading the page
+        document.addEventListener('DOMContentLoaded', function() {
+            document.body.style.opacity = '0';
+            setTimeout(() => {
+                document.body.style.opacity = '1';
+            }, 50);
+        });
+
+        // Cookie Banner Functions
+        function setCookie(name, value, days) {
+            const date = new Date();
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+            const expires = "expires=" + date.toUTCString();
+            document.cookie = name + "=" + value + ";" + expires + ";path=/";
+        }
+
+        function getCookie(name) {
+            const value = `; ${document.cookie}`;
+            const parts = value.split(`; ${name}=`);
+            if (parts.length === 2) return parts.pop().split(';').shift();
+        }
+
+        function showCookieBanner() {
+            if (!getCookie('cookiePreferences')) {
+                document.getElementById('cookieBanner').classList.add('active');
+            }
+        }
+
+        function hideCookieBanner() {
+            document.getElementById('cookieBanner').classList.remove('active');
+        }
+
+        function acceptAllCookies() {
+            setCookie('cookiePreferences', 'all', 365);
+            setCookie('essentialCookies', 'true', 365);
+            setCookie('analyticsCookies', 'true', 365);
+            setCookie('marketingCookies', 'true', 365);
+            hideCookieBanner();
+        }
+
+        function rejectAllCookies() {
+            setCookie('cookiePreferences', 'essential', 365);
+            setCookie('essentialCookies', 'true', 365);
+            setCookie('analyticsCookies', 'false', 365);
+            setCookie('marketingCookies', 'false', 365);
+            hideCookieBanner();
+        }
+
+        function saveCookiePreferences() {
+            const analytics = document.getElementById('analyticsCookies').checked;
+            const marketing = document.getElementById('marketingCookies').checked;
+            
+            setCookie('cookiePreferences', 'custom', 365);
+            setCookie('essentialCookies', 'true', 365);
+            setCookie('analyticsCookies', analytics.toString(), 365);
+            setCookie('marketingCookies', marketing.toString(), 365);
+            hideCookieBanner();
+        }
+
+        // Show cookie banner on page load if preferences not set
+        document.addEventListener('DOMContentLoaded', showCookieBanner);
+    </script>
+</body>
+</html> 
