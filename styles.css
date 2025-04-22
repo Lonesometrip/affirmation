@@ -527,16 +527,16 @@ footer {
     top: 50%;
     transform: translateY(-50%);
     z-index: 50;
-    background: white;
+    background: transparent;
     padding: 1rem 0.75rem;
     border-radius: 0.5rem 0 0 0.5rem;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
 }
 
 .fixed-social-menu a {
     display: block;
     padding: 0.5rem;
     transition: transform 0.2s ease;
+    background: transparent;
 }
 
 .fixed-social-menu a:hover {
@@ -545,6 +545,7 @@ footer {
 
 .fixed-social-menu i {
     font-size: 1.5rem;
+    filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.2));
 }
 
 /* WhatsApp Icon */
@@ -1172,4 +1173,34 @@ input:checked + .slider:before {
     100% {
         left: 100%;
     }
+}
+
+.fixed-social-menu i,
+.fixed right-0 i {
+    filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.2));
+}
+
+.fixed-social-menu a,
+.fixed.right-0 a {
+    transition: transform 0.3s ease;
+}
+
+.fixed-social-menu a:hover,
+.fixed.right-0 a:hover {
+    transform: scale(1.1);
+}
+
+/* WhatsApp Icon */
+.fixed.right-0 a:nth-child(1) {
+    color: #25D366;
+}
+
+/* Email Icon */
+.fixed.right-0 a:nth-child(2) {
+    color: #EA4335;
+}
+
+/* Instagram Icon */
+.fixed.right-0 a:nth-child(3) {
+    color: #E4405F;
 } 

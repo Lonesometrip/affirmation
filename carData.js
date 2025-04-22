@@ -6,16 +6,16 @@ const carData = {
             seats: '4',
             luggage: '2 Koffer'
         },
-        thumbnail: 'https://images.unsplash.com/photo-1580274455191-1c62238fa333?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+        thumbnail: 'https://cdn.pixabay.com/photo/2017/03/27/14/56/auto-2179220_1280.jpg',
         exterior: [
-            'https://images.unsplash.com/photo-1580274455191-1c62238fa333?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
-            'https://images.unsplash.com/photo-1555215695-3004980ad54e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
-            'https://images.unsplash.com/photo-1542362567-b07e54358753?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
-            'https://images.unsplash.com/photo-1550355291-bbee04a92027?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
+            'https://cdn.pixabay.com/photo/2017/03/27/14/56/auto-2179220_1280.jpg',
+            'https://cdn.pixabay.com/photo/2016/12/03/18/57/amg-1880381_1280.jpg',
+            'https://cdn.pixabay.com/photo/2016/12/03/18/57/mercedes-1880380_1280.jpg',
+            'https://cdn.pixabay.com/photo/2015/07/19/20/00/mercedes-benz-852156_1280.jpg'
         ],
         interior: [
-            'https://images.unsplash.com/photo-1503376780353-7e6692767b70?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
-            'https://images.unsplash.com/photo-1542273917363-3b1817f69a2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
+            'https://cdn.pixabay.com/photo/2016/12/03/18/57/mercedes-benz-1880379_1280.jpg',
+            'https://cdn.pixabay.com/photo/2017/08/12/12/01/mercedes-benz-2634297_1280.jpg'
         ]
     },
     car2: {
@@ -63,16 +63,16 @@ const carData = {
             seats: '7',
             luggage: '4 Koffer'
         },
-        thumbnail: 'https://images.unsplash.com/photo-1503376780353-7e6692767b70?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+        thumbnail: 'https://images.unsplash.com/photo-1551737823-bfb7c4d05235',
         exterior: [
-            'https://images.unsplash.com/photo-1503376780353-7e6692767b70?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
-            'https://images.unsplash.com/photo-1502877338535-766e1452684a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
-            'https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
-            'https://images.unsplash.com/photo-1511919884226-fd3cad34687c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
+            'https://images.unsplash.com/photo-1551737823-bfb7c4d05235',
+            'https://images.unsplash.com/photo-1551737824-e0d76b1e0bfc',
+            'https://images.unsplash.com/photo-1551737825-6f40d5e3e96c',
+            'https://images.unsplash.com/photo-1551737826-4e16a5d0c494'
         ],
         interior: [
-            'https://images.unsplash.com/photo-1542362567-b07e54358753?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
-            'https://images.unsplash.com/photo-1548697153-989a9e4b6dc1?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
+            'https://images.unsplash.com/photo-1551737827-77c7d4e11f84',
+            'https://images.unsplash.com/photo-1551737828-7e52588090d2'
         ]
     },
     car5: {
@@ -82,16 +82,16 @@ const carData = {
             seats: '5',
             luggage: '3 Koffer'
         },
-        thumbnail: 'https://images.unsplash.com/photo-1610647752706-3bb12232b3e4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+        thumbnail: 'https://images.unsplash.com/photo-1520031441872-265e4ff70366',
         exterior: [
-            'https://images.unsplash.com/photo-1610647752706-3bb12232b3e4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
-            'https://images.unsplash.com/photo-1554744512-d6c603f27c54?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
-            'https://images.unsplash.com/photo-1580273916550-e323be2ae537?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
-            'https://images.unsplash.com/photo-1549827458-cb7865a4177a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
+            'https://images.unsplash.com/photo-1520031441872-265e4ff70366',
+            'https://images.unsplash.com/photo-1520031441872-265e4ff70367',
+            'https://images.unsplash.com/photo-1520031441872-265e4ff70368',
+            'https://images.unsplash.com/photo-1520031441872-265e4ff70369'
         ],
         interior: [
-            'https://images.unsplash.com/photo-1547245329-b732ddfb192b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
-            'https://images.unsplash.com/photo-1543857182-68106299b6b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
+            'https://images.unsplash.com/photo-1520031441872-265e4ff70370',
+            'https://images.unsplash.com/photo-1520031441872-265e4ff70371'
         ]
     },
     car6: {
@@ -122,12 +122,6 @@ function createVehicleCard(carId, carInfo) {
             <div class="card-inner">
                 <div class="relative">
                     <img src="${carInfo.thumbnail}" alt="${carInfo.name}" class="w-full h-64 object-cover">
-                    <div class="degree-360">360°</div>
-                    <button class="rotate-button absolute bottom-4 right-4 bg-white text-gray-900 p-3 rounded-full shadow-md hover:bg-gray-100 transition" 
-                            onclick="openGallery('${carId}')"
-                            title="360° Ansicht öffnen">
-                        <i class="fas fa-cube"></i>
-                    </button>
                 </div>
                 <div class="p-6">
                     <h3 class="text-2xl font-bold mb-2">${carInfo.name}</h3>
