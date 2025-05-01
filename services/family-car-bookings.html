@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Family Car Bookings - Premium Chauffeur</title>
+    <meta name="description" content="Book family-sized vehicles with or without chauffeurs for your European travels with Premium Chauffeur's luxury car rental service.">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        /* Service Page Specific Styles */
+        .hero-banner {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/public/images/services/service-family-bookings.jpg');
+            background-size: cover;
+            background-position: center;
+            height: 70vh;
+            min-height: 500px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            margin-top: 0;
+            position: relative;
+        }
+
+        .vehicle-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .vehicle-card {
+            border: 1px solid #eee;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .vehicle-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+
+        .vehicle-image {
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .vehicle-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .vehicle-card:hover .vehicle-image img {
+            transform: scale(1.1);
+        }
+
+        .vehicle-content {
+            padding: 20px;
+        }
+
+        .vehicle-title {
+            color: var(--primary-color);
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        .vehicle-specs {
+            margin: 15px 0;
+        }
+
+        .spec-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+
+        .spec-item i {
+            color: var(--primary-color);
+            margin-right: 10px;
+            width: 20px;
+            text-align: center;
+        }
+
+        .vehicle-price {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid #eee;
+        }
+
+        .price-tag {
+            font-weight: 700;
+            font-size: 1.3rem;
+            color: var(--primary-color);
+        }
+
+        .booking-options {
+            margin-top: 50px;
+            background-color: #f9f9f9;
+            padding: 30px;
+            border-radius: 10px;
+        }
+
+        .option-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 25px;
+            margin-bottom: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        .option-title {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .option-title i {
+            color: var(--primary-color);
+            font-size: 24px;
+            margin-right: 15px;
+        }
+
+        .option-title h3 {
+            margin: 0;
+            font-size: 1.3rem;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .feature-item {
+            background-color: #f9f9f9;
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .feature-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .feature-icon {
+            font-size: 40px;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .vehicle-cards {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+
+    <main>
+        <div class="hero-banner">
+            <div class="container">
+                <h1>Family Car Bookings</h1>
+                <p class="lead">Book family-sized vehicles with or without chauffeurs for your European travels</p>
+            </div>
+        </div>
+
+        <section class="service-overview">
+            <div class="container">
+                <div class="section-header">
+                    <span class="subtitle">Service Overview</span>
+                    <h2 class="title">Premium Vehicles for Family Travel</h2>
+                </div>
+
+                <div class="content-wrapper">
+                    <p>Our Family Car Booking service offers spacious, comfortable vehicles perfect for families and groups traveling across Europe. Whether you need a vehicle with a professional chauffeur or prefer to drive yourself, we provide premium vehicles that ensure comfort, safety, and style for your journey.</p>
+
+                    <p>With our flexible rental options, you can choose the perfect vehicle to accommodate your family size, luggage requirements, and travel preferences. Each vehicle in our fleet is meticulously maintained, fully insured, and equipped with modern amenities to make your family trip as comfortable and enjoyable as possible.</p>
+                </div>
+
+                <div class="vehicle-cards">
+                    <div class="vehicle-card">
+                        <div class="vehicle-image">
+                            <img src="/public/images/vehicles/vehicle-mercedes-vclass.jpg" alt="Mercedes V-Class">
+                        </div>
+                        <div class="vehicle-content">
+                            <h3 class="vehicle-title">Mercedes V-Class</h3>
+                            <p>Luxury minivan with spacious seating for up to 7 passengers, perfect for families with children.</p>
+                            <div class="vehicle-specs">
+                                <div class="spec-item">
+                                    <i class="fas fa-users"></i>
+                                    <span>Capacity: 7 passengers</span>
+                                </div>
+                                <div class="spec-item">
+                                    <i class="fas fa-suitcase"></i>
+                                    <span>Luggage: 4-5 large suitcases</span>
+                                </div>
+                                <div class="spec-item">
+                                    <i class="fas fa-car"></i>
+                                    <span>Automatic transmission</span>
+                                </div>
+                                <div class="spec-item">
+                                    <i class="fas fa-snowflake"></i>
+                                    <span>Climate control</span>
+                                </div>
+                            </div>
+                            <div class="vehicle-price">
+                                <div class="price-tag">From €280 per day</div>
+                                <a href="/#contact" class="btn btn-sm btn-primary">Book Now</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="vehicle-card">
+                        <div class="vehicle-image">
+                            <img src="/public/images/vehicles/vehicle-bmw-x5.jpg" alt="BMW X5">
+                        </div>
+                        <div class="vehicle-content">
+                            <h3 class="vehicle-title">BMW X5</h3>
+                            <p>Luxurious SUV with ample space for a family of 5 and their luggage, combining comfort with performance.</p>
+                            <div class="vehicle-specs">
+                                <div class="spec-item">
+                                    <i class="fas fa-users"></i>
+                                    <span>Capacity: 5 passengers</span>
+                                </div>
+                                <div class="spec-item">
+                                    <i class="fas fa-suitcase"></i>
+                                    <span>Luggage: 3-4 large suitcases</span>
+                                </div>
+                                <div class="spec-item">
+                                    <i class="fas fa-car"></i>
+                                    <span>Automatic transmission</span>
+                                </div>
+                                <div class="spec-item">
+                                    <i class="fas fa-wifi"></i>
+                                    <span>Wi-Fi & entertainment system</span>
+                                </div>
+                            </div>
+                            <div class="vehicle-price">
+                                <div class="price-tag">From €240 per day</div>
+                                <a href="/#contact" class="btn btn-sm btn-primary">Book Now</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="vehicle-card">
+                        <div class="vehicle-image">
+                            <img src="/public/images/vehicles/vehicle-audi-q7.jpg" alt="Audi Q7">
+                        </div>
+                        <div class="vehicle-content">
+                            <h3 class="vehicle-title">Audi Q7</h3>
+                            <p>Elegant 7-seater SUV with exceptional comfort and driving dynamics, ideal for medium-sized families.</p>
+                            <div class="vehicle-specs">
+                                <div class="spec-item">
+                                    <i class="fas fa-users"></i>
+                                    <span>Capacity: 7 passengers</span>
+                                </div>
+                                <div class="spec-item">
+                                    <i class="fas fa-suitcase"></i>
+                                    <span>Luggage: 3-4 large suitcases</span>
+                                </div>
+                                <div class="spec-item">
+                                    <i class="fas fa-car"></i>
+                                    <span>Automatic transmission</span>
+                                </div>
+                                <div class="spec-item">
+                                    <i class="fas fa-map-marked-alt"></i>
+                                    <span>Advanced navigation system</span>
+                                </div>
+                            </div>
+                            <div class="vehicle-price">
+                                <div class="price-tag">From €260 per day</div>
+                                <a href="/#contact" class="btn btn-sm btn-primary">Book Now</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="vehicle-card">
+                        <div class="vehicle-image">
+                            <img src="/public/images/vehicles/vehicle-mercedes-sprinter.jpg" alt="Mercedes Sprinter">
+                        </div>
+                        <div class="vehicle-content">
+                            <h3 class="vehicle-title">Mercedes Sprinter</h3>
+                            <p>Spacious luxury van with capacity for up to 12 passengers, perfect for large families or group travel.</p>
+                            <div class="vehicle-specs">
+                                <div class="spec-item">
+                                    <i class="fas fa-users"></i>
+                                    <span>Capacity: 10-12 passengers</span>
+                                </div>
+                                <div class="spec-item">
+                                    <i class="fas fa-suitcase"></i>
+                                    <span>Luggage: 8-10 large suitcases</span>
+                                </div>
+                                <div class="spec-item">
+                                    <i class="fas fa-car"></i>
+                                    <span>Automatic transmission</span>
+                                </div>
+                                <div class="spec-item">
+                                    <i class="fas fa-tv"></i>
+                                    <span>Entertainment system & cooler</span>
+                                </div>
+                            </div>
+                            <div class="vehicle-price">
+                                <div class="price-tag">From €380 per day</div>
+                                <a href="/#contact" class="btn btn-sm btn-primary">Book Now</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="booking-options bg-light">
+            <div class="container">
+                <div class="section-header">
+                    <span class="subtitle">Booking Options</span>
+                    <h2 class="title">Choose Your Preferred Rental Option</h2>
+                </div>
+
+                <div class="booking-options">
+                    <div class="option-card">
+                        <div class="option-title">
+                            <i class="fas fa-user-tie"></i>
+                            <h3>With Professional Chauffeur</h3>
+                        </div>
+                        <p>Sit back and relax while our experienced, multilingual chauffeurs take care of the driving. This premium option includes:</p>
+                        <ul>
+                            <li>Professional, licensed chauffeur for the duration of your rental</li>
+                            <li>Chauffeur's accommodation and meals covered</li>
+                            <li>Flexible schedule with no time constraints</li>
+                            <li>Local knowledge and personalized recommendations</li>
+                            <li>Assistance with luggage and any special requirements</li>
+                            <li>All fuel, toll, and parking costs included</li>
+                        </ul>
+                        <p><strong>Perfect for:</strong> Families who want to fully focus on enjoying their vacation without the stress of driving in unfamiliar territory.</p>
+                        <div class="text-center" style="margin-top: 20px;">
+                            <a href="/#contact" class="btn btn-primary">Book With Chauffeur</a>
+                        </div>
+                    </div>
+
+                    <div class="option-card">
+                        <div class="option-title">
+                            <i class="fas fa-car"></i>
+                            <h3>Self-Drive Option</h3>
+                        </div>
+                        <p>Enjoy the freedom of driving yourself in one of our premium vehicles. This option includes:</p>
+                        <ul>
+                            <li>Fully insured luxury vehicle</li>
+                            <li>Unlimited mileage</li>
+                            <li>24/7 roadside assistance</li>
+                            <li>Latest GPS navigation system preloaded with points of interest</li>
+                            <li>Child seats and additional equipment upon request</li>
+                            <li>Detailed map and travel guides provided</li>
+                        </ul>
+                        <p><strong>Perfect for:</strong> Independent families who prefer the flexibility of setting their own pace and making spontaneous stops along the way.</p>
+                        <div class="text-center" style="margin-top: 20px;">
+                            <a href="/#contact" class="btn btn-primary">Book Self-Drive</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="features-section">
+            <div class="container">
+                <div class="section-header">
+                    <span class="subtitle">Service Benefits</span>
+                    <h2 class="title">Why Choose Our Family Car Services</h2>
+                </div>
+
+                <div class="feature-grid">
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h3>Safety First</h3>
+                        <p>All vehicles undergo rigorous safety checks and are equipped with the latest safety features.</p>
+                    </div>
+
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-child"></i>
+                        </div>
+                        <h3>Child-Friendly</h3>
+                        <p>Child seats, booster seats, and entertainment options available for various age groups.</p>
+                    </div>
+
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-map-marked-alt"></i>
+                        </div>
+                        <h3>Customized Routes</h3>
+                        <p>Personalized itineraries with family-friendly stops and attractions along your route.</p>
+                    </div>
+
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-calendar-alt"></i>
+                        </div>
+                        <h3>Flexible Booking</h3>
+                        <p>Easy modifications to your booking to accommodate changing travel plans.</p>
+                    </div>
+
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-suitcase-rolling"></i>
+                        </div>
+                        <h3>Generous Luggage Space</h3>
+                        <p>Ample room for all your family's luggage, strollers, and equipment.</p>
+                    </div>
+
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-headset"></i>
+                        </div>
+                        <h3>24/7 Support</h3>
+                        <p>Round-the-clock assistance available throughout your rental period.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="pickup-delivery bg-light">
+            <div class="container">
+                <div class="section-header">
+                    <span class="subtitle">Convenient Service</span>
+                    <h2 class="title">Pickup & Delivery Options</h2>
+                </div>
+
+                <div class="content-wrapper">
+                    <p>We offer flexible pickup and delivery options to make your family car rental as convenient as possible:</p>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h3><i class="fas fa-hotel"></i> Hotel Delivery</h3>
+                            <p>Have your vehicle delivered directly to your hotel at a time that suits you. Our representative will meet you to handle the paperwork and provide a brief overview of the vehicle's features.</p>
+                        </div>
+
+                        <div class="col-md-6">
+                            <h3><i class="fas fa-plane-arrival"></i> Airport Pickup</h3>
+                            <p>We'll meet you at the airport arrival hall with your vehicle ready to go. Skip the rental counter queues and start your family vacation right away.</p>
+                        </div>
+                    </div>
+
+                    <div class="row" style="margin-top: 30px;">
+                        <div class="col-md-6">
+                            <h3><i class="fas fa-home"></i> Villa/Apartment Delivery</h3>
+                            <p>If you're staying in a private accommodation, we can deliver your vehicle directly to your location throughout our service areas in Germany, Switzerland, and Austria.</p>
+                        </div>
+
+                        <div class="col-md-6">
+                            <h3><i class="fas fa-map-marker-alt"></i> Custom Location</h3>
+                            <p>Choose any convenient location for vehicle pickup or drop-off within our service area. Just let us know your preferences, and we'll accommodate your needs.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="faq-section">
+            <div class="container">
+                <div class="section-header">
+                    <span class="subtitle">Common Questions</span>
+                    <h2 class="title">Frequently Asked Questions</h2>
+                </div>
+
+                <div class="faq-list">
+                    <div class="faq-item">
+                        <div class="faq-question">What are the requirements for self-drive rentals?</div>
+                        <div class="faq-answer">
+                            <p>For self-drive rentals, you'll need a valid driver's license (international driving permit if required), passport, credit card for the security deposit, and be at least 25 years old. Additional drivers must also meet these requirements and be registered on the rental agreement.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">Can I cross international borders with the rental vehicle?</div>
+                        <div class="faq-answer">
+                            <p>Yes, our vehicles can be driven throughout Germany, Switzerland, Austria, France, Italy, and most EU countries. We provide all necessary documentation and stickers required for international travel. Please inform us of your intended route at the time of booking.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">What child safety equipment is available?</div>
+                        <div class="faq-answer">
+                            <p>We offer a range of child safety equipment including infant carriers (0-12 months), toddler seats (1-4 years), booster seats (4-12 years), and ISOFIX attachments. Please specify the ages and number of children when booking so we can provide the appropriate equipment.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">What happens in case of a breakdown or accident?</div>
+                        <div class="faq-answer">
+                            <p>All our vehicles come with comprehensive insurance and 24/7 roadside assistance. In case of any issue, simply call our emergency number, and we'll arrange immediate assistance. If necessary, we'll provide a replacement vehicle to minimize disruption to your family trip.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">Can I extend my rental period?</div>
+                        <div class="faq-answer">
+                            <p>Yes, rental extensions are possible subject to vehicle availability. We recommend giving us at least 48 hours' notice for extensions. Additional days will be charged at the same daily rate as your original booking.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="cta-section">
+            <div class="container text-center">
+                <h2>Ready to Book Your Family Vehicle?</h2>
+                <p>Experience hassle-free family travel with our premium vehicle rental service.</p>
+                <div class="btn-group">
+                    <a href="/#contact" class="btn btn-primary">Book Now</a>
+                    <a href="tel:+4915123456789" class="btn btn-outline"><i class="fas fa-phone"></i> Call Us</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <h2 class="footer-logo">Premium<span>Chauffeur</span></h2>
+                    <p>12+ years of experience in European tourism. Luxury transportation services across Europe with our professional chauffeurs and premium vehicles.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-links-column">
+                        <h3>Quick Links</h3>
+                        <ul>
+                            <li><a href="/">Home</a></li>
+                            <li><a href="/#about">About</a></li>
+                            <li><a href="/#services">Services</a></li>
+                            <li><a href="/#destinations">Destinations</a></li>
+                            <li><a href="/#testimonials">Testimonials</a></li>
+                            <li><a href="/#contact">Contact</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-links-column">
+                        <h3>Services</h3>
+                        <ul>
+                            <li><a href="/services/airport-transfers.html">Airport Transfers</a></li>
+                            <li><a href="/services/special-daily-tours.html">Special Daily Tours</a></li>
+                            <li><a href="/services/multi-day-tours.html">Multi-Day Tours</a></li>
+                            <li><a href="/services/intercity-transfers.html">Intercity Transfers</a></li>
+                            <li><a href="/services/family-car-bookings.html">Family Car Bookings</a></li>
+                            <li><a href="/services/medical-tourism.html">Medical Tourism</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-links-column">
+                        <h3>Contact Us</h3>
+                        <ul class="contact-info">
+                            <li><i class="fas fa-map-marker-alt"></i> Munich, Germany</li>
+                            <li><i class="fas fa-phone"></i> +49 151 23456789</li>
+                            <li><i class="fas fa-envelope"></i> info@premiumchauffeur.com</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="copyright">
+                    <p>&copy; 2023 Premium Chauffeur. All rights reserved.</p>
+                </div>
+                <div class="legal-links">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="/js/main.js"></script>
+</body>
+</html>

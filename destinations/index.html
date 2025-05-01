@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>European Destinations | Premium Chauffeur</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <style>
+        .destinations-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            padding: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .destination-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .destination-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+
+        .destination-image {
+            width: 100%;
+            height: 250px;
+            overflow: hidden;
+        }
+
+        .destination-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .destination-card:hover .destination-image img {
+            transform: scale(1.1);
+        }
+
+        .destination-content {
+            padding: 1.5rem;
+        }
+
+        .destination-content h2 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .destination-content p {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .page-title {
+            text-align: center;
+            padding: 2rem 0;
+            color: var(--primary-color);
+            margin-top: 80px;
+        }
+
+        .page-description {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+            padding: 0 1rem;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+
+
+    <main>
+        <h1 class="page-title">Explore Our European Destinations</h1>
+        <p class="page-description">Discover the most beautiful and culturally rich destinations across Europe with our premium chauffeur services. From historic cities to scenic countryside tours, we offer unforgettable experiences.</p>
+
+        <div class="destinations-grid">
+            <!-- Munich Card -->
+            <div class="destination-card">
+                <div class="destination-image">
+                    <img src="/public/images/destinations/dest-munich-skyline.jpg" alt="Munich skyline with Frauenkirche">
+                </div>
+                <div class="destination-content">
+                    <h2>Munich & Bavarian Countryside</h2>
+                    <p>Explore Bavaria's capital with its rich culture, beautiful architecture, and stunning countryside tours.</p>
+                </div>
+            </div>
+
+            <!-- Switzerland Card -->
+            <div class="destination-card">
+                <div class="destination-image">
+                    <img src="/public/images/destinations/dest-swiss-alps-mountains.jpg" alt="Swiss Alps mountain landscape">
+                </div>
+                <div class="destination-content">
+                    <h2>Switzerland Tour</h2>
+                    <p>Experience the breathtaking beauty of Switzerland's majestic mountains and charming villages.</p>
+                </div>
+            </div>
+
+            <!-- Austria Card -->
+            <div class="destination-card">
+                <div class="destination-image">
+                    <img src="/public/images/destinations/dest-vienna-palace.jpg" alt="Vienna historic architecture">
+                </div>
+                <div class="destination-content">
+                    <h2>Austria Experience</h2>
+                    <p>Discover the imperial splendor, musical heritage, and skiing experiences in Austria.</p>
+                </div>
+            </div>
+
+            <!-- Baden-Baden Card -->
+            <div class="destination-card">
+                <div class="destination-image">
+                    <img src="/public/images/destinations/dest-baden-baden-town.jpg" alt="Baden-Baden and Black Forest region">
+                </div>
+                <div class="destination-content">
+                    <h2>Baden-Baden & Black Forest</h2>
+                    <p>Tour through the picturesque spa town of Baden-Baden and the mystical Black Forest region.</p>
+                </div>
+            </div>
+
+            <!-- Prague Card -->
+            <div class="destination-card">
+                <div class="destination-image">
+                    <img src="/public/images/destinations/dest-prague-oldtown.jpg" alt="Prague Old Town Square">
+                </div>
+                <div class="destination-content">
+                    <h2>Prague, Czech Republic</h2>
+                    <p>Explore the magical city of Prague with our extended 12-hour tours from Germany.</p>
+                </div>
+            </div>
+
+            <!-- Heart of Europe Card -->
+            <div class="destination-card">
+                <div class="destination-image">
+                    <img src="/public/images/destinations/dest-belvedere-palace.jpg" alt="Belvedere Palace Vienna">
+                </div>
+                <div class="destination-content">
+                    <h2>Heart of Europe Tour</h2>
+                    <p>Experience the best of Switzerland, Germany and Austria with our comprehensive tour program.</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Premium Chauffeur</h3>
+                    <p>Luxury transportation services for discerning clients who demand excellence.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="/services">Our Services</a></li>
+                        <li><a href="/destinations">Destinations</a></li>
+                        <li><a href="/about">About Us</a></li>
+                        <li><a href="/contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact Us</h3>
+                    <address>
+                        <p><i class="fas fa-map-marker-alt"></i> Munich, Germany</p>
+                        <p><i class="fas fa-phone"></i> +49 151 234 56789</p>
+                        <p><i class="fas fa-envelope"></i> info@premiumchauffeur.com</p>
+                    </address>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 Premium Chauffeur. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="../js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Intercity Transfers - Premium Chauffeur</title>
+    <meta name="description" content="Comfortable transportation between cities across Germany, Switzerland, and Austria with Premium Chauffeur's luxury intercity transfer service.">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        /* Service Page Specific Styles */
+        .hero-banner {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/public/images/services/service-intercity-transfer.jpg');
+            background-size: cover;
+            background-position: center;
+            height: 70vh;
+            min-height: 500px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            margin-top: 0;
+            position: relative;
+        }
+
+        .route-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .route-card {
+            border: 1px solid #eee;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .route-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+
+        .route-image {
+            height: 180px;
+            overflow: hidden;
+        }
+
+        .route-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .route-card:hover .route-image img {
+            transform: scale(1.1);
+        }
+
+        .route-content {
+            padding: 20px;
+        }
+
+        .route-title {
+            color: var(--primary-color);
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+        }
+
+        .route-details {
+            margin: 15px 0;
+        }
+
+        .route-price {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid #eee;
+        }
+
+        .price-tag {
+            font-weight: 700;
+            font-size: 1.3rem;
+            color: var(--primary-color);
+        }
+
+        .pricing-table {
+            margin-top: 50px;
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        tr:hover {
+            background-color: #f5f5f5;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .feature-item {
+            background-color: #f9f9f9;
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .feature-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .feature-icon {
+            font-size: 40px;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .route-cards {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+
+    <main>
+        <div class="hero-banner">
+            <div class="container">
+                <h1>Intercity Transfers</h1>
+                <p class="lead">Comfortable transportation between cities across Germany, Switzerland, and Austria</p>
+            </div>
+        </div>
+
+        <section class="service-overview">
+            <div class="container">
+                <div class="section-header">
+                    <span class="subtitle">Service Overview</span>
+                    <h2 class="title">Premium Intercity Transportation</h2>
+                </div>
+
+                <div class="content-wrapper">
+                    <p>Our intercity transfer service offers a seamless, comfortable, and luxurious travel experience between major European cities. Whether you're traveling for business or pleasure, our professional chauffeurs will ensure a stress-free journey in one of our premium vehicles.</p>
+
+                    <p>We provide direct door-to-door service, eliminating the hassle of public transportation, crowded trains, or rental cars. With flexible departure times, the ability to make stops along the way, and the comfort of traveling in a luxury vehicle, our intercity transfers are the perfect solution for discerning travelers who value comfort, privacy, and convenience.</p>
+                </div>
+
+                <div class="route-cards">
+                    <div class="route-card">
+                        <div class="route-image">
+                            <img src="/public/images/services/service-vienna-transfer.jpg" alt="Munich to Vienna">
+                        </div>
+                        <div class="route-content">
+                            <h3 class="route-title">Munich to Vienna</h3>
+                            <p>Travel from Bavaria's capital to the imperial city of Vienna in luxury and comfort.</p>
+                            <div class="route-details">
+                                <p><i class="fas fa-route"></i> Distance: ~430 km</p>
+                                <p><i class="far fa-clock"></i> Duration: ~4.5 hours</p>
+                            </div>
+                            <div class="route-price">
+                                <div class="price-tag">From €580</div>
+                                <a href="/#contact" class="btn btn-sm btn-primary">Book Now</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="route-card">
+                        <div class="route-image">
+                            <img src="/public/images/services/service-zurich-transfer.jpg" alt="Munich to Zurich">
+                        </div>
+                        <div class="route-content">
+                            <h3 class="route-title">Munich to Zurich</h3>
+                            <p>Connect two of Central Europe's most vibrant cities with our luxury transfer service.</p>
+                            <div class="route-details">
+                                <p><i class="fas fa-route"></i> Distance: ~310 km</p>
+                                <p><i class="far fa-clock"></i> Duration: ~3.5 hours</p>
+                            </div>
+                            <div class="route-price">
+                                <div class="price-tag">From €490</div>
+                                <a href="/#contact" class="btn btn-sm btn-primary">Book Now</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="route-card">
+                        <div class="route-image">
+                            <img src="/public/images/services/service-berlin-transfer.jpg" alt="Frankfurt to Berlin">
+                        </div>
+                        <div class="route-content">
+                            <h3 class="route-title">Frankfurt to Berlin</h3>
+                            <p>Journey from Germany's financial hub to its vibrant capital in style and comfort.</p>
+                            <div class="route-details">
+                                <p><i class="fas fa-route"></i> Distance: ~550 km</p>
+                                <p><i class="far fa-clock"></i> Duration: ~5.5 hours</p>
+                            </div>
+                            <div class="route-price">
+                                <div class="price-tag">From €680</div>
+                                <a href="/#contact" class="btn btn-sm btn-primary">Book Now</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="route-card">
+                        <div class="route-image">
+                            <img src="https://images.unsplash.com/photo-1558001393-0aa6e7f5e9fc?q=80&w=500&auto=format&fit=crop" alt="Zurich to Geneva">
+                        </div>
+                        <div class="route-content">
+                            <h3 class="route-title">Zurich to Geneva</h3>
+                            <p>Cross Switzerland from east to west with our premium intercity service.</p>
+                            <div class="route-details">
+                                <p><i class="fas fa-route"></i> Distance: ~280 km</p>
+                                <p><i class="far fa-clock"></i> Duration: ~3 hours</p>
+                            </div>
+                            <div class="route-price">
+                                <div class="price-tag">From €450</div>
+                                <a href="/#contact" class="btn btn-sm btn-primary">Book Now</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="route-card">
+                        <div class="route-image">
+                            <img src="https://images.unsplash.com/photo-1533929736458-ca588d08c8be?q=80&w=500&auto=format&fit=crop" alt="Vienna to Prague">
+                        </div>
+                        <div class="route-content">
+                            <h3 class="route-title">Vienna to Prague</h3>
+                            <p>Connect two magnificent Central European capitals with our luxury transfer.</p>
+                            <div class="route-details">
+                                <p><i class="fas fa-route"></i> Distance: ~330 km</p>
+                                <p><i class="far fa-clock"></i> Duration: ~4 hours</p>
+                            </div>
+                            <div class="route-price">
+                                <div class="price-tag">From €520</div>
+                                <a href="/#contact" class="btn btn-sm btn-primary">Book Now</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="route-card">
+                        <div class="route-image">
+                            <img src="https://images.unsplash.com/photo-1604580864964-0462f5d5b1a8?q=80&w=500&auto=format&fit=crop" alt="Munich to Salzburg">
+                        </div>
+                        <div class="route-content">
+                            <h3 class="route-title">Munich to Salzburg</h3>
+                            <p>A short but scenic journey from Bavaria to Mozart's birthplace in Austria.</p>
+                            <div class="route-details">
+                                <p><i class="fas fa-route"></i> Distance: ~145 km</p>
+                                <p><i class="far fa-clock"></i> Duration: ~1.5 hours</p>
+                            </div>
+                            <div class="route-price">
+                                <div class="price-tag">From €290</div>
+                                <a href="/#contact" class="btn btn-sm btn-primary">Book Now</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="pricing-section bg-light">
+            <div class="container">
+                <div class="section-header">
+                    <span class="subtitle">Transparent Pricing</span>
+                    <h2 class="title">Intercity Transfer Rates</h2>
+                    <p class="description">Our all-inclusive pricing with no hidden fees.</p>
+                </div>
+
+                <div class="pricing-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Route</th>
+                                <th>Sedan (1-3 pax)</th>
+                                <th>Business Van (4-6 pax)</th>
+                                <th>Luxury Van (6-8 pax)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Munich to Vienna</td>
+                                <td>€580</td>
+                                <td>€690</td>
+                                <td>€780</td>
+                            </tr>
+                            <tr>
+                                <td>Munich to Zurich</td>
+                                <td>€490</td>
+                                <td>€590</td>
+                                <td>€680</td>
+                            </tr>
+                            <tr>
+                                <td>Frankfurt to Berlin</td>
+                                <td>€680</td>
+                                <td>€790</td>
+                                <td>€890</td>
+                            </tr>
+                            <tr>
+                                <td>Zurich to Geneva</td>
+                                <td>€450</td>
+                                <td>€550</td>
+                                <td>€640</td>
+                            </tr>
+                            <tr>
+                                <td>Vienna to Prague</td>
+                                <td>€520</td>
+                                <td>€630</td>
+                                <td>€720</td>
+                            </tr>
+                            <tr>
+                                <td>Munich to Salzburg</td>
+                                <td>€290</td>
+                                <td>€350</td>
+                                <td>€420</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="note" style="margin-top: 20px;">
+                    <p><small>* Prices are for one-way transfers. For round-trip bookings, a 10% discount is applied to the return journey. Custom routes are available upon request.</small></p>
+                </div>
+            </div>
+        </section>
+
+        <section class="features-section">
+            <div class="container">
+                <div class="section-header">
+                    <span class="subtitle">Service Benefits</span>
+                    <h2 class="title">Why Choose Our Intercity Transfers</h2>
+                </div>
+
+                <div class="feature-grid">
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-door-open"></i>
+                        </div>
+                        <h3>Door to Door Service</h3>
+                        <p>Direct pickup and drop-off at your preferred locations, no need to reach stations or airports.</p>
+                    </div>
+
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <h3>Flexible Departure Times</h3>
+                        <p>Choose your own departure time that suits your schedule, unlike fixed train or flight times.</p>
+                    </div>
+
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-map-marked-alt"></i>
+                        </div>
+                        <h3>Custom Stops</h3>
+                        <p>Add scenic or lunch stops along the route to make your journey more enjoyable.</p>
+                    </div>
+
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-suitcase"></i>
+                        </div>
+                        <h3>Generous Luggage Allowance</h3>
+                        <p>No restrictions on luggage weight or piece count within the capacity of the vehicle.</p>
+                    </div>
+
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-user-tie"></i>
+                        </div>
+                        <h3>Professional Chauffeurs</h3>
+                        <p>Experienced, multilingual drivers who know the best routes and local attractions.</p>
+                    </div>
+
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-wifi"></i>
+                        </div>
+                        <h3>Onboard Amenities</h3>
+                        <p>Free Wi-Fi, refreshments, and charging ports for a comfortable journey.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="comparison-section bg-light">
+            <div class="container">
+                <div class="section-header">
+                    <span class="subtitle">Compare Options</span>
+                    <h2 class="title">Why Our Intercity Service Beats Other Options</h2>
+                </div>
+
+                <div class="content-wrapper">
+                    <h3>Compared to Trains:</h3>
+                    <ul>
+                        <li>No need to reach train stations, which are often in busy city centers</li>
+                        <li>No crowded compartments or noisy passengers</li>
+                        <li>Direct service without transfers or connections</li>
+                        <li>Flexible departure times rather than fixed schedules</li>
+                        <li>Privacy to work, rest, or enjoy the journey with your companions</li>
+                    </ul>
+
+                    <h3>Compared to Flights:</h3>
+                    <ul>
+                        <li>No airport security checks or boarding procedures</li>
+                        <li>No need to arrive hours before departure</li>
+                        <li>Door-to-door service eliminates airport transfers</li>
+                        <li>More generous luggage allowance with no extra fees</li>
+                        <li>Often comparable or faster total travel time for distances under 500km</li>
+                    </ul>
+
+                    <h3>Compared to Rental Cars:</h3>
+                    <ul>
+                        <li>No need to navigate unfamiliar roads or worry about directions</li>
+                        <li>Ability to work or relax during the journey</li>
+                        <li>No parking hassles at your destination</li>
+                        <li>No concerns about different driving regulations in foreign countries</li>
+                        <li>Chauffeur's local knowledge enhances the experience</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="custom-routes">
+            <div class="container">
+                <div class="section-header">
+                    <span class="subtitle">Custom Routes</span>
+                    <h2 class="title">Need a Different Connection?</h2>
+                </div>
+
+                <div class="content-wrapper text-center">
+                    <p>Our intercity transfer service covers all major cities and destinations across Germany, Switzerland, and Austria, as well as neighboring countries. If you don't see your desired route listed, please contact us for a custom quote.</p>
+
+                    <p>We can arrange transfers between any European cities, and our team will create the perfect itinerary for your journey, including optional stops at points of interest along the way.</p>
+
+                    <a href="/#contact" class="btn btn-primary" style="margin-top: 20px;">Request Custom Route</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="cta-section">
+            <div class="container text-center">
+                <h2>Ready to Book Your Intercity Transfer?</h2>
+                <p>Experience the luxury and convenience of Premium Chauffeur's intercity transfer service.</p>
+                <div class="btn-group">
+                    <a href="/#contact" class="btn btn-primary">Book Now</a>
+                    <a href="tel:+4915123456789" class="btn btn-outline"><i class="fas fa-phone"></i> Call Us</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <h2 class="footer-logo">Premium<span>Chauffeur</span></h2>
+                    <p>12+ years of experience in European tourism. Luxury transportation services across Europe with our professional chauffeurs and premium vehicles.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-links-column">
+                        <h3>Quick Links</h3>
+                        <ul>
+                            <li><a href="/">Home</a></li>
+                            <li><a href="/#about">About</a></li>
+                            <li><a href="/#services">Services</a></li>
+                            <li><a href="/#destinations">Destinations</a></li>
+                            <li><a href="/#testimonials">Testimonials</a></li>
+                            <li><a href="/#contact">Contact</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-links-column">
+                        <h3>Services</h3>
+                        <ul>
+                            <li><a href="/services/airport-transfers.html">Airport Transfers</a></li>
+                            <li><a href="/services/special-daily-tours.html">Special Daily Tours</a></li>
+                            <li><a href="/services/multi-day-tours.html">Multi-Day Tours</a></li>
+                            <li><a href="/services/intercity-transfers.html">Intercity Transfers</a></li>
+                            <li><a href="/services/family-car-bookings.html">Family Car Bookings</a></li>
+                            <li><a href="/services/medical-tourism.html">Medical Tourism</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-links-column">
+                        <h3>Contact Us</h3>
+                        <ul class="contact-info">
+                            <li><i class="fas fa-map-marker-alt"></i> Munich, Germany</li>
+                            <li><i class="fas fa-phone"></i> +49 151 23456789</li>
+                            <li><i class="fas fa-envelope"></i> info@premiumchauffeur.com</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="copyright">
+                    <p>&copy; 2023 Premium Chauffeur. All rights reserved.</p>
+                </div>
+                <div class="legal-links">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="/js/main.js"></script>
+</body>
+</html>

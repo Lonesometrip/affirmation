@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multi-Day Tours - Premium Chauffeur</title>
+    <meta name="description" content="Luxury multi-day tours across Europe with private chauffeur service. Experience the best of European destinations in comfort and style.">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        /* Service Page Specific Styles */
+        .hero-banner {
+            height: 70vh;
+            min-height: 500px;
+            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/public/images/backgrounds/hero-multi-day-tours.jpg');
+            background-position: center;
+            background-size: cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            position: relative;
+            margin-top: 0;
+        }
+
+        .tour-packages {
+            margin-top: 50px;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .package-card {
+            border: 1px solid #eee;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .package-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+
+        .package-image {
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .package-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .package-card:hover .package-image img {
+            transform: scale(1.1);
+        }
+
+        .package-content {
+            padding: 20px;
+        }
+
+        .package-title {
+            color: var(--primary-color);
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        .package-details {
+            margin: 15px 0;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        .detail-item {
+            flex-basis: 48%;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+
+        .detail-item i {
+            color: var(--primary-color);
+            margin-right: 10px;
+        }
+
+        .package-price {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin: 15px 0;
+        }
+
+        .package-cta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .package-tag {
+            display: inline-block;
+            padding: 5px 10px;
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            margin-right: 10px;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .feature-item {
+            background-color: #f9f9f9;
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .feature-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .feature-icon {
+            font-size: 40px;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .tour-packages {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+
+    <main>
+        <section class="hero-banner">
+            <div class="container">
+                <h1>Multi-Day Tours</h1>
+                <p>Discover Europe's most enchanting destinations with our luxury multi-day tours</p>
+            </div>
+        </section>
+
+        <section class="service-overview">
+            <div class="container">
+                <div class="section-header">
+                    <span class="subtitle">Service Overview</span>
+                    <h2 class="title">Unforgettable Multi-Day European Journeys</h2>
+                </div>
+
+                <div class="content-wrapper">
+                    <p>Our multi-day tours offer the perfect combination of luxury transportation, carefully selected accommodations, and expertly planned itineraries to explore the most beautiful regions of Europe. With our professional chauffeurs guiding you, you'll experience the perfect blend of iconic landmarks and hidden gems across multiple destinations.</p>
+
+                    <p>Each tour is designed to give you an in-depth experience of the region's culture, history, and natural beauty, with the comfort and convenience of having your own private chauffeur and luxury vehicle throughout the journey. From romantic getaways to family adventures, our multi-day tours create memories that last a lifetime.</p>
+                </div>
+
+                <div class="tour-packages">
+                    <!-- Alpine Adventure Package -->
+                    <div class="package-card">
+                        <div class="package-image">
+                            <img src="https://images.unsplash.com/photo-1531366936337-7c912a4589a7?q=80&w=2070&auto=format&fit=crop" alt="Alpine Adventure Tour">
+                        </div>
+                        <div class="package-content">
+                            <h3 class="package-title">Alpine Adventure</h3>
+                            <p>Experience the majestic Swiss and Austrian Alps with this 5-day luxury tour package.</p>
+                            <div class="package-details">
+                                <span class="detail-item"><i class="fas fa-clock"></i> 5 Days</span>
+                                <span class="detail-item"><i class="fas fa-map-marker-alt"></i> Alps</span>
+                                <span class="detail-item"><i class="fas fa-hotel"></i> Luxury Hotels</span>
+                                <span class="detail-item"><i class="fas fa-utensils"></i> Fine Dining</span>
+                            </div>
+                            <div class="package-price">From €3,999</div>
+                            <div class="package-cta">
+                                <span class="package-tag">Popular</span>
+                                <a href="/contact" class="btn btn-primary">Book Now</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Cultural Heritage Tour -->
+                    <div class="package-card">
+                        <div class="package-image">
+                            <img src="https://images.unsplash.com/photo-1573843981267-be1999ff37cd?q=80&w=2074&auto=format&fit=crop" alt="Cultural Heritage Tour">
+                        </div>
+                        <div class="package-content">
+                            <h3 class="package-title">Cultural Heritage</h3>
+                            <p>Discover Europe's rich history through its most iconic cities and monuments.</p>
+                            <div class="package-details">
+                                <span class="detail-item"><i class="fas fa-clock"></i> 7 Days</span>
+                                <span class="detail-item"><i class="fas fa-map-marker-alt"></i> Multiple Cities</span>
+                                <span class="detail-item"><i class="fas fa-hotel"></i> Boutique Hotels</span>
+                                <span class="detail-item"><i class="fas fa-camera"></i> Guided Tours</span>
+                            </div>
+                            <div class="package-price">From €4,499</div>
+                            <div class="package-cta">
+                                <span class="package-tag">Best Seller</span>
+                                <a href="/contact" class="btn btn-primary">Book Now</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Romantic Road Journey -->
+                    <div class="package-card">
+                        <div class="package-image">
+                            <img src="https://images.unsplash.com/photo-1467269204594-9661b134dd2b?q=80&w=2070&auto=format&fit=crop" alt="Romantic Road Journey">
+                        </div>
+                        <div class="package-content">
+                            <h3 class="package-title">Romantic Road Journey</h3>
+                            <p>Travel along Germany's famous Romantic Road, exploring medieval towns and castles.</p>
+                            <div class="package-details">
+                                <span class="detail-item"><i class="fas fa-clock"></i> 4 Days</span>
+                                <span class="detail-item"><i class="fas fa-map-marker-alt"></i> Germany</span>
+                                <span class="detail-item"><i class="fas fa-hotel"></i> Historic Hotels</span>
+                                <span class="detail-item"><i class="fas fa-wine-glass"></i> Wine Tasting</span>
+                            </div>
+                            <div class="package-price">From €2,999</div>
+                            <div class="package-cta">
+                                <span class="package-tag">Romantic</span>
+                                <a href="/contact" class="btn btn-primary">Book Now</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="customization-section bg-light">
+            <div class="container">
+                <div class="section-header">
+                    <span class="subtitle">Tailor Your Experience</span>
+                    <h2 class="title">Customized Multi-Day Tours</h2>
+                </div>
+
+                <div class="content-wrapper">
+                    <p>In addition to our signature multi-day tours, we offer fully customized itineraries tailored to your specific interests, pace, and preferences. Our team of travel experts will work with you to create the perfect European adventure, whether you're interested in history, gastronomy, outdoor activities, or cultural experiences.</p>
+
+                    <p>From intimate honeymoon journeys to family adventures or group tours, we can accommodate parties of any size with the appropriate vehicles and arrangements. All custom tours include luxury transportation, carefully selected accommodations, and personalized experiences.</p>
+
+                    <div class="text-center" style="margin-top: 30px;">
+                        <a href="/#contact" class="btn btn-primary">Request Custom Tour</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="features-section">
+            <div class="container">
+                <div class="section-header">
+                    <span class="subtitle">Service Highlights</span>
+                    <h2 class="title">What Makes Our Multi-Day Tours Special</h2>
+                </div>
+
+                <div class="feature-grid">
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-car-alt"></i>
+                        </div>
+                        <h3>Dedicated Luxury Vehicle</h3>
+                        <p>Travel in comfort with your own private luxury vehicle throughout the entire journey.</p>
+                    </div>
+
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-user-tie"></i>
+                        </div>
+                        <h3>Professional Chauffeur-Guide</h3>
+                        <p>Benefit from the knowledge and expertise of our professional multilingual chauffeur-guides.</p>
+                    </div>
+
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-hotel"></i>
+                        </div>
+                        <h3>Premium Accommodations</h3>
+                        <p>Stay in carefully selected hotels that offer comfort, character, and excellent service.</p>
+                    </div>
+
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-route"></i>
+                        </div>
+                        <h3>Expertly Crafted Itineraries</h3>
+                        <p>Enjoy perfectly balanced itineraries that include iconic sights and hidden local treasures.</p>
+                    </div>
+
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <h3>Flexible Pace</h3>
+                        <p>Travel at your own pace with the freedom to linger at places that interest you most.</p>
+                    </div>
+
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-concierge-bell"></i>
+                        </div>
+                        <h3>24/7 Concierge Service</h3>
+                        <p>Enjoy peace of mind with our round-the-clock support throughout your journey.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+
+        <section class="cta-section">
+            <div class="container text-center">
+                <h2>Ready to Embark on an Unforgettable Journey?</h2>
+                <p>Book your multi-day tour today and experience Europe in luxury and comfort.</p>
+                <div class="btn-group">
+                    <a href="/#contact" class="btn btn-primary">Book Now</a>
+                    <a href="tel:+4915123456789" class="btn btn-outline"><i class="fas fa-phone"></i> Call Us</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <h2 class="footer-logo">Premium<span>Chauffeur</span></h2>
+                    <p>12+ years of experience in European tourism. Luxury transportation services across Europe with our professional chauffeurs and premium vehicles.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-links-column">
+                        <h3>Quick Links</h3>
+                        <ul>
+                            <li><a href="/">Home</a></li>
+                            <li><a href="/#about">About</a></li>
+                            <li><a href="/#services">Services</a></li>
+                            <li><a href="/#destinations">Destinations</a></li>
+
+                            <li><a href="/#contact">Contact</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-links-column">
+                        <h3>Services</h3>
+                        <ul>
+                            <li><a href="/services/airport-transfers.html">Airport Transfers</a></li>
+                            <li><a href="/services/special-daily-tours.html">Special Daily Tours</a></li>
+                            <li><a href="/services/multi-day-tours.html">Multi-Day Tours</a></li>
+                            <li><a href="/services/intercity-transfers.html">Intercity Transfers</a></li>
+                            <li><a href="/services/family-car-bookings.html">Family Car Bookings</a></li>
+                            <li><a href="/services/medical-tourism.html">Medical Tourism</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-links-column">
+                        <h3>Contact Us</h3>
+                        <ul class="contact-info">
+                            <li><i class="fas fa-map-marker-alt"></i> Munich, Germany</li>
+                            <li><i class="fas fa-phone"></i> +49 151 23456789</li>
+                            <li><i class="fas fa-envelope"></i> info@premiumchauffeur.com</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="copyright">
+                    <p>&copy; 2023 Premium Chauffeur. All rights reserved.</p>
+                </div>
+                <div class="legal-links">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="/js/main.js"></script>
+</body>
+</html>

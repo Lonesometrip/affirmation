@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Airport Transfers - Premium Chauffeur</title>
+    <meta name="description" content="Luxurious and timely airport pickup and drop-off services across Europe with Premium Chauffeur.">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        /* Hero section improvements */
+        .hero-banner {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/public/images/services/service-airport-transfer.jpg');
+            background-size: cover;
+            background-position: center;
+            height: 70vh;
+            min-height: 500px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            margin-top: 0;
+            position: relative;
+        }
+
+        .hero-banner .container {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+        }
+
+        .hero-banner h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero-banner p {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Improved card styling */
+        .feature-item {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            text-align: center;
+        }
+
+        .feature-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+        }
+
+        .feature-icon {
+            font-size: 48px;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .feature-item:hover .feature-icon {
+            transform: scale(1.1);
+        }
+
+        .feature-item h3 {
+            color: #333;
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .feature-item p {
+            color: #666;
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        /* Section styling improvements */
+        section {
+            padding: 80px 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-header .subtitle {
+            color: var(--primary-color);
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .section-header .title {
+            font-size: 2.5rem;
+            color: #333;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 20px;
+        }
+
+        .section-header .title:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--primary-color);
+        }
+
+        /* Process steps improvements */
+        .process-steps {
+            margin-top: 50px;
+        }
+
+        .step {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            text-align: center;
+            transition: all 0.3s ease;
+            margin-bottom: 30px;
+        }
+
+        .step:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+        }
+
+        .step-number {
+            width: 50px;
+            height: 50px;
+            background: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin: 0 auto 20px;
+        }
+
+        /* Responsive improvements */
+        @media (max-width: 768px) {
+            .hero-banner h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-banner p {
+                font-size: 1.1rem;
+            }
+
+            .nav-menu {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+
+
+    <main>
+        <div class="hero-banner">
+            <div class="container">
+                <h1>Airport Transfers</h1>
+                <p class="lead">Luxurious and timely airport pickup and drop-off services across Europe</p>
+            </div>
+        </div>
+
+        <section class="service-overview">
+            <div class="container">
+                <div class="section-header">
+                    <span class="subtitle">Service Overview</span>
+                    <h2 class="title">Premium Airport Transfer Service</h2>
+                </div>
+
+                <div class="content-wrapper">
+                    <p>Experience the ultimate in convenience and luxury with our premium airport transfer service. Whether you're arriving at or departing from any major European airport, our professional chauffeurs ensure a seamless and stress-free journey.</p>
+
+                    <p>Our service covers all major airports in Germany, Switzerland, Austria, and beyond. We monitor your flight in real-time to adjust for any delays, ensuring your chauffeur is always waiting when you arrive. Our meet-and-greet service includes luggage assistance and a comfortable journey to your destination in one of our luxury vehicles.</p>
+                </div>
+
+                <div class="service-features">
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-plane-arrival"></i>
+                        </div>
+                        <h3>Flight Monitoring</h3>
+                        <p>We track your flight in real-time and adjust for any delays or early arrivals.</p>
+                    </div>
+
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-user-tie"></i>
+                        </div>
+                        <h3>Meet & Greet</h3>
+                        <p>Your chauffeur will meet you at arrivals with a personalized sign and assist with luggage.</p>
+                    </div>
+
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <h3>24/7 Service</h3>
+                        <p>Available any time of day or night, 365 days a year for your convenience.</p>
+                    </div>
+
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-car-side"></i>
+                        </div>
+                        <h3>Luxury Vehicles</h3>
+                        <p>Travel in comfort in our immaculately maintained premium fleet.</p>
+                    </div>
+
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-globe-europe"></i>
+                        </div>
+                        <h3>Multilingual Drivers</h3>
+                        <p>Our chauffeurs speak multiple languages to ensure smooth communication.</p>
+                    </div>
+
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-calendar-check"></i>
+                        </div>
+                        <h3>Easy Booking</h3>
+                        <p>Simple online reservation system with instant confirmation.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="pricing-section bg-light">
+            <div class="container">
+                <div class="section-header">
+                    <span class="subtitle">Transparent Pricing</span>
+                    <h2 class="title">Airport Transfer Rates</h2>
+                    <p class="description">Our all-inclusive pricing with no hidden fees or surcharges.</p>
+                </div>
+
+                <div class="pricing-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Route</th>
+                                <th>Sedan (1-3 pax)</th>
+                                <th>Business Van (4-6 pax)</th>
+                                <th>Luxury Van (6-8 pax)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Munich Airport to Munich City</td>
+                                <td>€90</td>
+                                <td>€130</td>
+                                <td>€160</td>
+                            </tr>
+                            <tr>
+                                <td>Zurich Airport to Zurich City</td>
+                                <td>€110</td>
+                                <td>€150</td>
+                                <td>€180</td>
+                            </tr>
+                            <tr>
+                                <td>Vienna Airport to Vienna City</td>
+                                <td>€95</td>
+                                <td>€135</td>
+                                <td>€165</td>
+                            </tr>
+                            <tr>
+                                <td>Frankfurt Airport to Frankfurt City</td>
+                                <td>€90</td>
+                                <td>€130</td>
+                                <td>€160</td>
+                            </tr>
+                            <tr>
+                                <td>Munich Airport to Salzburg</td>
+                                <td>€220</td>
+                                <td>€280</td>
+                                <td>€320</td>
+                            </tr>
+                            <tr>
+                                <td>Zurich Airport to Lucerne</td>
+                                <td>€190</td>
+                                <td>€240</td>
+                                <td>€290</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="note" style="margin-top: 20px;">
+                    <p><small>* Prices are for one-way transfers. Night surcharges (10pm-6am) may apply. For custom routes or destinations not listed, please contact us for a personalized quote.</small></p>
+                </div>
+            </div>
+        </section>
+
+        <section class="booking-process">
+            <div class="container">
+                <div class="section-header">
+                    <span class="subtitle">Simple Booking Process</span>
+                    <h2 class="title">How It Works</h2>
+                </div>
+
+                <div class="process-steps">
+                    <div class="row">
+                        <div class="col">
+                            <div class="step">
+                                <div class="step-number">1</div>
+                                <h3>Book Online</h3>
+                                <p>Fill out our easy booking form with your flight and transfer details.</p>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="step">
+                                <div class="step-number">2</div>
+                                <h3>Receive Confirmation</h3>
+                                <p>Get instant booking confirmation with driver and vehicle details.</p>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="step">
+                                <div class="step-number">3</div>
+                                <h3>Meet Your Chauffeur</h3>
+                                <p>Your driver will meet you at the designated meeting point.</p>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="step">
+                                <div class="step-number">4</div>
+                                <h3>Enjoy Your Ride</h3>
+                                <p>Relax in comfort as we transport you safely to your destination.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="faq-section">
+            <div class="container">
+                <div class="section-header">
+                    <span class="subtitle">Frequently Asked Questions</span>
+                    <h2 class="title">Airport Transfer FAQs</h2>
+                </div>
+
+                <div class="faq-list">
+                    <div class="faq-item">
+                        <div class="faq-question">What happens if my flight is delayed?</div>
+                        <div class="faq-answer">
+                            <p>We monitor all flight arrivals in real-time, so we're always aware of any delays. Your chauffeur will adjust their schedule accordingly and be there when you arrive – at no extra charge for standard delays.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">How will I recognize my driver?</div>
+                        <div class="faq-answer">
+                            <p>Your chauffeur will be waiting at the arrivals hall with a personalized sign displaying your name. Additionally, you'll receive your driver's contact details in your booking confirmation.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">Is there a waiting time charge?</div>
+                        <div class="faq-answer">
+                            <p>We include a complimentary waiting time of 60 minutes for international flights and 30 minutes for domestic flights after the scheduled landing time. For pickups from hotels or other locations, we provide a 15-minute courtesy waiting time.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">How much luggage can I bring?</div>
+                        <div class="faq-answer">
+                            <p>Our sedan vehicles can accommodate 3 passengers with 3 standard suitcases plus hand luggage. Our vans can fit more luggage – up to 6-8 suitcases depending on the vehicle size. If you have special luggage requirements, please mention this at the time of booking.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">Can I book a child seat?</div>
+                        <div class="faq-answer">
+                            <p>Yes, we offer child and baby seats upon request. Please specify the age and weight of the child when booking so we can provide the appropriate seat.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="cta-section">
+            <div class="container text-center">
+                <h2>Ready to Book Your Airport Transfer?</h2>
+                <p>Experience the Premium Chauffeur difference with our luxury airport transfer service.</p>
+                <div class="btn-group">
+                    <a href="/#contact" class="btn btn-primary">Book Now</a>
+                    <a href="tel:+4915123456789" class="btn btn-outline"><i class="fas fa-phone"></i> Call Us</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <h2 class="footer-logo">Premium<span>Chauffeur</span></h2>
+                    <p>12+ years of experience in European tourism. Luxury transportation services across Europe with our professional chauffeurs and premium vehicles.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-links-column">
+                        <h3>Quick Links</h3>
+                        <ul>
+                            <li><a href="/">Home</a></li>
+                            <li><a href="/#about">About</a></li>
+                            <li><a href="/#services">Services</a></li>
+                            <li><a href="/#destinations">Destinations</a></li>
+                            <li><a href="/#testimonials">Testimonials</a></li>
+                            <li><a href="/#contact">Contact</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-links-column">
+                        <h3>Services</h3>
+                        <ul>
+                            <li><a href="/services/airport-transfers.html">Airport Transfers</a></li>
+                            <li><a href="/services/special-daily-tours.html">Special Daily Tours</a></li>
+                            <li><a href="/services/multi-day-tours.html">Multi-Day Tours</a></li>
+                            <li><a href="/services/intercity-transfers.html">Intercity Transfers</a></li>
+                            <li><a href="/services/family-car-bookings.html">Family Car Bookings</a></li>
+                            <li><a href="/services/medical-tourism.html">Medical Tourism</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-links-column">
+                        <h3>Contact Us</h3>
+                        <ul class="contact-info">
+                            <li><i class="fas fa-map-marker-alt"></i> Munich, Germany</li>
+                            <li><i class="fas fa-phone"></i> +49 151 23456789</li>
+                            <li><i class="fas fa-envelope"></i> info@premiumchauffeur.com</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="copyright">
+                    <p>&copy; 2023 Premium Chauffeur. All rights reserved.</p>
+                </div>
+                <div class="legal-links">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="/js/main.js"></script>
+</body>
+</html>
