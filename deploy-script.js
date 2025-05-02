@@ -17,10 +17,10 @@ ghpages.publish(
   path.join(process.cwd(), 'dist'),
   {
     branch: 'gh-pages',
-    repo: 'https://github.com/MB/affirmation.git',
+    repo: 'https://github.com/Lonesometrip/affirmation.git',
     user: {
-      name: 'MB',
-      email: 'your-email@example.com' // Replace with your email
+      name: 'Lonesometrip',
+      email: 'benmotrade@gmail.com' // Using the email from the original script
     },
     cname: 'www.premium-chauffeur.com'
   },
