@@ -1,8 +1,13 @@
-const ghpages = require('gh-pages');
-const path = require('path');
+import ghpages from 'gh-pages';
+import path from 'path';
+import { execSync } from 'child_process';
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 // Run build first
-const { execSync } = require('child_process');
 console.log('Building project...');
 execSync('npm run build', { stdio: 'inherit' });
 
@@ -12,11 +17,12 @@ ghpages.publish(
   path.join(process.cwd(), 'dist'),
   {
     branch: 'gh-pages',
-    repo: 'https://github.com/Lonesometrip/affirmation.git',
+    repo: 'https://github.com/MB/affirmation.git',
     user: {
-      name: 'Lonesometrip',
-      email: 'benmotrade@gmail.com'
-    }
+      name: 'MB',
+      email: 'your-email@example.com' // Replace with your email
+    },
+    cname: 'www.premium-chauffeur.com'
   },
   (err) => {
     if (err) {
