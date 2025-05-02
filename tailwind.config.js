@@ -1,25 +1,37 @@
 /** @type {import('tailwindcss').Config} */
-module.exports = {
-  content: ["./**/*.{html,js}"],
+export default {
+  content: [
+    "./index.html",
+    "./src/**/*.{js,ts,jsx,tsx}",
+  ],
   theme: {
     extend: {
       colors: {
-        primary: '#c9b16f',
-        secondary: '#1e2022',
-        accent: '#e8d8a3',
-        dark: '#1a1a1a',
+        'primary': '#1a365d',
+        'primary-light': '#2b4c7e',
+        'primary-dark': '#0f2a4a',
+        'secondary': '#e2e8f0',
+        'accent': '#3182ce',
       },
       fontFamily: {
-        sans: ['Poppins', 'sans-serif'],
+        'sans': ['Arial', 'sans-serif'],
       },
-      container: {
-        center: true,
-        padding: '1.5rem',
+      spacing: {
+        '128': '32rem',
+      },
+      borderRadius: {
+        'none': '0',
+        'sm': '0',
+        'md': '0',
+        'lg': '0',
+        'xl': '0',
+        '2xl': '0',
+        'full': '0',
       },
       boxShadow: {
-        'custom': '0 4px 20px rgba(0, 0, 0, 0.1)',
+        'custom': '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
       },
     },
   },
   plugins: [],
-} 
+}

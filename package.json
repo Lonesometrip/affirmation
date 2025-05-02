@@ -1,34 +1,24 @@
 {
-  "name": "premium-chauffeur",
-  "version": "1.0.0",
-  "description": "Luxury transportation and tourism services website",
-  "main": "index.js",
+  "name": "driversline",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview",
-    "start": "live-server"
+    "preview": "vite preview"
   },
-  "keywords": [
-    "chauffeur",
-    "transportation",
-    "luxury",
-    "tourism",
-    "europe"
-  ],
-  "author": "",
-  "license": "MIT",
   "dependencies": {
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-router-dom": "^6.20.0",
-    "live-server": "^1.2.2"
+    "react-intersection-observer": "^9.16.0",
+    "react-router-dom": "^6.11.1"
   },
   "devDependencies": {
-    "@vitejs/plugin-react": "^4.2.0",
-    "autoprefixer": "^10.4.16",
-    "postcss": "^8.4.31",
-    "tailwindcss": "^3.3.5",
-    "vite": "^5.0.0"
+    "@vitejs/plugin-react": "^4.0.0",
+    "autoprefixer": "^10.4.14",
+    "postcss": "^8.4.23",
+    "tailwindcss": "^3.3.2",
+    "vite": "^4.3.5"
   }
-} 
+}

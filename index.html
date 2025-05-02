@@ -1,89 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Premium Chauffeur - Luxury Transportation Services</title>
-    <meta name="description" content="Premium Chauffeur provides luxury transportation and tourism services across Europe with 12+ years of experience.">
-    <link rel="icon" type="image/svg+xml" href="public/favicon.svg" />
-    <link rel="stylesheet" href="css/styles.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <style>
-        html, body {
-            margin: 0;
-            padding: 0;
-            min-height: 100%;
-            height: 100%;
-        }
-        body {
-            display: flex;
-            flex-direction: column;
-        }
-        main {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-        }
-        .hero-section {
-            height: 100vh;
-            min-height: 700px;
-            margin-bottom: 50px;
-        }
-        section {
-            display: block;
-            width: 100%;
-            position: relative;
-            padding: 100px 0;
-            margin-top: 0;
-            overflow: visible;
-        }
-        .services-section, .about-section, .destinations-section,
-        .tour-configurator-section, .contact-section {
-            min-height: 600px;
-        }
-        .site-footer {
-            margin-top: auto;
-        }
-    </style>
-</head>
-<body>
-
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.0.0/css/all.min.css">
+    <title>Premium Chauffeur - Exklusiver Fahrservice</title>
+  </head>
+  <body class="bg-gray-100">
     <div id="app"></div>
-    <script type="module" src="js/bundle.js"></script>
-
-    <!-- Direct mobile menu handler -->
-    <script>
-        // Add a direct event listener for the mobile menu button
-        document.addEventListener('DOMContentLoaded', function() {
-            console.log('Direct mobile menu handler loaded');
-
-            // Wait for the DOM to be fully loaded and manipulated by bundle.js
-            setTimeout(function() {
-                const mobileMenuBtn = document.getElementById('mobile-menu-toggle') || document.querySelector('.mobile-menu-btn');
-                const mainNav = document.querySelector('.main-nav');
-
-                if (mobileMenuBtn && mainNav) {
-                    console.log('Mobile menu elements found by direct handler');
-
-                    // Add click event listener
-                    mobileMenuBtn.addEventListener('click', function(e) {
-                        e.preventDefault();
-                        e.stopPropagation();
-                        console.log('Mobile menu button clicked (inline handler)');
-                        this.classList.toggle('active');
-                        mainNav.classList.toggle('active');
-                    });
-
-                    console.log('Direct mobile menu handler attached');
-                } else {
-                    console.log('Mobile menu elements not found by direct handler');
-                }
-            }, 1000); // Wait 1 second for bundle.js to complete
-        });
-    </script>
-</body>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
 </html>
