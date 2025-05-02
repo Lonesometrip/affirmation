@@ -7,8 +7,10 @@ import './driversline.css'
 
 ReactDOM.createRoot(document.getElementById('app')).render(
   <React.StrictMode>
-    <BrowserRouter>
+    <BrowserRouter basename="/affirmation">
       <App />
     </BrowserRouter>
   </React.StrictMode>,
 )
+
+
