@@ -1,13 +1,8 @@
-import ghpages from 'gh-pages';
-import path from 'path';
-import { execSync } from 'child_process';
-import { fileURLToPath } from 'url';
-import { dirname } from 'path';
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
+const ghpages = require('gh-pages');
+const path = require('path');
 
 // Run build first
+const { execSync } = require('child_process');
 console.log('Building project...');
 execSync('npm run build', { stdio: 'inherit' });
 
@@ -20,9 +15,8 @@ ghpages.publish(
     repo: 'https://github.com/Lonesometrip/affirmation.git',
     user: {
       name: 'Lonesometrip',
-      email: 'benmotrade@gmail.com' // Using the email from the original script
-    },
-    cname: 'www.premium-chauffeur.com'
+      email: 'benmotrade@gmail.com'
+    }
   },
   (err) => {
     if (err) {
