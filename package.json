@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://lonesometrip.github.io/webpage/",
+  "homepage": "https://www.premium-chauffeur.com",
   "scripts": {
     "dev": "vite",
     "update-sitemap": "node scripts/update-sitemap.js",
@@ -12,7 +12,7 @@
     "lint": "eslint src --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist"
+    "deploy": "node scripts/custom-deploy.js"
   },
   "dependencies": {
     "@emailjs/browser": "^3.11.0",
