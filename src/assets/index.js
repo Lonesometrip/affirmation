@@ -16,15 +16,15 @@ import payloadmaster from "./projects/payloadmaster.png";
 import mhft from "./projects/mhft.png";
 
 // Import service images
-import chauffeur1 from "./services/chauffeur-service/c1.jpg";
-import chauffeur2 from "./services/chauffeur-service/c2.jpg";
-import chauffeur3 from "./services/chauffeur-service/c3.jpg";
-import airport1 from "./services/airport-transfer/a1.png";
-import airport2 from "./services/airport-transfer/a2.png";
-import airport3 from "./services/airport-transfer/a3.JPEG";
-import vip1 from "./services/vip-service/v1.jpg";
-import vip2 from "./services/vip-service/v2.jpg";
-import vip3 from "./services/vip-service/v1.jpg"; // Using v1.jpg as a replacement for v3.JPEG
+import chauffeur1 from "./services/chauffeur service/c1.jpg";
+import chauffeur2 from "./services/chauffeur service/c2.jpg";
+import chauffeur3 from "./services/chauffeur service/c3.jpg";
+import airport1 from "./services/airport Transfer/a1.png";
+import airport2 from "./services/airport Transfer/a2.png";
+import airport3 from "./services/airport Transfer/a3.JPEG";
+import vip1 from "./services/vip service/v1.jpg";
+import vip2 from "./services/vip service/v2.jpg";
+import vip3 from "./services/vip service/v1.jpg"; // Using v1.jpg as a replacement for v3.JPEG
 
 // Import car images
 import sclass1 from "./S_Class/s1.jpg";

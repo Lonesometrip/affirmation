@@ -36,7 +36,7 @@ try {
   console.log('✅ Copied CNAME file to dist folder');
 } catch (error) {
   console.error('❌ Error copying CNAME file:', error);
-  
+
   // If CNAME doesn't exist, create it
   try {
     fs.writeFileSync(
@@ -53,11 +53,21 @@ try {
 try {
   const indexPath = path.join(__dirname, '../dist/index.html');
   let indexContent = fs.readFileSync(indexPath, 'utf8');
-  
+
   // Replace absolute paths with relative paths
   indexContent = indexContent.replace(/src="\/assets\//g, 'src="./assets/');
   indexContent = indexContent.replace(/href="\/assets\//g, 'href="./assets/');
-  
+
+  // Fix favicon paths
+  indexContent = indexContent.replace(/href="\/favicon\.svg"/g, 'href="./favicon.svg"');
+  indexContent = indexContent.replace(/href="\/favicon\.ico"/g, 'href="./favicon.ico"');
+
+  // Fix paths with /webpage/ prefix
+  indexContent = indexContent.replace(/src="\/webpage\/assets\//g, 'src="./assets/');
+  indexContent = indexContent.replace(/href="\/webpage\/assets\//g, 'href="./assets/');
+  indexContent = indexContent.replace(/href="\/webpage\/favicon\.svg"/g, 'href="./favicon.svg"');
+  indexContent = indexContent.replace(/href="\/webpage\/favicon\.ico"/g, 'href="./favicon.ico"');
+
   fs.writeFileSync(indexPath, indexContent);
   console.log('✅ Fixed paths in index.html');
 } catch (error) {

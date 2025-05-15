@@ -48,6 +48,12 @@ jobs:
         run: |
           sed -i 's|src="/assets/|src="./assets/|g' dist/index.html
           sed -i 's|href="/assets/|href="./assets/|g' dist/index.html
+          sed -i 's|href="/favicon.svg"|href="./favicon.svg"|g' dist/index.html
+          sed -i 's|href="/favicon.ico"|href="./favicon.ico"|g' dist/index.html
+          sed -i 's|src="/webpage/assets/|src="./assets/|g' dist/index.html
+          sed -i 's|href="/webpage/assets/|href="./assets/|g' dist/index.html
+          sed -i 's|href="/webpage/favicon.svg"|href="./favicon.svg"|g' dist/index.html
+          sed -i 's|href="/webpage/favicon.ico"|href="./favicon.ico"|g' dist/index.html
 
       - name: Deploy to GitHub Pages 🚀
         uses: JamesIves/github-pages-deploy-action@v4
