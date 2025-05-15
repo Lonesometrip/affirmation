@@ -5,29 +5,52 @@ on:
     branches: [ main, master ]
   workflow_dispatch:
 
+permissions:
+  contents: write
+
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
+      - name: Checkout 🛎️
         uses: actions/checkout@v3
 
-      - name: Set up Node.js
+      - name: Setup Node.js ⚙️
         uses: actions/setup-node@v3
         with:
           node-version: 18
           cache: 'npm'
 
-      - name: Install dependencies
+      - name: Install dependencies 📦
         run: npm ci
 
-      - name: Build
+      - name: Build website 🔧
         run: npm run build
 
-      - name: Deploy to GitHub Pages
+      - name: Copy CNAME file 📋
+        run: |
+          if [ -f "public/CNAME" ]; then
+            cp public/CNAME dist/
+          else
+            echo "www.premium-chauffeur.com" > dist/CNAME
+          fi
+
+      - name: Copy server config files 🔧
+        run: |
+          if [ -f "public/.htaccess" ]; then
+            cp public/.htaccess dist/
+          fi
+          if [ -f "public/web.config" ]; then
+            cp public/web.config dist/
+          fi
+
+      - name: Fix paths in index.html 🔧
+        run: |
+          sed -i 's|src="/assets/|src="./assets/|g' dist/index.html
+          sed -i 's|href="/assets/|href="./assets/|g' dist/index.html
+
+      - name: Deploy to GitHub Pages 🚀
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           folder: dist
           branch: gh-pages
-          repository-name: Lonesometrip/webpage
-          token: ${{ secrets.GITHUB_TOKEN }}
