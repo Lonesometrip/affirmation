@@ -6,26 +6,26 @@ import { fileURLToPath } from 'url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-// Copy .htaccess and web.config to dist folder
-try {
-  fs.copyFileSync(
-    path.join(__dirname, '../public/.htaccess'),
-    path.join(__dirname, '../dist/.htaccess')
-  );
-  console.log('✅ Copied .htaccess to dist folder');
-} catch (error) {
-  console.error('❌ Error copying .htaccess:', error);
-}
+// Copy server configuration files to dist folder
+const configFiles = [
+  '.htaccess',
+  'web.config',
+  '_headers',
+  'netlify.toml',
+  '404.html'
+];
 
-try {
-  fs.copyFileSync(
-    path.join(__dirname, '../public/web.config'),
-    path.join(__dirname, '../dist/web.config')
-  );
-  console.log('✅ Copied web.config to dist folder');
-} catch (error) {
-  console.error('❌ Error copying web.config:', error);
-}
+configFiles.forEach(file => {
+  try {
+    fs.copyFileSync(
+      path.join(__dirname, `../public/${file}`),
+      path.join(__dirname, `../dist/${file}`)
+    );
+    console.log(`✅ Copied ${file} to dist folder`);
+  } catch (error) {
+    console.error(`❌ Error copying ${file}:`, error);
+  }
+});
 
 // Ensure CNAME file exists
 try {

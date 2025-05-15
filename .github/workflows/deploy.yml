@@ -37,12 +37,12 @@ jobs:
 
       - name: Copy server config files 🔧
         run: |
-          if [ -f "public/.htaccess" ]; then
-            cp public/.htaccess dist/
-          fi
-          if [ -f "public/web.config" ]; then
-            cp public/web.config dist/
-          fi
+          for file in .htaccess web.config _headers netlify.toml 404.html; do
+            if [ -f "public/$file" ]; then
+              cp "public/$file" "dist/"
+              echo "Copied $file to dist folder"
+            fi
+          done
 
       - name: Fix paths in index.html 🔧
         run: |

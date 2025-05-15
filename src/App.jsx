@@ -1,7 +1,8 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, Suspense, lazy } from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import Layout from './components/Layout';
 import HomePage from './pages/HomePage';
+import ErrorBoundary from './components/ErrorBoundary';
 
 // Add global style to ensure black background
 const globalStyle = document.createElement('style');
@@ -39,17 +40,55 @@ import PrivacyPolicy from './pages/PrivacyPolicy';
 // Main section components
 import { ServicesPage } from './components';
 
+// Loading component for Suspense
+const Loading = () => (
+  <div style={{
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    height: '100vh',
+    backgroundColor: '#000',
+    color: '#d4af37'
+  }}>
+    <div>
+      <h2>Loading...</h2>
+      <div style={{
+        width: '50px',
+        height: '50px',
+        border: '5px solid rgba(212, 175, 55, 0.3)',
+        borderRadius: '50%',
+        borderTop: '5px solid #d4af37',
+        animation: 'spin 1s linear infinite',
+        margin: '20px auto'
+      }}></div>
+      <style>{`
+        @keyframes spin {
+          0% { transform: rotate(0deg); }
+          100% { transform: rotate(360deg); }
+        }
+      `}</style>
+    </div>
+  </div>
+);
+
 const App = () => {
   return (
-    <BrowserRouter
-      future={{
-        v7_startTransition: true,
-        v7_relativeSplatPath: true,
-      }}
-    >
-      <Routes>
-        <Route path="/" element={<Layout />}>
-          <Route index element={<HomePage />} />
+    <ErrorBoundary>
+      <BrowserRouter
+        future={{
+          v7_startTransition: true,
+          v7_relativeSplatPath: true,
+        }}
+      >
+        <Routes>
+          <Route path="/" element={<Layout />}>
+            <Route index element={
+              <ErrorBoundary>
+                <Suspense fallback={<Loading />}>
+                  <HomePage />
+                </Suspense>
+              </ErrorBoundary>
+            } />
 
           {/* Carpool routes */}
           <Route path="carpool">
@@ -90,6 +129,7 @@ const App = () => {
         </Route>
       </Routes>
     </BrowserRouter>
+    </ErrorBoundary>
   );
 };
 

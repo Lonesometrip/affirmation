@@ -1,5 +1,10 @@
 # Set correct MIME types
 AddType application/javascript .js .jsx .mjs
+AddType text/javascript .js .jsx .mjs
+# Force JavaScript MIME type regardless of file extension
+<FilesMatch "\.(js|jsx|mjs)$">
+    ForceType application/javascript
+</FilesMatch>
 AddType text/css .css
 
 # Enable CORS
