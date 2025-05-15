@@ -6,7 +6,7 @@
 
   <!-- Homepage -->
   <url>
-    <loc>https://www.premium-chauffeur.com/</loc>
+    <loc>https://lonesometrip.github.io/webpage/</loc>
     <lastmod>2025-05-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
@@ -14,25 +14,25 @@
 
   <!-- Carpool Pages -->
   <url>
-    <loc>https://www.premium-chauffeur.com/carpool</loc>
+    <loc>https://lonesometrip.github.io/webpage/carpool</loc>
     <lastmod>2025-05-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://www.premium-chauffeur.com/carpool/mercedes-sclass</loc>
+    <loc>https://lonesometrip.github.io/webpage/carpool/mercedes-sclass</loc>
     <lastmod>2025-05-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.premium-chauffeur.com/carpool/bmw-7</loc>
+    <loc>https://lonesometrip.github.io/webpage/carpool/bmw-7</loc>
     <lastmod>2025-05-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.premium-chauffeur.com/carpool/mercedes-vclass</loc>
+    <loc>https://lonesometrip.github.io/webpage/carpool/mercedes-vclass</loc>
     <lastmod>2025-05-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -40,25 +40,25 @@
 
   <!-- Services Pages -->
   <url>
-    <loc>https://www.premium-chauffeur.com/services</loc>
+    <loc>https://lonesometrip.github.io/webpage/services</loc>
     <lastmod>2025-05-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://www.premium-chauffeur.com/services/chauffeurservice</loc>
+    <loc>https://lonesometrip.github.io/webpage/services/chauffeurservice</loc>
     <lastmod>2025-05-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.premium-chauffeur.com/services/airporttransfer</loc>
+    <loc>https://lonesometrip.github.io/webpage/services/airporttransfer</loc>
     <lastmod>2025-05-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.premium-chauffeur.com/services/vip-service</loc>
+    <loc>https://lonesometrip.github.io/webpage/services/vip-service</loc>
     <lastmod>2025-05-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -66,31 +66,31 @@
 
   <!-- Tourism Pages -->
   <url>
-    <loc>https://www.premium-chauffeur.com/tourism</loc>
+    <loc>https://lonesometrip.github.io/webpage/tourism</loc>
     <lastmod>2025-05-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://www.premium-chauffeur.com/tourism/beliebte-zielorte</loc>
+    <loc>https://lonesometrip.github.io/webpage/tourism/beliebte-zielorte</loc>
     <lastmod>2025-05-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.premium-chauffeur.com/tourism/shoppingtours</loc>
+    <loc>https://lonesometrip.github.io/webpage/tourism/shoppingtours</loc>
     <lastmod>2025-05-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.premium-chauffeur.com/tourism/freizeitparks</loc>
+    <loc>https://lonesometrip.github.io/webpage/tourism/freizeitparks</loc>
     <lastmod>2025-05-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.premium-chauffeur.com/tourism/bauernhofe</loc>
+    <loc>https://lonesometrip.github.io/webpage/tourism/bauernhofe</loc>
     <lastmod>2025-05-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -98,7 +98,7 @@
 
   <!-- Contact Page -->
   <url>
-    <loc>https://www.premium-chauffeur.com/contact</loc>
+    <loc>https://lonesometrip.github.io/webpage/contact</loc>
     <lastmod>2025-05-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
@@ -106,7 +106,7 @@
 
   <!-- Legal Pages -->
   <url>
-    <loc>https://www.premium-chauffeur.com/privacy-policy</loc>
+    <loc>https://lonesometrip.github.io/webpage/privacy-policy</loc>
     <lastmod>2025-05-15</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
